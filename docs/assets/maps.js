@@ -14,8 +14,8 @@
 
   // Sector colors
   const COLOR_S28 = "#1d4ed8";
-  const COLOR_OTHER_STROKE = "#1e40af";
-  const COLOR_OTHER_FILL = "#60a5fa";
+  const COLOR_OTHER_STROKE = "#1e3a8a";
+  const COLOR_OTHER_FILL = "#3b82f6";
 
   // Pocket heatmap
   const POCKET_COLOR = (n) => {
@@ -25,7 +25,7 @@
     if (n >= 5)  return "#f97316";
     if (n >= 3)  return "#fb923c";
     if (n >= 1)  return "#fed7aa";
-    return "#e2e8f0";
+    return "#94a3b8";
   };
   const POCKET_LABEL_COLOR = (n) => (n >= 3 ? "#ffffff" : "#1e293b");
 
@@ -51,12 +51,12 @@
         const s = feat.properties.sector;
         const is28 = s === 28;
         return {
-          color: is28 ? COLOR_S28 : COLOR_OTHER_STROKE,
-          weight: is28 ? 4 : 2,
-          opacity: is28 ? 1 : 0.85,
+          color: is28 ? "#fbbf24" : COLOR_OTHER_STROKE,
+          weight: is28 ? 5 : 2.5,
+          opacity: is28 ? 1 : 0.9,
           fillColor: is28 ? COLOR_S28 : COLOR_OTHER_FILL,
-          fillOpacity: is28 ? 0.55 : 0.35,
-          dashArray: is28 ? null : "4 3",
+          fillOpacity: is28 ? 0.65 : 0.45,
+          dashArray: is28 ? null : null,
         };
       },
       onEachFeature: (feat, lyr) => {
@@ -64,9 +64,9 @@
         const is28 = s === 28;
         const has = feat.properties.has_data;
         const baseStyle = {
-          color: is28 ? COLOR_S28 : COLOR_OTHER_STROKE,
-          weight: is28 ? 4 : 2,
-          fillOpacity: is28 ? 0.55 : 0.35,
+          color: is28 ? "#fbbf24" : COLOR_OTHER_STROKE,
+          weight: is28 ? 5 : 2.5,
+          fillOpacity: is28 ? 0.65 : 0.45,
         };
         lyr.bindTooltip(
           `<div class="rpp-tip">
@@ -78,8 +78,8 @@
         );
         lyr.on("mouseover", () => {
           lyr.setStyle({
-            weight: is28 ? 5 : 3.5,
-            fillOpacity: is28 ? 0.7 : 0.55,
+            weight: is28 ? 6 : 4,
+            fillOpacity: is28 ? 0.8 : 0.65,
           });
           lyr.openTooltip();
           lyr.bringToFront();
@@ -111,10 +111,10 @@
       }).addTo(map);
     });
 
-    // Fit all sectors in view with padding
+    // Fit to all sectors with a baseline zoom that keeps them readable
     const bounds = layer.getBounds();
     map.fitBounds(bounds, { padding: [24, 24] });
-    // Lock max zoom-out so users can't lose the whole map
+    // Don't let users zoom out so far that sectors become dots
     map.setMinZoom(map.getZoom() - 1);
 
     return { map, layer };
@@ -161,13 +161,14 @@
         const id = feat.properties.pocket;
         const n = counts[id] || 0;
         const isActive = id === activePocket;
+        const isUnmapped = n === 0;
         return {
-          color: isActive ? "#0f172a" : "#ffffff",
-          weight: isActive ? 5 : 2.5,
-          opacity: 1,
-          fillColor: POCKET_COLOR(n),
-          fillOpacity: n === 0 ? 0.25 : 0.78,
-          dashArray: n === 0 ? "4 3" : null,
+          color: isActive ? "#0f172a" : (isUnmapped ? "#94a3b8" : "#ffffff"),
+          weight: isActive ? 5 : (isUnmapped ? 1.5 : 2.5),
+          opacity: isUnmapped ? 0.5 : 1,
+          fillColor: isUnmapped ? "#e2e8f0" : POCKET_COLOR(n),
+          fillOpacity: isUnmapped ? 0.35 : 0.78,
+          dashArray: isUnmapped ? "5 3" : null,
         };
       },
       onEachFeature: (feat, lyr) => {
@@ -185,16 +186,17 @@
         lyr.bindTooltip(
           `<div class="rpp-tip">
              <div class="rpp-tip-title">Pocket ${id} <span class="rpp-tip-badge">${blockLabel}</span></div>
-             <div class="rpp-tip-sub">${n} registration${n === 1 ? "" : "s"} in selected period</div>
+             <div class="rpp-tip-sub">${n > 0 ? `${n} registration${n === 1 ? "" : "s"} in selected period` : "No scraped data"}</div>
              ${topArticleHtml}
-             <div class="rpp-tip-cta">Tap to drill in →</div>
+             ${n > 0 ? `<div class="rpp-tip-cta">Tap to drill in →</div>` : ""}
            </div>`,
           { sticky: true, direction: "top", className: "rpp-tooltip", opacity: 1 }
         );
+        const isUnmapped = n === 0;
         const baseStyle = {
-          color: id === activePocket ? "#0f172a" : "#ffffff",
-          weight: id === activePocket ? 5 : 2.5,
-          fillOpacity: n === 0 ? 0.25 : 0.78,
+          color: id === activePocket ? "#0f172a" : (isUnmapped ? "#94a3b8" : "#ffffff"),
+          weight: id === activePocket ? 5 : (isUnmapped ? 1.5 : 2.5),
+          fillOpacity: isUnmapped ? 0.35 : 0.78,
         };
         lyr.on("mouseover", () => {
           lyr.setStyle({ weight: 4, fillOpacity: 0.9, color: "#0f172a" });
@@ -202,7 +204,9 @@
           lyr.bringToFront();
         });
         lyr.on("mouseout", () => lyr.setStyle(baseStyle));
-        lyr.on("click", () => onPocketClick && onPocketClick(id));
+        if (n > 0) {
+          lyr.on("click", () => onPocketClick && onPocketClick(id));
+        }
       },
     }).addTo(map);
 
@@ -211,10 +215,10 @@
       const id = lyr.feature.properties.pocket;
       const n = counts[id] || 0;
       const c = lyr.getBounds().getCenter();
-      const labelColor = POCKET_LABEL_COLOR(n);
+      const labelColor = n === 0 ? "#64748b" : POCKET_LABEL_COLOR(n);
       const html = n > 0
         ? `<div class="pkt-label" style="color:${labelColor}"><b>${id}</b><span class="pkt-count">${n}</span></div>`
-        : `<div class="pkt-label dim"><b>${id}</b><span class="pkt-count">·</span></div>`;
+        : `<div class="pkt-label dim"><b>${id}</b></div>`;
       L.marker(c, {
         icon: L.divIcon({
           className: "pkt-label-wrap",
@@ -247,16 +251,17 @@
       .sec-label-wrap, .pkt-label-wrap { background: transparent !important; border: 0 !important; }
       .sec-label {
         font: 700 13px system-ui, -apple-system, "Segoe UI", sans-serif;
-        color: #1e3a8a;
+        color: #fff;
         text-align: center;
         pointer-events: none;
         line-height: 1;
         white-space: nowrap;
-        background: rgba(255,255,255,0.85);
+        background: #1e3a8a;
         border-radius: 10px;
         padding: 3px 7px;
         min-width: 22px;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
       }
       .sec-label-28 {
         background: #1d4ed8;
@@ -264,12 +269,14 @@
         font-size: 14px;
         padding: 4px 8px;
         box-shadow: 0 2px 6px rgba(29, 78, 216, 0.5);
+        outline: 2px solid #fbbf24;
+        outline-offset: 1px;
       }
       .sec-label-28 b { font-size: 16px; }
       .sec-label-28 span {
         display: block;
         font: 600 10px system-ui, sans-serif;
-        color: #bfdbfe;
+        color: #fde68a;
         margin-top: 1px;
       }
 

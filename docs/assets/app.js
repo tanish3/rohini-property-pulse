@@ -596,7 +596,7 @@
       return;
     }
     items.forEach((r) => {
-      const tr = el("tr");
+      const tr = el("tr", { class: "tx-row", "data-tx-id": r.id, tabindex: "0", role: "button", "aria-label": `View details for ${r.seller.name || "unknown"} to ${r.purchaser.name || "unknown"}` });
       const desc = r.property.description;
       const areaParts = [];
       if (desc.plot_area_sqm) areaParts.push(`Plot ${fmtNum(desc.plot_area_sqm, 1)}`);
@@ -613,6 +613,13 @@
         <td>${esc(r.property.pocket)}<br><span style="font-size:11px;color:var(--text-2)">${esc(r.property.raw_plot_number)}</span></td>
         <td>${area}</td>
       `;
+      tr.addEventListener("click", () => openTxDetail(r.id));
+      tr.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openTxDetail(r.id);
+        }
+      });
       tbody.appendChild(tr);
     });
   }
@@ -625,9 +632,9 @@
     if (desc.floors != null) areaParts.push(`${fmtNum(desc.floors, 0)} floor${desc.floors > 1 ? "s" : ""}`);
     if (desc.floor_label) areaParts.push(esc(desc.floor_label));
     const area = areaParts.join(" · ");
-    return el(
+    const card = el(
       "div",
-      { class: "tx-card" },
+      { class: "tx-card", "data-tx-id": r.id, tabindex: "0", role: "button", "aria-label": `View details for ${r.seller.name || "unknown"} to ${r.purchaser.name || "unknown"}` },
       el("div", { class: "tx-head" },
         el("span", { class: "tx-date" }, fmtTime(r.registration_date)),
         el("span", { html: articleBadge(r.article) }),
@@ -641,8 +648,156 @@
         r.property.upic && r.property.upic !== "000000000000000"
           ? el("span", {}, `UPIC ${esc(r.property.upic)}`)
           : null,
-      )
+      ),
+      el("div", { class: "tx-card-cta" }, "Tap for details →")
     );
+    card.addEventListener("click", () => openTxDetail(r.id));
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openTxDetail(r.id);
+      }
+    });
+    return card;
+  }
+
+  // -------- Transaction detail modal --------
+  function findTx(id) {
+    return state.registrations?.find((r) => r.id === id) || null;
+  }
+
+  function buildDetailHtml(r) {
+    const d = r.property.description;
+    const blockLabel =
+      r.property.block === "GH" ? "DDA Flats" :
+      r.property.block === "Unknown" ? "Unmapped" :
+      `Block ${r.property.block}`;
+
+    const fields = [
+      ["Document ID", r.document_id, true],
+      ["Registration #", r.registration_no, true],
+      ["Registration Office", r.registration_office],
+      ["Date & time", fmtTime(r.registration_date)],
+      ["Article", `${r.article}${r.article_code != null ? ` (code ${r.article_code})` : ""}`],
+    ];
+
+    const propFields = [];
+    propFields.push(["Plot (as registered)", r.property.raw_plot_number]);
+    propFields.push(["Pocket (inferred)", `<a href="#/sector/28/pocket/${encodeURIComponent(r.property.pocket)}" class="link">${esc(r.property.pocket)}</a>`, true]);
+    propFields.push(["Block", blockLabel]);
+    if (r.property.property_id) propFields.push(["Property ID", r.property.property_id]);
+    if (r.property.upic && r.property.upic !== "000000000000000")
+      propFields.push(["UPIC", r.property.upic, true]);
+    propFields.push(["Village", r.property.village]);
+
+    const descRows = [];
+    if (d.plot_area_sqm != null)        descRows.push(["Plot area", `${fmtNum(d.plot_area_sqm, 2)} m²`]);
+    if (d.plinth_area_sqm != null)      descRows.push(["Plinth / FAR area", `${fmtNum(d.plinth_area_sqm, 2)} m²`]);
+    if (d.plinth_area_transferred_sqm != null) descRows.push(["Plinth area transferred", `${fmtNum(d.plinth_area_transferred_sqm, 2)} m²`]);
+    if (d.land_share_transferred_sqm != null)  descRows.push(["Land share transferred", `${fmtNum(d.land_share_transferred_sqm, 2)} m²`]);
+    if (d.land_share_transferred_pct != null)  descRows.push(["Land share %", `${fmtNum(d.land_share_transferred_pct, 2)} %`]);
+    if (d.floors != null)               descRows.push(["Floors (1-4)", fmtNum(d.floors, 0)]);
+    if (d.floor_label)                  descRows.push(["Floor label", d.floor_label]);
+    if (d.floor_number != null)         descRows.push(["Floor #", fmtNum(d.floor_number, 0)]);
+    if (d.type_of_flats)                descRows.push(["Flat type", d.type_of_flats]);
+    if (d.construction_type)            descRows.push(["Construction", d.construction_type]);
+    if (d.category_of_locality)         descRows.push(["Category of locality", d.category_of_locality]);
+    if (d.stilt_parking_sqm != null)    descRows.push(["Stilt parking", `${fmtNum(d.stilt_parking_sqm, 2)} m²`]);
+    if (d.is_parking_present)           descRows.push(["Parking present", d.is_parking_present]);
+
+    return `
+      <div class="rpp-modal-backdrop" data-close></div>
+      <div class="rpp-modal" role="dialog" aria-modal="true" aria-labelledby="tx-detail-title" tabindex="-1">
+        <header class="rpp-modal-head">
+          <div>
+            <div class="rpp-modal-eyebrow">${articleBadge(r.article)}</div>
+            <h2 id="tx-detail-title">${esc(r.seller.name || "(unknown)")} → ${esc(r.purchaser.name || "(unknown)")}</h2>
+            <div class="rpp-modal-sub">${fmtTime(r.registration_date)} · ${esc(r.registration_office || "")}</div>
+          </div>
+          <button class="rpp-modal-close" data-close aria-label="Close">✕</button>
+        </header>
+
+        <section class="rpp-modal-body">
+          <div class="rpp-modal-section">
+            <h3>Parties</h3>
+            <div class="party-grid">
+              <div class="party-card">
+                <div class="party-label">Seller</div>
+                <div class="party-name">${esc(r.seller.name) || '<em>(not recorded)</em>'}</div>
+                <div class="party-addr">${esc(r.seller.address) || ""}</div>
+              </div>
+              <div class="party-arrow" aria-hidden="true">→</div>
+              <div class="party-card">
+                <div class="party-label">Purchaser</div>
+                <div class="party-name">${esc(r.purchaser.name) || '<em>(not recorded)</em>'}</div>
+                <div class="party-addr">${esc(r.purchaser.address) || ""}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rpp-modal-section">
+            <h3>Property</h3>
+            <dl class="rpp-dl">${propFields.map(([k, v, mono]) =>
+              `<dt>${esc(k)}</dt><dd class="${mono ? "mono" : ""}">${typeof v === "string" ? v : esc(String(v))}</dd>`
+            ).join("")}</dl>
+          </div>
+
+          ${descRows.length ? `
+          <div class="rpp-modal-section">
+            <h3>Description (parsed)</h3>
+            <dl class="rpp-dl">${descRows.map(([k, v]) =>
+              `<dt>${esc(k)}</dt><dd>${esc(String(v))}</dd>`
+            ).join("")}</dl>
+          </div>` : ""}
+
+          <div class="rpp-modal-section">
+            <h3>Registration</h3>
+            <dl class="rpp-dl">${fields.map(([k, v, mono]) =>
+              `<dt>${esc(k)}</dt><dd class="${mono ? "mono" : ""}">${esc(String(v))}</dd>`
+            ).join("")}</dl>
+          </div>
+        </section>
+
+        <footer class="rpp-modal-foot">
+          <a href="#/sector/28/pocket/${encodeURIComponent(r.property.pocket)}" class="btn btn-primary" data-close>View pocket ${esc(r.property.pocket)} →</a>
+          <button class="btn" data-close>Close</button>
+        </footer>
+      </div>
+    `;
+  }
+
+  function openTxDetail(id) {
+    const r = findTx(id);
+    if (!r) return;
+    closeTxDetail();  // ensure no duplicate
+    const wrap = document.createElement("div");
+    wrap.id = "tx-detail-modal";
+    wrap.className = "rpp-modal-wrap";
+    wrap.innerHTML = buildDetailHtml(r);
+    document.body.appendChild(wrap);
+    document.documentElement.classList.add("modal-open");
+    // Focus the modal for keyboard nav
+    const modal = wrap.querySelector(".rpp-modal");
+    if (modal) modal.focus();
+    // Click on any [data-close] closes; also clicks directly on the backdrop
+    wrap.addEventListener("click", (e) => {
+      if (e.target.closest("[data-close]")) closeTxDetail();
+      else if (e.target === wrap || e.target.classList.contains("rpp-modal-backdrop")) {
+        closeTxDetail();
+      }
+    });
+    // Escape key
+    wrap._esc = (e) => { if (e.key === "Escape") closeTxDetail(); };
+    document.addEventListener("keydown", wrap._esc);
+  }
+
+  function closeTxDetail() {
+    const wrap = document.getElementById("tx-detail-modal");
+    if (wrap) {
+      if (wrap._esc) document.removeEventListener("keydown", wrap._esc);
+      wrap.remove();
+    }
+    document.documentElement.classList.remove("modal-open");
   }
 
   // -------- Filters on sector view --------
@@ -796,7 +951,13 @@
     tbody.innerHTML = "";
     items.forEach((r) => {
       const d = r.property.description;
-      const tr = el("tr");
+      const tr = el("tr", {
+        class: "tx-row",
+        "data-tx-id": r.id,
+        tabindex: "0",
+        role: "button",
+        "aria-label": `View details for ${r.seller.name || "unknown"} to ${r.purchaser.name || "unknown"}`,
+      });
       tr.innerHTML = `
         <td class="date">${fmtDate(r.registration_date)}</td>
         <td>${articleBadge(r.article)}</td>
@@ -810,6 +971,13 @@
         <td>${d.plinth_area_sqm ? fmtNum(d.plinth_area_sqm, 1) + " m²" : "—"}</td>
         <td style="font-size:11px;color:var(--text-2)">${esc(r.registration_no)}</td>
       `;
+      tr.addEventListener("click", () => openTxDetail(r.id));
+      tr.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openTxDetail(r.id);
+        }
+      });
       tbody.appendChild(tr);
     });
   }
