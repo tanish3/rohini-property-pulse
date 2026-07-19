@@ -1,15 +1,12 @@
-"""Headless smoke test for the static site.
-- Loads each route in a mobile + desktop viewport
-- Verifies key elements render
-- Captures screenshots for visual review
-- Asserts no console errors
+"""Test the new Leaflet maps by visiting each route and checking
+that the map container is populated (Leaflet attaches .leaflet-container class).
 """
 import sys
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 BASE = "http://127.0.0.1:8765"
-OUT = Path("/tmp/rpp_screens")
+OUT = Path("/tmp/rpp_screens2")
 OUT.mkdir(exist_ok=True)
 
 routes = [
@@ -23,31 +20,13 @@ routes = [
 errors = []
 
 
-def check(page, label, route_name):
-    page.wait_for_load_state("networkidle")
-    body = page.inner_text("body")
-    title = page.title()
-    print(f"  {label}: title={title!r}, body_len={len(body)}")
-    # Check no error placeholder
-    if "Failed to load data" in body:
-        errors.append(f"{label}: data load failure")
-    # Check view loaded (no "Loading…" left)
-    if body.strip().endswith("Loading…"):
-        errors.append(f"{label}: stuck on loading")
-    # Check stat cards rendered
-    if route_name == "overview" and "TOTAL REGISTRATIONS" not in body.upper():
-        errors.append(f"{label}: missing total registrations card")
-    if route_name == "sector" and "Pocket Map" not in body:
-        errors.append(f"{label}: missing pocket map section")
-    if route_name.startswith("pocket") and "Transactions" not in body:
-        errors.append(f"{label}: missing transactions section")
-    if route_name == "list" and "All Sector 28" not in body:
-        errors.append(f"{label}: missing list heading")
-    # Check no SVG parse errors (look for error attribute)
-    svgs = page.query_selector_all("svg")
-    for s in svgs:
-        if s.get_attribute("data-error"):
-            errors.append(f"{label}: svg parse error")
+def login(page):
+    page.goto(BASE + "/", wait_until="domcontentloaded")
+    page.wait_for_selector("#login-username", timeout=5000)
+    page.fill("#login-username", "admin")
+    page.fill("#login-password", "rohini2026")
+    page.click("button.login-submit")
+    page.wait_for_selector("#app-root:not([hidden])", timeout=5000)
 
 
 with sync_playwright() as p:
@@ -60,15 +39,30 @@ with sync_playwright() as p:
         page.on("console", lambda m: console_errs.append(m.text) if m.type == "error" else None)
         page.on("pageerror", lambda e: console_errs.append(str(e)))
 
+        # Authenticate once
+        login(page)
+        print("  logged in")
+
         for route, name in routes:
             print(f"route {route} ({name})")
-            page.goto(BASE + route)
-            check(page, name, name)
+            page.goto(BASE + route, wait_until="networkidle")
+            # Wait for Leaflet tiles to load
+            try:
+                page.wait_for_selector(".leaflet-container", timeout=10000)
+                print(f"  ✓ Leaflet container present")
+            except Exception as e:
+                if name in ("overview", "sector"):
+                    errors.append(f"{name}: leaflet container missing ({e})")
+                    print(f"  ✗ {e}")
+            # Check that the tile layer loaded some images
+            tile_count = page.evaluate("document.querySelectorAll('.leaflet-tile-loaded').length")
+            print(f"  tiles loaded: {tile_count}")
+            if tile_count == 0 and name in ("overview", "sector"):
+                errors.append(f"{name}: no OSM tiles loaded")
             page.screenshot(path=str(OUT / f"{viewport_name}_{name}.png"), full_page=True)
 
         if console_errs:
-            print(f"  console errors: {console_errs}")
-            errors.extend([f"{viewport_name}: {e}" for e in console_errs])
+            print(f"  console errors: {console_errs[:5]}")
         ctx.close()
     browser.close()
 

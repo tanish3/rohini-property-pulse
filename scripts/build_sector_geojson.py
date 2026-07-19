@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+"""Build a single GeoJSON FeatureCollection of all Rohini sector polygons
+from the Nominatim /tmp cache. Each feature has properties: sector (int),
+source ('nominatim').
+"""
+import json
+from pathlib import Path
+
+CACHE = Path("/tmp/rohini_sectors")
+OUT = Path(__file__).resolve().parent.parent / "docs" / "data" / "sectors.geojson"
+
+features = []
+for f in sorted(CACHE.glob("sector_*.json")):
+    n = int(f.stem.split("_")[1])
+    try:
+        data = json.loads(f.read_text())
+    except Exception:
+        continue
+    if not data:
+        continue
+    item = data[0]
+    if "geojson" not in item:
+        continue
+    geom = item["geojson"]
+    if not geom or geom.get("type") not in ("Polygon", "MultiPolygon"):
+        continue
+    features.append(
+        {
+            "type": "Feature",
+            "properties": {
+                "sector": n,
+                "display_name": item.get("display_name", f"Sector {n}"),
+                "osm_id": item.get("osm_id"),
+                "osm_type": item.get("osm_type"),
+                "has_data": (n == 28),
+            },
+            "geometry": geom,
+        }
+    )
+
+fc = {"type": "FeatureCollection", "features": features}
+OUT.parent.mkdir(parents=True, exist_ok=True)
+OUT.write_text(json.dumps(fc, ensure_ascii=False))
+print(f"Wrote {len(features)} sectors to {OUT}")
+for feat in features[:5]:
+    p = feat["properties"]
+    print(f"  sector {p['sector']:>2}: {p['display_name'][:60]}")

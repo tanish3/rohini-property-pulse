@@ -153,13 +153,13 @@
       <div class="card">
         <h2>Rohini Sector Map <span class="pill">Tap sector 28</span></h2>
         <div class="map-toolbar">
-          <div>Stylized layout · 30 sectors · Sector 28 highlighted</div>
+          <div>OpenStreetMap base · 30+ sectors · sector 28 highlighted</div>
           <div class="legend">
             <span class="swatch" style="background:#2563eb"></span> Selected
-            <span class="swatch" style="background:#e8eef5;margin-left:8px"></span> Other
+            <span class="swatch" style="background:#93c5fd;margin-left:8px"></span> Other
           </div>
         </div>
-        <div class="map-wrap" id="sector-map"></div>
+        <div class="map-wrap leaflet-wrap" id="sector-map" style="height:480px"></div>
       </div>
 
       <div class="cols-2">
@@ -175,7 +175,13 @@
     `;
 
     $("#view").innerHTML = html;
-    loadSvg("sector-map", "assets/rohini-sectors.svg", attachSectorHandlers);
+    setRppState();
+    if (window.RPPMap) {
+      window.RPPMap.injectCss();
+      window.RPPMap.renderRohiniMap("sector-map", (sector, hasData) => {
+        if (hasData) location.hash = "#/sector/28";
+      });
+    }
     renderArticleChart();
     renderDateChart();
   }
@@ -304,16 +310,17 @@
       <div class="card">
         <h2>Pocket Map <span class="pill">Tap a pocket</span></h2>
         <div class="map-toolbar">
-          <div>Heatmap: registrations per pocket</div>
+          <div>OpenStreetMap base · real Sector 28 boundary · approximate pocket areas</div>
           <div class="legend">
             <span class="swatch" style="background:#b91c1c"></span> 12+
             <span class="swatch" style="background:#dc2626;margin-left:6px"></span> 10-11
             <span class="swatch" style="background:#ea580c;margin-left:6px"></span> 7-9
             <span class="swatch" style="background:#f97316;margin-left:6px"></span> 5-6
-            <span class="swatch" style="background:#fecaca;margin-left:6px"></span> 1-2
+            <span class="swatch" style="background:#fb923c;margin-left:6px"></span> 3-4
+            <span class="swatch" style="background:#fed7aa;margin-left:6px"></span> 1-2
           </div>
         </div>
-        <div class="map-wrap" id="pocket-map"></div>
+        <div class="map-wrap leaflet-wrap" id="pocket-map" style="height:520px"></div>
       </div>
 
       <div class="card">
@@ -351,19 +358,17 @@
     `;
 
     $("#view").innerHTML = html;
-    loadSvg("pocket-map", "assets/sector-28-pockets.svg", (svg) => attachPocketHandlersActive(svg, params.pocket));
+    setRppState();
+    if (window.RPPMap) {
+      window.RPPMap.injectCss();
+      window.RPPMap.renderSector28Map("pocket-map", (pocket) => {
+        location.hash = `#/sector/28/pocket/${encodeURIComponent(pocket)}`;
+      });
+    }
     renderPocketChart();
     renderArticleChart2();
     bindTxFilters();
     renderTxResults();
-  }
-
-  function attachPocketHandlersActive(svgRoot, activePocket) {
-    attachPocketHandlers(svgRoot);
-    if (activePocket) {
-      const node = svgRoot.querySelector(`.pocket[data-pocket="${CSS.escape(activePocket)}"]`);
-      if (node) node.classList.add("active");
-    }
   }
 
   function attachPocketHandlers(svgRoot) {
@@ -379,6 +384,16 @@
         }
       });
     });
+  }
+
+  function setRppState() {
+    const counts = {};
+    if (state.summary) {
+      for (const [pid, p] of Object.entries(state.summary.pockets)) {
+        counts[pid] = p.count;
+      }
+    }
+    window.RPP_STATE = { pocketCounts: counts };
   }
 
   function renderPocketCard(pid, p) {
