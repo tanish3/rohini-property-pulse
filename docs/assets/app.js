@@ -351,11 +351,19 @@
     `;
 
     $("#view").innerHTML = html;
-    loadSvg("pocket-map", "assets/sector-28-pockets.svg", attachPocketHandlers);
+    loadSvg("pocket-map", "assets/sector-28-pockets.svg", (svg) => attachPocketHandlersActive(svg, params.pocket));
     renderPocketChart();
     renderArticleChart2();
     bindTxFilters();
     renderTxResults();
+  }
+
+  function attachPocketHandlersActive(svgRoot, activePocket) {
+    attachPocketHandlers(svgRoot);
+    if (activePocket) {
+      const node = svgRoot.querySelector(`.pocket[data-pocket="${CSS.escape(activePocket)}"]`);
+      if (node) node.classList.add("active");
+    }
   }
 
   function attachPocketHandlers(svgRoot) {
