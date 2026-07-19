@@ -1,0 +1,17 @@
+{
+  "source_csv": "rohini_sector28_2026-06-19_to_2026-07-19.csv",
+  "generated_at": "2026-07-19T17:31:53",
+  "date_from": "2026-06-20",
+  "date_to": "2026-07-17",
+  "total_registrations": 90,
+  "unique_pockets": 14,
+  "articles": {
+    "Sale Deed": 83,
+    "Gift Deed": 1,
+    "Relinquishment Deed": 4,
+    "Sale Agreement": 2
+  },
+  "sector": "Rohini Sector-28",
+  "taluka": "Alipur",
+  "district": "North"
+}

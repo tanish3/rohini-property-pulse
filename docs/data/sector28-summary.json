@@ -1,0 +1,338 @@
+{
+  "pockets": {
+    "A-3": {
+      "count": 9,
+      "articles": {
+        "Sale Deed": 9
+      },
+      "avg_plot_area_sqm": 41.33,
+      "avg_plinth_area_sqm": 128.21,
+      "avg_floors": 2.88,
+      "construction": {
+        "Pucca": 2,
+        "Semi Pucca": 1
+      },
+      "parking": {
+        "No": 1,
+        "Yes": 4
+      },
+      "earliest": "2026-06-30",
+      "latest": "2026-07-10"
+    },
+    "A-4": {
+      "count": 3,
+      "articles": {
+        "Sale Deed": 3
+      },
+      "avg_plot_area_sqm": 60.0,
+      "avg_plinth_area_sqm": 206.67,
+      "avg_floors": 3.0,
+      "construction": {
+        "Pucca": 1
+      },
+      "parking": {
+        "Yes": 2
+      },
+      "earliest": "2026-06-25",
+      "latest": "2026-06-27"
+    },
+    "A-5": {
+      "count": 6,
+      "articles": {
+        "Sale Deed": 6
+      },
+      "avg_plot_area_sqm": 41.33,
+      "avg_plinth_area_sqm": 165.33,
+      "avg_floors": 4.0,
+      "construction": {},
+      "parking": {
+        "Yes": 6
+      },
+      "earliest": "2026-07-06",
+      "latest": "2026-07-13"
+    },
+    "A-6": {
+      "count": 4,
+      "articles": {
+        "Sale Deed": 4
+      },
+      "avg_plot_area_sqm": 60.0,
+      "avg_plinth_area_sqm": 145.0,
+      "avg_floors": 2.5,
+      "construction": {
+        "Pucca": 2
+      },
+      "parking": {
+        "Yes": 2
+      },
+      "earliest": "2026-06-20",
+      "latest": "2026-06-27"
+    },
+    "C-1": {
+      "count": 11,
+      "articles": {
+        "Sale Deed": 10,
+        "Sale Agreement": 1
+      },
+      "avg_plot_area_sqm": 37.09,
+      "avg_plinth_area_sqm": 14.86,
+      "avg_floors": 1.0,
+      "construction": {
+        "Pucca": 9,
+        "Semi Pucca": 1
+      },
+      "parking": {},
+      "earliest": "2026-06-20",
+      "latest": "2026-07-17"
+    },
+    "C-2": {
+      "count": 16,
+      "articles": {
+        "Sale Deed": 15,
+        "Relinquishment Deed": 1
+      },
+      "avg_plot_area_sqm": 35.5,
+      "avg_plinth_area_sqm": 12.08,
+      "avg_floors": 1.0,
+      "construction": {
+        "Pucca": 16
+      },
+      "parking": {},
+      "earliest": "2026-06-20",
+      "latest": "2026-07-17"
+    },
+    "C-3": {
+      "count": 3,
+      "articles": {
+        "Sale Deed": 3
+      },
+      "avg_plot_area_sqm": 60.0,
+      "avg_plinth_area_sqm": 20.0,
+      "avg_floors": 1.0,
+      "construction": {
+        "Pucca": 3
+      },
+      "parking": {},
+      "earliest": "2026-07-10",
+      "latest": "2026-07-15"
+    },
+    "C-4": {
+      "count": 9,
+      "articles": {
+        "Sale Deed": 8,
+        "Sale Agreement": 1
+      },
+      "avg_plot_area_sqm": 57.02,
+      "avg_plinth_area_sqm": 20.0,
+      "avg_floors": 1.0,
+      "construction": {
+        "Pucca": 8
+      },
+      "parking": {},
+      "earliest": "2026-07-02",
+      "latest": "2026-07-15"
+    },
+    "C-5": {
+      "count": 2,
+      "articles": {
+        "Sale Deed": 1,
+        "Relinquishment Deed": 1
+      },
+      "avg_plot_area_sqm": 60.0,
+      "avg_plinth_area_sqm": 19.8,
+      "avg_floors": 1.0,
+      "construction": {
+        "Pucca": 1
+      },
+      "parking": {},
+      "earliest": "2026-07-06",
+      "latest": "2026-07-06"
+    },
+    "GH-1": {
+      "count": 8,
+      "articles": {
+        "Sale Deed": 6,
+        "Gift Deed": 1,
+        "Relinquishment Deed": 1
+      },
+      "avg_plot_area_sqm": null,
+      "avg_plinth_area_sqm": 42.0,
+      "avg_floors": null,
+      "construction": {},
+      "parking": {},
+      "earliest": "2026-06-20",
+      "latest": "2026-07-16"
+    },
+    "GH-2": {
+      "count": 1,
+      "articles": {
+        "Sale Deed": 1
+      },
+      "avg_plot_area_sqm": null,
+      "avg_plinth_area_sqm": 70.0,
+      "avg_floors": null,
+      "construction": {},
+      "parking": {},
+      "earliest": "2026-07-02",
+      "latest": "2026-07-02"
+    },
+    "GH-3": {
+      "count": 2,
+      "articles": {
+        "Sale Deed": 2
+      },
+      "avg_plot_area_sqm": null,
+      "avg_plinth_area_sqm": 42.0,
+      "avg_floors": null,
+      "construction": {},
+      "parking": {},
+      "earliest": "2026-06-27",
+      "latest": "2026-06-30"
+    },
+    "GH-4": {
+      "count": 5,
+      "articles": {
+        "Sale Deed": 5
+      },
+      "avg_plot_area_sqm": null,
+      "avg_plinth_area_sqm": 42.0,
+      "avg_floors": null,
+      "construction": {},
+      "parking": {},
+      "earliest": "2026-06-23",
+      "latest": "2026-07-06"
+    },
+    "Unknown": {
+      "count": 11,
+      "articles": {
+        "Sale Deed": 10,
+        "Relinquishment Deed": 1
+      },
+      "avg_plot_area_sqm": 41.64,
+      "avg_plinth_area_sqm": 56.09,
+      "avg_floors": 2.09,
+      "construction": {
+        "Pucca": 5,
+        "Semi Pucca": 1
+      },
+      "parking": {
+        "No": 3,
+        "Yes": 2
+      },
+      "earliest": "2026-06-25",
+      "latest": "2026-07-14"
+    }
+  },
+  "articles": {
+    "Sale Deed": 83,
+    "Gift Deed": 1,
+    "Relinquishment Deed": 4,
+    "Sale Agreement": 2
+  },
+  "blocks": {
+    "GH": {
+      "count": 16,
+      "pockets": [
+        "GH-1",
+        "GH-2",
+        "GH-3",
+        "GH-4"
+      ]
+    },
+    "A": {
+      "count": 22,
+      "pockets": [
+        "A-3",
+        "A-4",
+        "A-5",
+        "A-6"
+      ]
+    },
+    "C": {
+      "count": 41,
+      "pockets": [
+        "C-1",
+        "C-2",
+        "C-3",
+        "C-4",
+        "C-5"
+      ]
+    },
+    "Unknown": {
+      "count": 11,
+      "pockets": [
+        "Unknown"
+      ]
+    }
+  },
+  "date_series": [
+    {
+      "date": "2026-06-20",
+      "count": 4
+    },
+    {
+      "date": "2026-06-23",
+      "count": 4
+    },
+    {
+      "date": "2026-06-24",
+      "count": 1
+    },
+    {
+      "date": "2026-06-25",
+      "count": 6
+    },
+    {
+      "date": "2026-06-27",
+      "count": 7
+    },
+    {
+      "date": "2026-06-30",
+      "count": 2
+    },
+    {
+      "date": "2026-07-02",
+      "count": 11
+    },
+    {
+      "date": "2026-07-04",
+      "count": 1
+    },
+    {
+      "date": "2026-07-06",
+      "count": 10
+    },
+    {
+      "date": "2026-07-08",
+      "count": 5
+    },
+    {
+      "date": "2026-07-09",
+      "count": 1
+    },
+    {
+      "date": "2026-07-10",
+      "count": 14
+    },
+    {
+      "date": "2026-07-13",
+      "count": 6
+    },
+    {
+      "date": "2026-07-14",
+      "count": 4
+    },
+    {
+      "date": "2026-07-15",
+      "count": 5
+    },
+    {
+      "date": "2026-07-16",
+      "count": 6
+    },
+    {
+      "date": "2026-07-17",
+      "count": 3
+    }
+  ]
+}

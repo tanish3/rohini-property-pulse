@@ -1,0 +1,3711 @@
+{
+  "meta": {
+    "source_csv": "rohini_sector28_2026-06-19_to_2026-07-19.csv",
+    "generated_at": "2026-07-19T17:31:53",
+    "date_from": "2026-06-20",
+    "date_to": "2026-07-17",
+    "total_registrations": 90,
+    "unique_pockets": 14,
+    "articles": {
+      "Sale Deed": 83,
+      "Gift Deed": 1,
+      "Relinquishment Deed": 4,
+      "Sale Agreement": 2
+    },
+    "sector": "Rohini Sector-28",
+    "taluka": "Alipur",
+    "district": "North"
+  },
+  "items": [
+    {
+      "id": 8,
+      "document_id": "202600175201",
+      "registration_no": "2026/20/I/2781",
+      "registration_date": "2026-06-20T17:37:24",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "KHYATI BANSAL",
+        "address": "FLAT NO.17, BLOCK-B, POCKET-5, SECTOR-18, ROHINI, DELHI-110085"
+      },
+      "purchaser": {
+        "name": "RASHMI SINGH",
+        "address": "KHAPARAHA, JAUNPUR, KHAPARAHA, UTTAR PRADESH-222131"
+      },
+      "property": {
+        "raw_plot_number": "FLAT NO.30 SECOND FLOOR POCKET-GH-1 SECTOR-28 ROHINI DELHI",
+        "pocket": "GH-1",
+        "block": "GH",
+        "upic": "066087506032100",
+        "property_id": "582480",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": null,
+          "plinth_area_sqm": 42.0,
+          "plinth_area_transferred_sqm": 42.0,
+          "land_share_transferred_sqm": null,
+          "land_share_transferred_pct": null,
+          "floors": null,
+          "floor_label": null,
+          "floor_number": 3.0,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": "DDA or CGHS Flat"
+        }
+      }
+    },
+    {
+      "id": 14,
+      "document_id": "202600179207",
+      "registration_no": "2026/20/I/2782",
+      "registration_date": "2026-06-20T17:38:16",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "SAT PAL SHARMA",
+        "address": "B-122, PUSHPANJALI ENCLAVE, PITAMPURA, DELHIB-122, PUSHPANJALI ENCLAVE, PITAMPURA, DELHI"
+      },
+      "purchaser": {
+        "name": "BINU BALA",
+        "address": "D-17/294, SECTOR-3, ROHINI, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "A-6/64 U.G.F. SECTOR-28 ROHINI DELHI",
+        "pocket": "A-6",
+        "block": "A",
+        "upic": "000000000000000",
+        "property_id": "585018",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 300.0,
+          "plinth_area_transferred_sqm": 60.0,
+          "land_share_transferred_sqm": 15.0,
+          "land_share_transferred_pct": 25.0,
+          "floors": 4.0,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": "Yes",
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 13,
+      "document_id": "202600178700",
+      "registration_no": "2026/20/I/2783",
+      "registration_date": "2026-06-20T17:39:02",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "RACHNA AGRAWAL",
+        "address": "B-358, LOK VIHAR, PITAMPURA, DELHI"
+      },
+      "purchaser": {
+        "name": "SHILPA AGGARWAL",
+        "address": "B-5/12, RANA PRATAP BAGH, MALKA GANJ, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "C-2/449 SECTOR-28 ROHINI DELHI",
+        "pocket": "C-2",
+        "block": "C",
+        "upic": "000000000000000",
+        "property_id": "584687",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 1,
+      "document_id": "202600116343",
+      "registration_no": "2026/20/I/2784",
+      "registration_date": "2026-06-20T17:39:50",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "DEV PRAKASH RANA",
+        "address": "FLAT NO.9, VIKAS SHEEL APPARTMENT, SECTOR-13, ROHINI, DELHI"
+      },
+      "purchaser": {
+        "name": "INDER JIT SHARMA",
+        "address": "F-14/21, SECTOR-15, ROHINI, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "C-1/147 SEC-28 ROHINI DELHI",
+        "pocket": "C-1",
+        "block": "C",
+        "upic": "175685215040000",
+        "property_id": "585117",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 20.0,
+          "plinth_area_transferred_sqm": 20.0,
+          "land_share_transferred_sqm": 60.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 15,
+      "document_id": "202600181606",
+      "registration_no": "2026/20/I/2817",
+      "registration_date": "2026-06-23T18:03:03",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "SAROJ SHARMA",
+        "address": "B-32/6, STREET NO.4, ARJUN MOHALLA, MOUJPUR, DELHI"
+      },
+      "purchaser": {
+        "name": "NEELAM KUSHWAH",
+        "address": "NEAR SHIV MANDIR, KUMHAR BASTI,  WARD NO.25, RAISINGHNAGAR, DISTT. GANGANAGAR, RAJASTHAN"
+      },
+      "property": {
+        "raw_plot_number": "GH-4",
+        "pocket": "GH-4",
+        "block": "GH",
+        "upic": "029088410657600",
+        "property_id": "586570",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": null,
+          "plinth_area_sqm": 42.0,
+          "plinth_area_transferred_sqm": 42.0,
+          "land_share_transferred_sqm": null,
+          "land_share_transferred_pct": null,
+          "floors": null,
+          "floor_label": null,
+          "floor_number": 1.0,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": "DDA or CGHS Flat"
+        }
+      }
+    },
+    {
+      "id": 18,
+      "document_id": "202600182720",
+      "registration_no": "2026/20/I/2818",
+      "registration_date": "2026-06-23T18:04:35",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "RAMESH KUMAR AGARWAL",
+        "address": "5/6, SECOND FLOOR, POLICE STATION ROOP NAGAR, ROOP NAGAR, DELHI"
+      },
+      "purchaser": {
+        "name": "SHRADDHA RANI",
+        "address": "2410, HUDSON LINE, KINGSWAY CAMP, TIMARPUR, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "C-2/130",
+        "pocket": "C-2",
+        "block": "C",
+        "upic": "000210413815040",
+        "property_id": "587272",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 20.0,
+          "plinth_area_transferred_sqm": 20.0,
+          "land_share_transferred_sqm": 60.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 17,
+      "document_id": "202600182621",
+      "registration_no": "2026/20/I/2819",
+      "registration_date": "2026-06-23T18:05:38",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "NEHA RAJPUT",
+        "address": "R/O F-2/15-16, THIRD FLOOR, SECTOR-11, ROHINI, DELHI-110085"
+      },
+      "purchaser": {
+        "name": "DEV RATHEE",
+        "address": "R/O H.NO.2-3, FIRST FLOOR, POCKET-G-1, SECTOR-11, ROHINI, DELHI-110085"
+      },
+      "property": {
+        "raw_plot_number": "94 IN BLOCK-A POCKET-6 SECTOR-28 ROHINI DELHI-110042",
+        "pocket": "A-6",
+        "block": "A",
+        "upic": "321654978978654",
+        "property_id": "587205",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 20.0,
+          "plinth_area_transferred_sqm": 20.0,
+          "land_share_transferred_sqm": 60.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 16,
+      "document_id": "202600182221",
+      "registration_no": "2026/20/I/2820",
+      "registration_date": "2026-06-23T18:07:00",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "TARUN ARORA",
+        "address": "R/O H.NO.23/40, SECTOR-24, ROHINI, DELHI-110085"
+      },
+      "purchaser": {
+        "name": "SONWATI",
+        "address": "R/O H.NO.2-3, FIRST FLOOR, POCKET-G-1, SECTOR-11, ROHINI, DELHI-110085"
+      },
+      "property": {
+        "raw_plot_number": "93 IN BLOCK-A POCKET-6 SECTOR-28 ROHINI DELHI-110042",
+        "pocket": "A-6",
+        "block": "A",
+        "upic": "321654978978654",
+        "property_id": "586942",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 20.0,
+          "plinth_area_transferred_sqm": 20.0,
+          "land_share_transferred_sqm": 60.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 19,
+      "document_id": "202600184026",
+      "registration_no": "2026/20/I/2837",
+      "registration_date": "2026-06-24T18:20:21",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "KALPANA VERMA",
+        "address": "HOUSE NO. 24P, 1ST FLOOR, PALAM VIHAR, GURGAON, OPPOSITE VYAPAR KENDRE, SECTOR-2C, CHOMA 62, GURGAON, HARYANA-122017"
+      },
+      "purchaser": {
+        "name": "NANCY SEHRAWAT",
+        "address": "F-8/74, VIDYA BHARTI SCHOOL, SECTOR-15, ROHINI, DELHI-110089"
+      },
+      "property": {
+        "raw_plot_number": "LIG FLAT NO.879 FOURTH FLOOR POCKET-GH-4 SECTOR-28 ROHINI DELHI-110085",
+        "pocket": "GH-4",
+        "block": "GH",
+        "upic": "058087210715099",
+        "property_id": "588083",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": null,
+          "plinth_area_sqm": 42.0,
+          "plinth_area_transferred_sqm": 42.0,
+          "land_share_transferred_sqm": null,
+          "land_share_transferred_pct": null,
+          "floors": null,
+          "floor_label": null,
+          "floor_number": 5.0,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": "DDA or CGHS Flat"
+        }
+      }
+    },
+    {
+      "id": 24,
+      "document_id": "202600185670",
+      "registration_no": "2026/20/I/2850",
+      "registration_date": "2026-06-25T16:53:50",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "RITIKA",
+        "address": "HNO-134 2ND FLOOR POCKET 7  SECTOR 24 ROHINI DELHI-110085"
+      },
+      "purchaser": {
+        "name": "JYOTI",
+        "address": "PLOT NO-60 TOP FLOOR POCKET-A/3 UNITY ENCLAVE SECTOR-28 ROHINI SANSKRITI APPARTMENT DELHI-110042"
+      },
+      "property": {
+        "raw_plot_number": "326",
+        "pocket": "Unknown",
+        "block": "Unknown",
+        "upic": "000000000000000",
+        "property_id": "589273",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 26.0,
+          "plinth_area_sqm": 104.0,
+          "plinth_area_transferred_sqm": 26.0,
+          "land_share_transferred_sqm": 6.5,
+          "land_share_transferred_pct": 25.0,
+          "floors": 4.0,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": "No",
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 26,
+      "document_id": "202600185977",
+      "registration_no": "2026/20/I/2851",
+      "registration_date": "2026-06-25T16:54:57",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "SHANTI DEVI",
+        "address": "HOUSE NO.115A, RAM PURA, TRI NAGAR, KESHAV PURAM, DELHI"
+      },
+      "purchaser": {
+        "name": "VINOD KUMAR SHARMA",
+        "address": "HOUSE NO.C-8/51, YAMUNA VIHAR, BHAJAN PURA, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "PROP NO.1347 BLOCK-C POCKET-2 SECTOR-28 ROHINI DELHI",
+        "pocket": "C-2",
+        "block": "C",
+        "upic": "000000000000000",
+        "property_id": "589271",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 23,
+      "document_id": "202600185571",
+      "registration_no": "2026/20/I/2852",
+      "registration_date": "2026-06-25T16:56:43",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "VISHAL DUA",
+        "address": "H.NO.6, KOHAT ENCLAVE, PITAMPURA, DELHI"
+      },
+      "purchaser": {
+        "name": "KANTA DEVI",
+        "address": "H.NO. H-2/141-142, SECTOR-16, ROHINI, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "A-4/44 U.G.F SEC-28 ROHINI DELHI",
+        "pocket": "A-4",
+        "block": "A",
+        "upic": "029088410754200",
+        "property_id": "589039",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 300.0,
+          "plinth_area_transferred_sqm": 60.0,
+          "land_share_transferred_sqm": 15.0,
+          "land_share_transferred_pct": 25.0,
+          "floors": 4.0,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": "Yes",
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 22,
+      "document_id": "202600185558",
+      "registration_no": "2026/20/I/2853",
+      "registration_date": "2026-06-25T16:57:54",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "SUMESH DUA",
+        "address": "H.NO.6, KOHAT ENCLAVE, PITAMPURA, DELHI"
+      },
+      "purchaser": {
+        "name": "KANTA DEVI",
+        "address": "H.NO. H-2/141-142, SECTOR-16, ROHINI, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "A-4/43 U.G.F SEC-28 ROHINI DELHI",
+        "pocket": "A-4",
+        "block": "A",
+        "upic": "029088410754400",
+        "property_id": "589028",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 300.0,
+          "plinth_area_transferred_sqm": 60.0,
+          "land_share_transferred_sqm": 15.0,
+          "land_share_transferred_pct": 25.0,
+          "floors": 4.0,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": "Yes",
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 25,
+      "document_id": "202600185680",
+      "registration_no": "2026/20/I/2854",
+      "registration_date": "2026-06-25T16:58:55",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "RITIKA",
+        "address": "HNO-134 2ND FLOOR POCKET 7 SECTOR 24 ROHINI DELHI-110085"
+      },
+      "purchaser": {
+        "name": "JYOTI",
+        "address": "PLOT NO-60 TOP FLOOR POCKET A/3 UNITY ENCLAVE SECTOR-28 ROHINI  SANSKRITI APPARTMENT DELHI-110042"
+      },
+      "property": {
+        "raw_plot_number": "327",
+        "pocket": "Unknown",
+        "block": "Unknown",
+        "upic": "000000000000000",
+        "property_id": "589287",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 26.0,
+          "plinth_area_sqm": 104.0,
+          "plinth_area_transferred_sqm": 26.0,
+          "land_share_transferred_sqm": 6.5,
+          "land_share_transferred_pct": 25.0,
+          "floors": 4.0,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": "No",
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 20,
+      "document_id": "202600184583",
+      "registration_no": "2026/20/I/2855",
+      "registration_date": "2026-06-25T16:59:54",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "ANKIT GOEL",
+        "address": "D-40, MANSAROVER GARDEN, DELHI"
+      },
+      "purchaser": {
+        "name": "RITU SHARMA",
+        "address": "HHOUSE NO.313, THIRD FLOOR, POCKET GH-1, SECTOR-28, ROHINI, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "GH-1",
+        "pocket": "GH-1",
+        "block": "GH",
+        "upic": "031088410025300",
+        "property_id": "588407",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": null,
+          "plinth_area_sqm": 42.0,
+          "plinth_area_transferred_sqm": 42.0,
+          "land_share_transferred_sqm": null,
+          "land_share_transferred_pct": null,
+          "floors": null,
+          "floor_label": null,
+          "floor_number": 3.0,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": "DDA or CGHS Flat"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "document_id": "202600172201",
+      "registration_no": "2026/20/I/2875",
+      "registration_date": "2026-06-27T15:13:01",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "KUNDAN LAL",
+        "address": "34, PKT-A-3, SEC-5 ROHINI DELHI"
+      },
+      "purchaser": {
+        "name": "SUNITA AGARWAL",
+        "address": "E-171, SHASTRI NAGAR, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "A-4/211 SEC-28 ROHINI DELHI",
+        "pocket": "A-4",
+        "block": "A",
+        "upic": "066087506185900",
+        "property_id": "580725",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 20.0,
+          "plinth_area_transferred_sqm": 20.0,
+          "land_share_transferred_sqm": 60.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 11,
+      "document_id": "202600177150",
+      "registration_no": "2026/20/I/2876",
+      "registration_date": "2026-06-27T15:13:55",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": null,
+        "address": null
+      },
+      "purchaser": {
+        "name": "SWATI KUMARI",
+        "address": "YADAV CHAK, KURTHAUR, PATNA BIHAR"
+      },
+      "property": {
+        "raw_plot_number": "A-6/64 F.F.SEC-28 ROHINI DELHI",
+        "pocket": "A-6",
+        "block": "A",
+        "upic": "231521523154213",
+        "property_id": "583833",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 240.0,
+          "plinth_area_transferred_sqm": 60.0,
+          "land_share_transferred_sqm": 15.0,
+          "land_share_transferred_pct": 25.0,
+          "floors": 4.0,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": "Yes",
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 28,
+      "document_id": "202600187383",
+      "registration_no": "2026/20/I/2877",
+      "registration_date": "2026-06-27T15:14:51",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "GEETA ARORA",
+        "address": "HOUSE NO.450, 2ND FLOOR, UPVAN APARTMENT, POCKET-GH-4, SECTOR-28, ROHINI, DELHI"
+      },
+      "purchaser": {
+        "name": "CHHOTI KUMARI",
+        "address": "KALIAWAS, KHACHRAULI 146, JHAJJAR, HARYANA"
+      },
+      "property": {
+        "raw_plot_number": "FLAT NO. GH-4/450 S.F. SECTOR-28 ROHINI DELHI",
+        "pocket": "GH-4",
+        "block": "GH",
+        "upic": "000000000000000",
+        "property_id": "590106",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": null,
+          "plinth_area_sqm": 42.0,
+          "plinth_area_transferred_sqm": 42.0,
+          "land_share_transferred_sqm": null,
+          "land_share_transferred_pct": null,
+          "floors": null,
+          "floor_label": null,
+          "floor_number": 3.0,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": "DDA or CGHS Flat"
+        }
+      }
+    },
+    {
+      "id": 32,
+      "document_id": "202600187990",
+      "registration_no": "2026/20/I/2879",
+      "registration_date": "2026-06-27T15:17:03",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "SHEEBA MERLIN THOMAS",
+        "address": "FLAT NO.1037, 4TH FLOOR, BLOCK-GH, POCKET-1, SECTOR-28, ROHINI, DELHI"
+      },
+      "purchaser": {
+        "name": "ASHOKA DEVI",
+        "address": "N-41C-353, J.J. CAMP, SURAJ PARK, BADLI, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "FLAT NO.1037 POCKET-GH-1 SECTOR-28 ROHINI DELHI",
+        "pocket": "GH-1",
+        "block": "GH",
+        "upic": "029088410738704",
+        "property_id": "590454",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": null,
+          "plinth_area_sqm": 42.0,
+          "plinth_area_transferred_sqm": 42.0,
+          "land_share_transferred_sqm": null,
+          "land_share_transferred_pct": null,
+          "floors": null,
+          "floor_label": null,
+          "floor_number": 4.0,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": "DDA or CGHS Flat"
+        }
+      }
+    },
+    {
+      "id": 29,
+      "document_id": "202600187394",
+      "registration_no": "2026/20/I/2880",
+      "registration_date": "2026-06-27T15:22:32",
+      "article": "Gift Deed",
+      "article_raw": "Gift Deed - 33",
+      "article_code": 33,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": null,
+        "address": null
+      },
+      "purchaser": {
+        "name": null,
+        "address": null
+      },
+      "property": {
+        "raw_plot_number": "GH-1",
+        "pocket": "GH-1",
+        "block": "GH",
+        "upic": "031088410193900",
+        "property_id": "590111",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": null,
+          "plinth_area_sqm": 42.0,
+          "plinth_area_transferred_sqm": 42.0,
+          "land_share_transferred_sqm": null,
+          "land_share_transferred_pct": null,
+          "floors": null,
+          "floor_label": null,
+          "floor_number": 1.0,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": "DDA or CGHS Flat"
+        }
+      }
+    },
+    {
+      "id": 31,
+      "document_id": "202600187716",
+      "registration_no": "2026/20/I/2881",
+      "registration_date": "2026-06-27T15:23:30",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "PANKAJ KUMAR",
+        "address": "FLAT NO.822, POCKET GH-4, SECTOR-28, ROHINI, DELHI"
+      },
+      "purchaser": {
+        "name": "SANGEETA JHA",
+        "address": "HOUSE NO.243, NAHARPUR VILLAGE, SECTOR-7, ROHINI, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "GH-4",
+        "pocket": "GH-4",
+        "block": "GH",
+        "upic": "031088410452900",
+        "property_id": "590293",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": null,
+          "plinth_area_sqm": 42.0,
+          "plinth_area_transferred_sqm": 42.0,
+          "land_share_transferred_sqm": null,
+          "land_share_transferred_pct": null,
+          "floors": null,
+          "floor_label": null,
+          "floor_number": 3.0,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": "DDA or CGHS Flat"
+        }
+      }
+    },
+    {
+      "id": 33,
+      "document_id": "202600188447",
+      "registration_no": "2026/20/I/2882",
+      "registration_date": "2026-06-27T15:24:40",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "KAMLESH",
+        "address": "205A, BLOCK-A-1, KESHAV PURAM, ONKAR NAGAR, DELHI"
+      },
+      "purchaser": {
+        "name": "JYOTI SAHU",
+        "address": "FLAT NO. 552, SECOND FLOOR, POCKET-GH-3, SAINATH APARTMENT, SECTOR-28, ROHINI, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "FLAT NO. 648 ON FIRST FLOOR IN POCKET-GH-3 SECTOR-28 ROHINI DELHI",
+        "pocket": "GH-3",
+        "block": "GH",
+        "upic": "031088410142600",
+        "property_id": "590715",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": null,
+          "plinth_area_sqm": 42.0,
+          "plinth_area_transferred_sqm": 42.0,
+          "land_share_transferred_sqm": null,
+          "land_share_transferred_pct": null,
+          "floors": null,
+          "floor_label": null,
+          "floor_number": 2.0,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": "DDA or CGHS Flat"
+        }
+      }
+    },
+    {
+      "id": 35,
+      "document_id": "202600189569",
+      "registration_no": "2026/20/I/2897",
+      "registration_date": "2026-06-30T17:40:12",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "BALVINDER SINGH",
+        "address": "HOUSE NO. 815/4, MOHALLA MANDI, OPPOSITE ACHAR WALI GALI, KUMHAR GATE, SONIPAT, HARYANA-131001"
+      },
+      "purchaser": {
+        "name": "SITA RAM GUPTA",
+        "address": "HOUSE NO. J-59, SECOND FLOOR, RESERVE BANK ENCLAVE, PASCHIM VIHAR, DELHI-110063"
+      },
+      "property": {
+        "raw_plot_number": "A-3/13",
+        "pocket": "A-3",
+        "block": "A",
+        "upic": "029088410751400",
+        "property_id": "591446",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 20.0,
+          "plinth_area_transferred_sqm": 20.0,
+          "land_share_transferred_sqm": 60.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 34,
+      "document_id": "202600188930",
+      "registration_no": "2026/20/I/2898",
+      "registration_date": "2026-06-30T17:41:05",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "KUSUM BALA",
+        "address": "H. NO. 349, BANK ENCLAVE, LANE NO. 6, NEAR MULTANI GYM, JALANDHAR-I, MODEL TOWN, JALANDHAR, PUNJAB"
+      },
+      "purchaser": {
+        "name": "RADHA CHATURVEDI",
+        "address": "ASHA KI GUWARI, TEHSIL-SAPOTRA, KARAULI, RAJASTHAN"
+      },
+      "property": {
+        "raw_plot_number": "FLAT NO. 230 ON SECOND FLOOR IN POCKET-GH-3 SECTOR-28 ROHINI DELHI",
+        "pocket": "GH-3",
+        "block": "GH",
+        "upic": "000000000000000",
+        "property_id": "590981",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": null,
+          "plinth_area_sqm": 42.0,
+          "plinth_area_transferred_sqm": 42.0,
+          "land_share_transferred_sqm": null,
+          "land_share_transferred_pct": null,
+          "floors": null,
+          "floor_label": null,
+          "floor_number": 3.0,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": "DDA or CGHS Flat"
+        }
+      }
+    },
+    {
+      "id": 21,
+      "document_id": "202600184739",
+      "registration_no": "2026/20/I/2926",
+      "registration_date": "2026-07-02T16:47:48",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "JEETENDRA KUMAR OSWAL",
+        "address": "128, GHALIB APARTMENT, PARWANA ROAD, OPP. PUSHPANJALI ENCLAVE, PITAMPURA, DELHI-110034"
+      },
+      "purchaser": {
+        "name": "SHWETA BAJAJ",
+        "address": "B-46, FIRST FLOOR, BACK SIDE, RAM NAGAR ROAD, OM VIHAR, PILLAR NO.707, UTTAM NAGAR, PO: D.K. MOHAN GARDEN, DELHI-110059"
+      },
+      "property": {
+        "raw_plot_number": "491",
+        "pocket": "Unknown",
+        "block": "Unknown",
+        "upic": "000000000000000",
+        "property_id": "588516",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 20.0,
+          "plinth_area_transferred_sqm": 20.0,
+          "land_share_transferred_sqm": 60.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 36,
+      "document_id": "202600189793",
+      "registration_no": "2026/20/I/2929",
+      "registration_date": "2026-07-02T16:52:41",
+      "article": "Relinquishment Deed",
+      "article_raw": "Relinquishment deed - 55",
+      "article_code": 55,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": null,
+        "address": null
+      },
+      "purchaser": {
+        "name": null,
+        "address": null
+      },
+      "property": {
+        "raw_plot_number": "26",
+        "pocket": "Unknown",
+        "block": "Unknown",
+        "upic": "031088410049300",
+        "property_id": "591921",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 66.0,
+          "plinth_area_sqm": 20.0,
+          "plinth_area_transferred_sqm": 20.0,
+          "land_share_transferred_sqm": 66.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 12,
+      "document_id": "202600177393",
+      "registration_no": "2026/20/I/2935",
+      "registration_date": "2026-07-02T17:03:34",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "VISHAL GUPTA",
+        "address": "HOUSE NO.46, GALI NO.9, SAROJINI PARK, SHASTRI NAGAR, DELHI-110031"
+      },
+      "purchaser": {
+        "name": "SEEMA MEENA",
+        "address": "FLAT NO.510, POCKET NO.GH-2, BAGWAN APPARTMENT, SECTOR-28, ROHINI, DELHI-110042"
+      },
+      "property": {
+        "raw_plot_number": "MIG FLAT NO.79 FOURTH FLOOR POCKET-GH-2 SECTOR-28 ROHINI DELHI",
+        "pocket": "GH-2",
+        "block": "GH",
+        "upic": "029088410745300",
+        "property_id": "583869",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": null,
+          "plinth_area_sqm": 70.0,
+          "plinth_area_transferred_sqm": 70.0,
+          "land_share_transferred_sqm": null,
+          "land_share_transferred_pct": null,
+          "floors": null,
+          "floor_label": null,
+          "floor_number": 5.0,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": "DDA or CGHS Flat"
+        }
+      }
+    },
+    {
+      "id": 37,
+      "document_id": "202600189927",
+      "registration_no": "2026/20/I/2940",
+      "registration_date": "2026-07-02T17:11:36",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "VIKRAM KOHLI",
+        "address": "D-79, GULMOHAR CITY, SIROL ROAD, GWALIOR, MADHYA PRADESH"
+      },
+      "purchaser": {
+        "name": "SHRUTI JAIN",
+        "address": "H.NO.69, SECOND FLOOR, POCKET-F-18, SECTOR-8, ROHINI, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "C-2/1337 SEC-28 ROHINI DELHI",
+        "pocket": "C-2",
+        "block": "C",
+        "upic": "000000000000000",
+        "property_id": "591677",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 43,
+      "document_id": "202600192065",
+      "registration_no": "2026/20/I/2948",
+      "registration_date": "2026-07-02T18:05:38",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "SUNIL AHLAWAT",
+        "address": "A-3/60, THIRD FLOOR, SECTOR-28, ROHINI, DELHI"
+      },
+      "purchaser": {
+        "name": "VICKY KUMAR",
+        "address": "A-114, SHAHBAD DAIRY, SAHIBABAD DAULATPUR, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "A-3/161 THIRD FLOOR",
+        "pocket": "A-3",
+        "block": "A",
+        "upic": "000000000000000",
+        "property_id": "592937",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 128.0,
+          "plinth_area_transferred_sqm": 32.0,
+          "land_share_transferred_sqm": 8.0,
+          "land_share_transferred_pct": 25.0,
+          "floors": 4.0,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": "No",
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 44,
+      "document_id": "202600192112",
+      "registration_no": "2026/20/I/2949",
+      "registration_date": "2026-07-02T18:06:50",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "JHABBU LAL BIND",
+        "address": "D-120, GREEN VALLEY APARTMENT, SECTOR-18, ROHINI, DELHI"
+      },
+      "purchaser": {
+        "name": "SWATI GUPTA",
+        "address": "C-2/3, SECTOR-11, ROHINI, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "PROP NO. 520 BLK-C PKT-04 SEC-28 ROHINI DELHI",
+        "pocket": "C-4",
+        "block": "C",
+        "upic": "029088410810400",
+        "property_id": "592969",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 20.0,
+          "plinth_area_transferred_sqm": 20.0,
+          "land_share_transferred_sqm": 60.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 42,
+      "document_id": "202600192058",
+      "registration_no": "2026/20/I/2950",
+      "registration_date": "2026-07-02T18:07:47",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "JHABBU LAL BIND",
+        "address": "D-120, GREEN VALLEY APARTMENT, SECTOR-18, ROHINI, DELHI"
+      },
+      "purchaser": {
+        "name": "RENU GUPTA",
+        "address": "C-2/3, SECTOR-11, ROHINI, DELHI-"
+      },
+      "property": {
+        "raw_plot_number": "PROP NO. 521 BLK-C PKT-04 SEC-28 ROHINI DELHI",
+        "pocket": "C-4",
+        "block": "C",
+        "upic": "031088410477700",
+        "property_id": "592933",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 20.0,
+          "plinth_area_transferred_sqm": 20.0,
+          "land_share_transferred_sqm": 60.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 45,
+      "document_id": "202600193065",
+      "registration_no": "2026/20/I/2951",
+      "registration_date": "2026-07-02T18:08:44",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "AJAY KUMAR JINDAL",
+        "address": "HOUSE NO. 54/2, SHIV MANDIR, GOVIND MOHALLA, HAIDERPUR, DELHI-110088"
+      },
+      "purchaser": {
+        "name": "SANJAY AGGARWAL",
+        "address": "HOUSE NO. BT-55, SHALIMAR BAGH, DELHI-110088"
+      },
+      "property": {
+        "raw_plot_number": "A-3/34 THIRD FLOOR",
+        "pocket": "A-3",
+        "block": "A",
+        "upic": "000000000000000",
+        "property_id": "593495",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 300.0,
+          "plinth_area_transferred_sqm": 60.0,
+          "land_share_transferred_sqm": 15.0,
+          "land_share_transferred_pct": 25.0,
+          "floors": 4.0,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": "Yes",
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 46,
+      "document_id": "202600193099",
+      "registration_no": "2026/20/I/2952",
+      "registration_date": "2026-07-02T18:09:41",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "KAVITA GARG",
+        "address": "HOUSE NO. H-1/245, SECTOR-11, ROHINI, DELHI-110085"
+      },
+      "purchaser": {
+        "name": "SANJAY AGGARWAL",
+        "address": "HOUSE NO. BT-55, SHALIMAR BAGH, DELHI-110088"
+      },
+      "property": {
+        "raw_plot_number": "A-3/35 THIRD FLOOR",
+        "pocket": "A-3",
+        "block": "A",
+        "upic": "000000000000000",
+        "property_id": "593505",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 300.0,
+          "plinth_area_transferred_sqm": 60.0,
+          "land_share_transferred_sqm": 15.0,
+          "land_share_transferred_pct": 25.0,
+          "floors": 4.0,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": "Yes",
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 47,
+      "document_id": "202600193533",
+      "registration_no": "2026/20/I/2953",
+      "registration_date": "2026-07-02T18:10:40",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "POORAN CHAND AGARWAL",
+        "address": "A-3/98, JANAK PURI, DELHI"
+      },
+      "purchaser": {
+        "name": "VARTIKA SHARMA",
+        "address": "C-3/47, SECTOR-11, ROHINI, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "C-4/550",
+        "pocket": "C-4",
+        "block": "C",
+        "upic": "000191414215040",
+        "property_id": "593774",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 20.0,
+          "plinth_area_transferred_sqm": 20.0,
+          "land_share_transferred_sqm": 60.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 41,
+      "document_id": "202600191515",
+      "registration_no": "2026/20/I/2954",
+      "registration_date": "2026-07-02T18:11:34",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "GUNJAN TANEJA",
+        "address": "145, KEWAL KUNJ APARTMENT, SECTOR-13, ROHINI, DELHI-110085"
+      },
+      "purchaser": {
+        "name": "KAUSHLYA",
+        "address": "D-374, AVANTIKA, SECTOR-1, ROHINI, DELHI-110085"
+      },
+      "property": {
+        "raw_plot_number": "1030 BLOCK-C POCKET-1 SECTOR-28 ROHINI DELHI-110042",
+        "pocket": "C-1",
+        "block": "C",
+        "upic": "000000000000000",
+        "property_id": "592608",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 32.0,
+          "plinth_area_transferred_sqm": 10.66,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Semi Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 4,
+      "document_id": "202600163499",
+      "registration_no": "2026/20/I/2965",
+      "registration_date": "2026-07-04T15:29:13",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "DEEPAK SHARMA",
+        "address": "D-11/36 SECTOR-8 ROHINI DELHI"
+      },
+      "purchaser": {
+        "name": "GAURAV GUPTA",
+        "address": "B-3/14 3RD FLOOR, SECTOR-17 ROHINI DELHI"
+      },
+      "property": {
+        "raw_plot_number": "467",
+        "pocket": "Unknown",
+        "block": "Unknown",
+        "upic": "000000000000467",
+        "property_id": "575531",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 48,
+      "document_id": "202600193973",
+      "registration_no": "2026/20/I/2977",
+      "registration_date": "2026-07-06T16:08:59",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "VIRENDER KUMAR JAIN",
+        "address": "B-363, LOK VIHAR, VTC: PITAM PURA, DELHI-110034"
+      },
+      "purchaser": {
+        "name": "ROHIT YADAV",
+        "address": "B-368, J.J. COLONY, B-BLOCK, NEAR DISPENSARY, SHIV VIHAR, UTTAM NAGAR, DELHI-110059"
+      },
+      "property": {
+        "raw_plot_number": "PROP NO.499 BLOCK-C POCKET-1 SECTOR-28 ROHINI DELHI-110042",
+        "pocket": "C-1",
+        "block": "C",
+        "upic": "029088410811100",
+        "property_id": "594039",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 38,
+      "document_id": "202600190220",
+      "registration_no": "2026/20/I/2978",
+      "registration_date": "2026-07-06T16:09:59",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "PUMMY BASANT",
+        "address": "FLAT NO. 712, GROUND FLOOR, POCKET-GH-2, SECTOR-28, ROHINI, DELHI"
+      },
+      "purchaser": {
+        "name": "SARIKA KUMARI",
+        "address": "FLAT NO. 38-39, TOP FLOOR, POCKET-6, SECTOR-25, ROHINI, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "PROP. NO. 1199 BLOCK AND POCKET-C-2 SECTOR-28 ROHINI DELHI",
+        "pocket": "C-2",
+        "block": "C",
+        "upic": "000000000000000",
+        "property_id": "591833",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 10.56,
+          "plinth_area_transferred_sqm": 10.56,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 53,
+      "document_id": "202600194928",
+      "registration_no": "2026/20/I/2979",
+      "registration_date": "2026-07-06T16:10:57",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "SUNITA DIXIT",
+        "address": "SHREE MAHAKALI JAGDISH MANDIR, C-3, SECTOR-11, ROHINI, DELHI"
+      },
+      "purchaser": {
+        "name": "DINESH GUPTA",
+        "address": "D-12/115-116, SECTOR-8, ROHINI, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "504",
+        "pocket": "Unknown",
+        "block": "Unknown",
+        "upic": "000210536815040",
+        "property_id": "594621",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 20.0,
+          "plinth_area_transferred_sqm": 20.0,
+          "land_share_transferred_sqm": 60.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 61,
+      "document_id": "202600196571",
+      "registration_no": "2026/20/I/2992",
+      "registration_date": "2026-07-06T16:37:09",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "RITA CHADHA",
+        "address": "B-169, NIRMAN VIHAR SHAKAR PUR BARAMAD SHAKARPUR, DELHI-110092"
+      },
+      "purchaser": {
+        "name": "AARTI MITTAL",
+        "address": "A-1/299 JANAK PURI DELHI-110058"
+      },
+      "property": {
+        "raw_plot_number": "C-5/215 SECTOR-28 ROHINI DELHI",
+        "pocket": "C-5",
+        "block": "C",
+        "upic": "000000000000000",
+        "property_id": "595575",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 19.8,
+          "plinth_area_transferred_sqm": 19.8,
+          "land_share_transferred_sqm": 60.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 54,
+      "document_id": "202600194953",
+      "registration_no": "2026/20/I/2993",
+      "registration_date": "2026-07-06T16:38:56",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "SHASHI BALA",
+        "address": "HOUSE NO. D-34, THIRD FLOOR, GALI NO. 2, LAXMI NAGAR, DELHI-110092"
+      },
+      "purchaser": {
+        "name": "RAJ KUMAR",
+        "address": "HOUSE NO. 1734-A, A-BLOCK, JAHANGIR PURI, DELHI-110033"
+      },
+      "property": {
+        "raw_plot_number": "PROP. NO. 634 BLOCK-C POCKET-2 SECTOR-28 ROHINI DELHI",
+        "pocket": "C-2",
+        "block": "C",
+        "upic": "029088410635000",
+        "property_id": "594640",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 57,
+      "document_id": "202600196031",
+      "registration_no": "2026/20/I/2998",
+      "registration_date": "2026-07-06T16:48:13",
+      "article": "Relinquishment Deed",
+      "article_raw": "Relinquishment deed - 55",
+      "article_code": 55,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": null,
+        "address": null
+      },
+      "purchaser": {
+        "name": null,
+        "address": null
+      },
+      "property": {
+        "raw_plot_number": "C-5/288 SECTOR-28 ROHINI DELHI",
+        "pocket": "C-5",
+        "block": "C",
+        "upic": "000000000000000",
+        "property_id": "595250",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": null,
+          "plinth_area_transferred_sqm": null,
+          "land_share_transferred_sqm": null,
+          "land_share_transferred_pct": null,
+          "floors": null,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 56,
+      "document_id": "202600195993",
+      "registration_no": "2026/20/I/2999",
+      "registration_date": "2026-07-06T16:49:22",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "RAJENDRA KUMAR",
+        "address": "A-204, SECTOR-47, NOIDA, GAUTAM BUDDHA NAGAR, UTTAR PRADESH"
+      },
+      "purchaser": {
+        "name": "HARI SHANKAR SHARMA",
+        "address": "H.NO.9886, AHATA THAKUR DASS, SARAI ROHILLA, KAROL BAGH, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "FLAT NO.137 POCKET-GH-4 SECTOR-28 ROHINI DELHI",
+        "pocket": "GH-4",
+        "block": "GH",
+        "upic": "029088410792700",
+        "property_id": "595747",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": null,
+          "plinth_area_sqm": 42.0,
+          "plinth_area_transferred_sqm": 42.0,
+          "land_share_transferred_sqm": null,
+          "land_share_transferred_pct": null,
+          "floors": null,
+          "floor_label": null,
+          "floor_number": 4.0,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": "DDA or CGHS Flat"
+        }
+      }
+    },
+    {
+      "id": 9,
+      "document_id": "202600175358",
+      "registration_no": "2026/20/I/3000",
+      "registration_date": "2026-07-06T16:50:23",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "JYOTI SHARMA",
+        "address": "C-2/13, RANA PARTAP BAGH, DELHI"
+      },
+      "purchaser": {
+        "name": "JYOTI SHADIJA",
+        "address": "A-7A/2, G.F. RANA PRATAP BAGH, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "A-5/72 U.G.F. SEC-28 ROHINI DELHI",
+        "pocket": "A-5",
+        "block": "A",
+        "upic": "000003265154000",
+        "property_id": "582599",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 240.0,
+          "plinth_area_transferred_sqm": 60.0,
+          "land_share_transferred_sqm": 15.0,
+          "land_share_transferred_pct": 25.0,
+          "floors": 4.0,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": "Yes",
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 10,
+      "document_id": "202600175386",
+      "registration_no": "2026/20/I/3001",
+      "registration_date": "2026-07-06T16:51:24",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "JYOTI SHARMA",
+        "address": "C-2/13, RANA PARTAP BAGH, DELHI"
+      },
+      "purchaser": {
+        "name": "JYOTI SHADIJA",
+        "address": "A-7A/2, G.F. RANA PRATAP BAGH, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "A-5/73 U.G.F. SEC-28 ROHINI DELHI",
+        "pocket": "A-5",
+        "block": "A",
+        "upic": "000215402103201",
+        "property_id": "582614",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 240.0,
+          "plinth_area_transferred_sqm": 60.0,
+          "land_share_transferred_sqm": 15.0,
+          "land_share_transferred_pct": 25.0,
+          "floors": 4.0,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": "Yes",
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 30,
+      "document_id": "202600187637",
+      "registration_no": "2026/20/I/3002",
+      "registration_date": "2026-07-06T16:54:07",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "DES RAM ARYA",
+        "address": "HOUSE NO. A-218, LAMBA PANA, QUTAB GARH, DELHI-110039"
+      },
+      "purchaser": {
+        "name": "KUNDAN LAL",
+        "address": "HOUSE NO. 34, POCKET-A-3, SECTOR-05, ROHINI, DELHI-110085"
+      },
+      "property": {
+        "raw_plot_number": "C-2/124",
+        "pocket": "C-2",
+        "block": "C",
+        "upic": "000000000000000",
+        "property_id": "590231",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 20.0,
+          "plinth_area_transferred_sqm": 20.0,
+          "land_share_transferred_sqm": 60.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 70,
+      "document_id": "202600198887",
+      "registration_no": "2026/20/I/3019",
+      "registration_date": "2026-07-08T14:28:11",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "ANNU BHARDWAJ",
+        "address": "A-2/92 JANAKPURI DELHI"
+      },
+      "purchaser": {
+        "name": "KULDEEP KAUR",
+        "address": "B-607, GREEN VIEW BLOSSOM, DEHRADUN UTTARAKHAND"
+      },
+      "property": {
+        "raw_plot_number": "C-2/692 SEC-28 ROHINI DELHI",
+        "pocket": "C-2",
+        "block": "C",
+        "upic": "032002100215200",
+        "property_id": "597055",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 69,
+      "document_id": "202600198805",
+      "registration_no": "2026/20/I/3024",
+      "registration_date": "2026-07-08T15:01:01",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "GEETA SHARMA",
+        "address": "B-2/25 SEC-15 ROHINI DELHI"
+      },
+      "purchaser": {
+        "name": "SONU",
+        "address": "16, NEW ANAJ MANDI, HANSI, HISAR HARYANA"
+      },
+      "property": {
+        "raw_plot_number": "A-3/152 F.F. SEC-28 ROHINI DELHI",
+        "pocket": "A-3",
+        "block": "A",
+        "upic": "032002152132620",
+        "property_id": "596996",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 128.0,
+          "plinth_area_transferred_sqm": 32.0,
+          "land_share_transferred_sqm": 8.0,
+          "land_share_transferred_pct": 25.0,
+          "floors": 4.0,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": "Yes",
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 68,
+      "document_id": "202600198786",
+      "registration_no": "2026/20/I/3025",
+      "registration_date": "2026-07-08T15:02:18",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "NISHA BHARGAVA",
+        "address": "B-7/22 SEC-15 ROHINI DELHI"
+      },
+      "purchaser": {
+        "name": "SONU",
+        "address": "16 NEW ANAJ MANDI, HANSI, HISAR, HARYANA"
+      },
+      "property": {
+        "raw_plot_number": "A-3/151 F.F. SEC-28 ROHINI DELHI",
+        "pocket": "A-3",
+        "block": "A",
+        "upic": "032021520002154",
+        "property_id": "596980",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 128.0,
+          "plinth_area_transferred_sqm": 32.0,
+          "land_share_transferred_sqm": 8.0,
+          "land_share_transferred_pct": 25.0,
+          "floors": 4.0,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": "Yes",
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 52,
+      "document_id": "202600194882",
+      "registration_no": "2026/20/I/3026",
+      "registration_date": "2026-07-08T15:04:53",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "REETU JAIN",
+        "address": "HOUSE NO. D-15/128, SECTOR-03, ROHINI, DELHI-110085"
+      },
+      "purchaser": {
+        "name": "RADHEY SHYAM YADAV",
+        "address": "HOUSE NO. C-5/121, SECTOR-11, ROHINI, DELHI-110085"
+      },
+      "property": {
+        "raw_plot_number": "C-4/196",
+        "pocket": "C-4",
+        "block": "C",
+        "upic": "000000000000000",
+        "property_id": "594593",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 20.0,
+          "plinth_area_transferred_sqm": 20.0,
+          "land_share_transferred_sqm": 60.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 64,
+      "document_id": "202600197164",
+      "registration_no": "2026/20/I/3032",
+      "registration_date": "2026-07-08T15:18:41",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "SUMAN GOYAL",
+        "address": "HOUSE NO. 1/3, S.C.C. LANE, BARANAGAR, NORTH 24 PARGANAS, WEST BENGAL-700036"
+      },
+      "purchaser": {
+        "name": "SUMAN KANTA",
+        "address": "HOUSE NO. C-115, YADAV NAGAR, SAMAY PUR, LIBAS PUR, DELHI-110042"
+      },
+      "property": {
+        "raw_plot_number": "C-1/540",
+        "pocket": "C-1",
+        "block": "C",
+        "upic": "000000000000000",
+        "property_id": "595936",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 5,
+      "document_id": "202600167635",
+      "registration_no": "2026/20/I/3045",
+      "registration_date": "2026-07-09T15:19:38",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "RAM BAHADUR VERMA",
+        "address": "103 NEELGIRI APARTMENT SECTOR-9 ROHINI DELHI"
+      },
+      "purchaser": {
+        "name": "ANUPAM SHARMA",
+        "address": "I-7/75 SECTOR-16 ROHINI DELHI"
+      },
+      "property": {
+        "raw_plot_number": "PROPERTY NO.157 BLOCK-A POCKET-3 SECTOR-28 ROHINI DELHI",
+        "pocket": "A-3",
+        "block": "A",
+        "upic": "028088110330100",
+        "property_id": "578027",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 76,
+      "document_id": "202600201319",
+      "registration_no": "2026/20/I/3055",
+      "registration_date": "2026-07-10T16:09:38",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "MINAXI GARG",
+        "address": "M-98, GURU HARKISHAN NAGAR, PASCHIM VIHAR, DELHI"
+      },
+      "purchaser": {
+        "name": "NIDHI GUPTA",
+        "address": "H.NO.86, D-BLOCK, PHASE-1, ASHOK VIHAR, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "PROP NO.1098 BLOCK-C POCKET-2 SECTOR-28 ROHINI DELHI",
+        "pocket": "C-2",
+        "block": "C",
+        "upic": "000000000000000",
+        "property_id": "598540",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 67,
+      "document_id": "202600198721",
+      "registration_no": "2026/20/I/3060",
+      "registration_date": "2026-07-10T16:38:10",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "MANJU JATAV",
+        "address": "FLAT NO.782, GROUND FLOOR, BLOCK-GH, POCKET-1, SECTOR-29, ROHINI, DELHI"
+      },
+      "purchaser": {
+        "name": "SUNITA JAIN",
+        "address": "69, SECOND FLOOR, POCKET-F-18, SECTOR-8, ROHINI, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "C-1/1144 SEC-28 ROHINI DELHI",
+        "pocket": "C-1",
+        "block": "C",
+        "upic": "004145510000600",
+        "property_id": "596934",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 71,
+      "document_id": "202600199477",
+      "registration_no": "2026/20/I/3061",
+      "registration_date": "2026-07-10T16:39:20",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "SUNITA KUKRETI",
+        "address": "HOUSE NO.A-130D, DILSHAD GARDEN,, JHILMIL, DELHI"
+      },
+      "purchaser": {
+        "name": "JAYESH MALIK",
+        "address": "A-2/49, SECTOR-16, ROHINI, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "GH-1",
+        "pocket": "GH-1",
+        "block": "GH",
+        "upic": "066087506451200",
+        "property_id": "597424",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": null,
+          "plinth_area_sqm": 42.0,
+          "plinth_area_transferred_sqm": 42.0,
+          "land_share_transferred_sqm": null,
+          "land_share_transferred_pct": null,
+          "floors": null,
+          "floor_label": null,
+          "floor_number": 3.0,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": "DDA or CGHS Flat"
+        }
+      }
+    },
+    {
+      "id": 62,
+      "document_id": "202600196684",
+      "registration_no": "2026/20/I/3062",
+      "registration_date": "2026-07-10T16:40:20",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "SUMAN GOYAL",
+        "address": "HOUSE NO. 1/3, S.C.C. LANE, BARANAGAR, NORTH 24 PARGANAS, WEST BENGAL-700036"
+      },
+      "purchaser": {
+        "name": "SUMAN KANTA",
+        "address": "HOUSE NO. C-115, YADAV NAGAR, SAMAY PUR, LIBAS PUR, DELHI-110042"
+      },
+      "property": {
+        "raw_plot_number": "C-1/539",
+        "pocket": "C-1",
+        "block": "C",
+        "upic": "000000000000000",
+        "property_id": "595927",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 72,
+      "document_id": "202600199989",
+      "registration_no": "2026/20/I/3063",
+      "registration_date": "2026-07-10T16:41:42",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "MONIKA JAIN",
+        "address": "C-6/133, KESHAV PURAM, DELHI"
+      },
+      "purchaser": {
+        "name": "MADHU BALA",
+        "address": "71-72, SECOND FLOOR, BLOCK-D, POCKET-03, SECTOR-11, ROHINI, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "C-2/1410",
+        "pocket": "C-2",
+        "block": "C",
+        "upic": "031088410570400",
+        "property_id": "597734",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 49,
+      "document_id": "202600194782",
+      "registration_no": "2026/20/I/3064",
+      "registration_date": "2026-07-10T16:42:47",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "PRAPTI JAIN",
+        "address": "HOUSE NO. F-3/54, UPPER GROUND FLOOR, SECTOR-11, ROHINI, DELHI-110085"
+      },
+      "purchaser": {
+        "name": "RADHEY SHYAM YADAV",
+        "address": "HOUSE NO. C-5/121, SECTOR-11, ROHINI, DELHI-110085"
+      },
+      "property": {
+        "raw_plot_number": "C-4/195",
+        "pocket": "C-4",
+        "block": "C",
+        "upic": "000000000000000",
+        "property_id": "594531",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 20.0,
+          "plinth_area_transferred_sqm": 20.0,
+          "land_share_transferred_sqm": 60.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 6,
+      "document_id": "202600167660",
+      "registration_no": "2026/20/I/3067",
+      "registration_date": "2026-07-10T16:57:38",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "RAJPAL SINGH",
+        "address": "274 LADPUR 86 JHAJJAR HARYANA"
+      },
+      "purchaser": {
+        "name": "ANUPAM SHARMA",
+        "address": "I-7/75 SECTOR-16 ROHINI DELHI"
+      },
+      "property": {
+        "raw_plot_number": "PROPERTY NO.158 BLOCK-A POCKET-3 SECTOR-28 ROHINI DELHI",
+        "pocket": "A-3",
+        "block": "A",
+        "upic": "029088410799700",
+        "property_id": "578041",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": null,
+          "plinth_area_transferred_sqm": null,
+          "land_share_transferred_sqm": null,
+          "land_share_transferred_pct": null,
+          "floors": null,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 81,
+      "document_id": "202600203016",
+      "registration_no": "2026/20/I/3069",
+      "registration_date": "2026-07-10T18:15:50",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "UJJAWAL BANSAL",
+        "address": "115-116, THIRD FLOOR, POCKET-12, SECTOR-24, ROHINI, DELHI-110085"
+      },
+      "purchaser": {
+        "name": "REETA DEVI",
+        "address": "A-28, A-BLOCK, VISHWAS PARK, UTTAM NAGAR, DELHI-110059"
+      },
+      "property": {
+        "raw_plot_number": "1320",
+        "pocket": "Unknown",
+        "block": "Unknown",
+        "upic": "000000000000000",
+        "property_id": "599586",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 128.0,
+          "plinth_area_transferred_sqm": 32.0,
+          "land_share_transferred_sqm": 8.0,
+          "land_share_transferred_pct": 25.0,
+          "floors": 4.0,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": "Yes",
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 55,
+      "document_id": "202600195929",
+      "registration_no": "2026/20/I/3070",
+      "registration_date": "2026-07-10T18:17:06",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "RAJA GAGAN ARORA",
+        "address": "H.NO.610, NIMRI COLONY, ASHOK VIHAR, DELHI"
+      },
+      "purchaser": {
+        "name": "KAVITA MEHTA",
+        "address": "7/13, BLOCK-7, WEST PATEL NAGAR, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "28A3-282",
+        "pocket": "A-3",
+        "block": "A",
+        "upic": "029088410791500",
+        "property_id": "595199",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 10.67,
+          "plinth_area_transferred_sqm": 10.67,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Semi Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 75,
+      "document_id": "202600201280",
+      "registration_no": "2026/20/I/3073",
+      "registration_date": "2026-07-10T18:20:47",
+      "article": "Sale Agreement",
+      "article_raw": "Sale Agreement - 23 A",
+      "article_code": "23 A",
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": null,
+        "address": null
+      },
+      "purchaser": {
+        "name": null,
+        "address": null
+      },
+      "property": {
+        "raw_plot_number": "C-4/38",
+        "pocket": "C-4",
+        "block": "C",
+        "upic": "000000000000000",
+        "property_id": "598504",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 33.2,
+          "plinth_area_sqm": null,
+          "plinth_area_transferred_sqm": null,
+          "land_share_transferred_sqm": null,
+          "land_share_transferred_pct": null,
+          "floors": null,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 63,
+      "document_id": "202600197013",
+      "registration_no": "2026/20/I/3074",
+      "registration_date": "2026-07-10T18:25:20",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "RENU JAIN",
+        "address": "HOUSE NO.BP-19 WEST, NEAR MAHARSHI AYURVEDIC HOSPITAL, SHALIMAR BAGH, DELHI-110088"
+      },
+      "purchaser": {
+        "name": "HARVINDER SINGH",
+        "address": "HOUSE NO.J-986, BLOCK-J, PALAM VIHAR, CARTARPUR ALIAS DAULATPUR NAZIRABAD 63, GURGAON, HARYANA-122017"
+      },
+      "property": {
+        "raw_plot_number": "PROP. NO.210 BLOCK-C POCKET-3 SECTOR-28 ROHINI DELHI",
+        "pocket": "C-3",
+        "block": "C",
+        "upic": "000000000000000",
+        "property_id": "595830",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 20.0,
+          "plinth_area_transferred_sqm": 20.0,
+          "land_share_transferred_sqm": 60.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 77,
+      "document_id": "202600201537",
+      "registration_no": "2026/20/I/3075",
+      "registration_date": "2026-07-10T18:26:16",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "REENA MANOCHA",
+        "address": "A-161, ASHOKA ENCLAVE, PASCHIM VIHAR, DELHI"
+      },
+      "purchaser": {
+        "name": "KAMLA DEVI",
+        "address": "D-1/96, SEC-11, ROHINI, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "1443",
+        "pocket": "Unknown",
+        "block": "Unknown",
+        "upic": "000000000000000",
+        "property_id": "598673",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Semi Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 80,
+      "document_id": "202600202936",
+      "registration_no": "2026/20/I/3076",
+      "registration_date": "2026-07-10T18:27:17",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "UJJAWAL BANSAL",
+        "address": "115-116, THIRD FLOOR, POCKET-12, SECTOR-24, ROHINI, DELHI-110085"
+      },
+      "purchaser": {
+        "name": "REETA DEVI",
+        "address": "A-28, A-BLOCK, VISHWAS PARK, UTTAM NAGAR, DELHI-110059"
+      },
+      "property": {
+        "raw_plot_number": "1319",
+        "pocket": "Unknown",
+        "block": "Unknown",
+        "upic": "000000000000000",
+        "property_id": "599539",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 128.0,
+          "plinth_area_transferred_sqm": 32.0,
+          "land_share_transferred_sqm": 8.0,
+          "land_share_transferred_pct": 25.0,
+          "floors": 4.0,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": "Yes",
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 79,
+      "document_id": "202600202922",
+      "registration_no": "2026/20/I/3077",
+      "registration_date": "2026-07-10T18:28:21",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "PRIYANKA MEENA",
+        "address": "A-1/74 SECTOR-11 ROHINI DELHI"
+      },
+      "purchaser": {
+        "name": "SHASHI",
+        "address": "G-5/23 SECTOR-11 ROHINI DELHI"
+      },
+      "property": {
+        "raw_plot_number": "127",
+        "pocket": "Unknown",
+        "block": "Unknown",
+        "upic": "024087009615400",
+        "property_id": "599524",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 60.0,
+          "plinth_area_transferred_sqm": 20.0,
+          "land_share_transferred_sqm": 60.0,
+          "land_share_transferred_pct": 100.0,
+          "floors": 1.0,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": "No",
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 3,
+      "document_id": "202600152849",
+      "registration_no": "2026/20/I/3087",
+      "registration_date": "2026-07-13T18:41:52",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "ARJUN GUPTA",
+        "address": "A-3/136 SEC-5 ROHINI DELHI"
+      },
+      "purchaser": {
+        "name": "MEENAKSHI",
+        "address": "F-6/84, SEC-15 ROHINI DELHI"
+      },
+      "property": {
+        "raw_plot_number": "A-5/344 F.F. SEC-28 ROHINI DELHI",
+        "pocket": "A-5",
+        "block": "A",
+        "upic": "012365214251360",
+        "property_id": "569354",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 128.0,
+          "plinth_area_transferred_sqm": 32.0,
+          "land_share_transferred_sqm": 8.0,
+          "land_share_transferred_pct": 25.0,
+          "floors": 4.0,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": "Yes",
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 2,
+      "document_id": "202600152814",
+      "registration_no": "2026/20/I/3088",
+      "registration_date": "2026-07-13T18:43:48",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "AJIT AGGARWAL",
+        "address": "B-1/54 F.F. SEC-17 ROHINI DELHI"
+      },
+      "purchaser": {
+        "name": "MEENAKSHI",
+        "address": "F-6/84 SEC-15 ROHINI DELHI"
+      },
+      "property": {
+        "raw_plot_number": "A-5/343 F.F. SEC-28 ROHINI DELHI",
+        "pocket": "A-5",
+        "block": "A",
+        "upic": "021365484512032",
+        "property_id": "569332",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 128.0,
+          "plinth_area_transferred_sqm": 32.0,
+          "land_share_transferred_sqm": 8.0,
+          "land_share_transferred_pct": 25.0,
+          "floors": 4.0,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": "Yes",
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 73,
+      "document_id": "202600200848",
+      "registration_no": "2026/20/I/3089",
+      "registration_date": "2026-07-13T18:44:46",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "MAKSUD ALAM",
+        "address": "DAFFODILS CHS LTD., FLAT NO.B-102,  MIRA BHYANDER ROAD,  MIRA ROAD, THANE, MAHARASHTRA"
+      },
+      "purchaser": {
+        "name": "NISHA NAIR",
+        "address": "HOUSE NO.366-D, POCKET-2, MAYUR VIHAR, PHASE-1, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "GH-1",
+        "pocket": "GH-1",
+        "block": "GH",
+        "upic": "031083310009400",
+        "property_id": "598237",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": null,
+          "plinth_area_sqm": 42.0,
+          "plinth_area_transferred_sqm": 42.0,
+          "land_share_transferred_sqm": null,
+          "land_share_transferred_pct": null,
+          "floors": null,
+          "floor_label": null,
+          "floor_number": 3.0,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": "DDA or CGHS Flat"
+        }
+      }
+    },
+    {
+      "id": 50,
+      "document_id": "202600194785",
+      "registration_no": "2026/20/I/3090",
+      "registration_date": "2026-07-13T18:45:59",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "KAMLESH GUPTA",
+        "address": "FLAT NO 615 BLK-C ROHINI HEIGHT, SIXTH FLOOR SEC-29 ROHINI DELHI"
+      },
+      "purchaser": {
+        "name": "ANUPAMA GUPTA",
+        "address": "163 HARSH VIHAR PITAMPURA DELHI"
+      },
+      "property": {
+        "raw_plot_number": "A-5/155 S.F. SEC-28 ROHINI DELHI",
+        "pocket": "A-5",
+        "block": "A",
+        "upic": "003255215421542",
+        "property_id": "594536",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 128.0,
+          "plinth_area_transferred_sqm": 32.0,
+          "land_share_transferred_sqm": 8.0,
+          "land_share_transferred_pct": 25.0,
+          "floors": 4.0,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": "Yes",
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 78,
+      "document_id": "202600202276",
+      "registration_no": "2026/20/I/3091",
+      "registration_date": "2026-07-13T18:47:09",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": null,
+        "address": null
+      },
+      "purchaser": {
+        "name": "MUKESH GUPTA",
+        "address": "63-A, PKT A-10, KALKAJI EXTN, ALI DELHI"
+      },
+      "property": {
+        "raw_plot_number": "C-4/548 SEC-28 ROHINI DELHI",
+        "pocket": "C-4",
+        "block": "C",
+        "upic": "030020012003252",
+        "property_id": "599125",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 20.0,
+          "plinth_area_transferred_sqm": 20.0,
+          "land_share_transferred_sqm": 60.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 51,
+      "document_id": "202600194815",
+      "registration_no": "2026/20/I/3092",
+      "registration_date": "2026-07-13T18:48:11",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "KAMLESH GUPTA",
+        "address": "FLAT NO 615 BLK-C ROHINI HEIGHTS, SIXTH FLOOR, SEC-29 ROHINI DELHI"
+      },
+      "purchaser": {
+        "name": "ANUPAMA GUPTA",
+        "address": "163, HARSH VIHAR PITAMPURA DELHI"
+      },
+      "property": {
+        "raw_plot_number": "A-5/156 S.F. SEC-28 ROHINI DELHI",
+        "pocket": "A-5",
+        "block": "A",
+        "upic": "002584859562614",
+        "property_id": "594554",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 128.0,
+          "plinth_area_transferred_sqm": 32.0,
+          "land_share_transferred_sqm": 8.0,
+          "land_share_transferred_pct": 25.0,
+          "floors": 4.0,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": "Yes",
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 40,
+      "document_id": "202600191085",
+      "registration_no": "2026/20/I/3110",
+      "registration_date": "2026-07-14T18:17:56",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "MEGHA",
+        "address": "1441/1, RANI BAGH, DELHI"
+      },
+      "purchaser": {
+        "name": "TARUNA GOEL",
+        "address": "C-3/5, TULSI ROAD, PRASHANT VIHAR, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "C-2/390 SEC-28 ROHINI DELHI",
+        "pocket": "C-2",
+        "block": "C",
+        "upic": "000000000000000",
+        "property_id": "592350",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 10.67,
+          "plinth_area_transferred_sqm": 10.67,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 83,
+      "document_id": "202600205638",
+      "registration_no": "2026/20/I/3111",
+      "registration_date": "2026-07-14T18:19:40",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "BALA BANSAL",
+        "address": "FLAT NO.184, FIRST FLOOR,  PKT GH-2, TYPE MIG  SECTOR 28 ROHINI DELHI"
+      },
+      "purchaser": {
+        "name": "TEENA",
+        "address": "FLAT NO. 80, PKT B-5, SECTOR 8 ROHINI DELHI-110085"
+      },
+      "property": {
+        "raw_plot_number": "1019",
+        "pocket": "Unknown",
+        "block": "Unknown",
+        "upic": "123451234512345",
+        "property_id": "601267",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 86,
+      "document_id": "202600206758",
+      "registration_no": "2026/20/I/3112",
+      "registration_date": "2026-07-14T18:28:32",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "PREM LATA SANDHU",
+        "address": "V.P.O. DANGOH KHAS, PO-DANGOHKALAN, DISTT-UNA, HIMACHAL PRADESH-177204"
+      },
+      "purchaser": {
+        "name": "SEEMA LAMBA",
+        "address": "HOUSE NO. A-522, THIRD FLOOR, NEAR IFFCO CHOWK METRO STATION, SUSHANT LOK-1, PO-GALLERIA DLF-IV, DISTT-GURGAON, HARYANA-122009"
+      },
+      "property": {
+        "raw_plot_number": "PROP. NO. 481 BLOCK AND POCKET-C-4 SECTOR-28 ROHINI DELHI",
+        "pocket": "C-4",
+        "block": "C",
+        "upic": "029088410798100",
+        "property_id": "601990",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 20.0,
+          "plinth_area_transferred_sqm": 20.0,
+          "land_share_transferred_sqm": 60.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 60,
+      "document_id": "202600196560",
+      "registration_no": "2026/20/I/3113",
+      "registration_date": "2026-07-14T18:30:23",
+      "article": "Relinquishment Deed",
+      "article_raw": "Relinquishment deed - 55",
+      "article_code": 55,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": null,
+        "address": null
+      },
+      "purchaser": {
+        "name": null,
+        "address": null
+      },
+      "property": {
+        "raw_plot_number": "FLAT NO 259 PKT-GH-1 SEC-28 ROHINI DELHI",
+        "pocket": "GH-1",
+        "block": "GH",
+        "upic": "029088410792904",
+        "property_id": "595782",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": null,
+          "plinth_area_sqm": 42.0,
+          "plinth_area_transferred_sqm": 42.0,
+          "land_share_transferred_sqm": null,
+          "land_share_transferred_pct": null,
+          "floors": null,
+          "floor_label": null,
+          "floor_number": 4.0,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": "DDA or CGHS Flat"
+        }
+      }
+    },
+    {
+      "id": 39,
+      "document_id": "202600190223",
+      "registration_no": "2026/20/I/3129",
+      "registration_date": "2026-07-15T15:59:19",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "PUNEET SHARMA",
+        "address": "C-1/26, PRASHANT VIHAR DELHI"
+      },
+      "purchaser": {
+        "name": "PALLAVI BANSAL",
+        "address": "20 S.F. PKT B-8 SEC-19 ROHINI DELHI"
+      },
+      "property": {
+        "raw_plot_number": "C-1/1277 SEC-28 ROHINI DELHI",
+        "pocket": "C-1",
+        "block": "C",
+        "upic": "032012102154265",
+        "property_id": "591834",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 10.56,
+          "plinth_area_transferred_sqm": 10.56,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 82,
+      "document_id": "202600204845",
+      "registration_no": "2026/20/I/3130",
+      "registration_date": "2026-07-15T16:01:14",
+      "article": "Relinquishment Deed",
+      "article_raw": "Relinquishment deed - 55",
+      "article_code": 55,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": null,
+        "address": null
+      },
+      "purchaser": {
+        "name": null,
+        "address": null
+      },
+      "property": {
+        "raw_plot_number": "C-2/613 SECTOR-28 ROHINI DELHI",
+        "pocket": "C-2",
+        "block": "C",
+        "upic": "000000000000000",
+        "property_id": "600744",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 88,
+      "document_id": "202600208063",
+      "registration_no": "2026/20/I/3131",
+      "registration_date": "2026-07-15T16:02:22",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "JYOTSNA AGGARWAL",
+        "address": "H.NO.137, POCKET-4 AND 5, SECTRO-23, ROHINI, DELHI"
+      },
+      "purchaser": {
+        "name": "TARUN JAIN",
+        "address": "WZ-46A, DAYALSIR COLONY, UTTAM NAGAR, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "C-4/29 SEC-28 ROHINI DELHI",
+        "pocket": "C-4",
+        "block": "C",
+        "upic": "000000000000000",
+        "property_id": "602789",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 20.0,
+          "plinth_area_transferred_sqm": 20.0,
+          "land_share_transferred_sqm": 60.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 84,
+      "document_id": "202600206247",
+      "registration_no": "2026/20/I/3132",
+      "registration_date": "2026-07-15T16:04:16",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "SUHANI GARG",
+        "address": "D-47, INDRAPARSTHA APPTS SEC-14 ROHINI DELHI"
+      },
+      "purchaser": {
+        "name": "SUMAN LATA GOEL",
+        "address": "139 VASUNDHARA APPTS PLOT NO 44 SEC-9 ROHINI DELHI"
+      },
+      "property": {
+        "raw_plot_number": "UNDIVIDED HALF SHARE OF PROP NO C-3/173 SEC-28 ROHINI DELHI",
+        "pocket": "C-3",
+        "block": "C",
+        "upic": "032312002130002",
+        "property_id": "601679",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 20.0,
+          "plinth_area_transferred_sqm": 10.0,
+          "land_share_transferred_sqm": 30.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 85,
+      "document_id": "202600206276",
+      "registration_no": "2026/20/I/3133",
+      "registration_date": "2026-07-15T16:05:30",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "SUHANI GARG",
+        "address": "D-47, INDRAPARSTHA APPTS SEC-14 ROHINI DELHI"
+      },
+      "purchaser": {
+        "name": "SUNITA GUPTA",
+        "address": "F-244 PRASHANT VIHAR DELHI"
+      },
+      "property": {
+        "raw_plot_number": "UNDIVIDED HALF SHARE OF PROP NO C-3/173 SEC-28 ROHINI DELHI",
+        "pocket": "C-3",
+        "block": "C",
+        "upic": "032001201200320",
+        "property_id": "601687",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 20.0,
+          "plinth_area_transferred_sqm": 10.0,
+          "land_share_transferred_sqm": 30.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 59,
+      "document_id": "202600196213",
+      "registration_no": "2026/20/I/3137",
+      "registration_date": "2026-07-16T13:29:12",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "KIRTI GOUR",
+        "address": "HOUSE NO.82, SECOND FLOOR, POCKET-9, SECTOR-24, ROHINI, DELHI"
+      },
+      "purchaser": {
+        "name": "RAJNI BANSAL",
+        "address": "B-6/237, FIRST FLOOR, SECTOR-5, ROHINI, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "PROP NO 1022 BLK-C PKT-01 SEC-28 ROHINI DELHI",
+        "pocket": "C-1",
+        "block": "C",
+        "upic": "031088410230100",
+        "property_id": "595356",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 58,
+      "document_id": "202600196165",
+      "registration_no": "2026/20/I/3139",
+      "registration_date": "2026-07-16T13:36:59",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "BEENA DEVI",
+        "address": "HOUSE NO.81-82, SECOND FLOOR, POCKET-9, SECTOR-24, ROHINI, DELHI"
+      },
+      "purchaser": {
+        "name": "RAJNI BANSAL",
+        "address": "B-6/237, FIRST FLOOR, SECTOR-5, ROHINI, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "PROP NO. 1023 BLK-C PKT-01 SEC-28 ROHINI DELHI",
+        "pocket": "C-1",
+        "block": "C",
+        "upic": "000189404515040",
+        "property_id": "595344",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 74,
+      "document_id": "202600200917",
+      "registration_no": "2026/20/I/3142",
+      "registration_date": "2026-07-16T17:14:27",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "RANI PADMANABAN",
+        "address": "B-5, RAIL NAGAR, NEAR SATHYANARAYAN NAGAR, COIMBATORE, TAMIL NADU"
+      },
+      "purchaser": {
+        "name": "RAHUL GAUTAM",
+        "address": "D-51, OPP. PUJA PUBLIC SCHOOL, HASTSAL VIHAR, UTTAM NAGAR, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "GH-1",
+        "pocket": "GH-1",
+        "block": "GH",
+        "upic": "066087506432700",
+        "property_id": "598280",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": null,
+          "plinth_area_sqm": 42.0,
+          "plinth_area_transferred_sqm": 42.0,
+          "land_share_transferred_sqm": null,
+          "land_share_transferred_pct": null,
+          "floors": null,
+          "floor_label": null,
+          "floor_number": 2.0,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": "DDA or CGHS Flat"
+        }
+      }
+    },
+    {
+      "id": 89,
+      "document_id": "202600208763",
+      "registration_no": "2026/20/I/3144",
+      "registration_date": "2026-07-16T17:37:25",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "ANITA SHARMA",
+        "address": "HOUSE NO. C-9/272, SECTOR-07, ROHINI, DELHI-110085"
+      },
+      "purchaser": {
+        "name": "MANISH SONI",
+        "address": "HOUSE NO. 184, POCKET 11-B, SECTOR-23, ROHINI, DELHI-110085"
+      },
+      "property": {
+        "raw_plot_number": "C-2/918",
+        "pocket": "C-2",
+        "block": "C",
+        "upic": "000000000000000",
+        "property_id": "603268",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 90,
+      "document_id": "202600208970",
+      "registration_no": "2026/20/I/3145",
+      "registration_date": "2026-07-16T17:39:17",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "ANITA SHARMA",
+        "address": "HOUSE NO. C-9/272, SECTOR-07, ROHINI, DELHI-110085"
+      },
+      "purchaser": {
+        "name": "MANISH SONI",
+        "address": "HOUSE NO. 184, POCKET 11-B, SECTOR-23, ROHINI, DELHI-110085"
+      },
+      "property": {
+        "raw_plot_number": "C-2/919",
+        "pocket": "C-2",
+        "block": "C",
+        "upic": "031088410430600",
+        "property_id": "603399",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 87,
+      "document_id": "202600207460",
+      "registration_no": "2026/20/I/3146",
+      "registration_date": "2026-07-16T17:46:14",
+      "article": "Sale Agreement",
+      "article_raw": "Sale Agreement - 23 A",
+      "article_code": "23 A",
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": null,
+        "address": null
+      },
+      "purchaser": {
+        "name": null,
+        "address": null
+      },
+      "property": {
+        "raw_plot_number": "C-1/302",
+        "pocket": "C-1",
+        "block": "C",
+        "upic": "000000000000000",
+        "property_id": "602412",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": null,
+          "plinth_area_transferred_sqm": null,
+          "land_share_transferred_sqm": null,
+          "land_share_transferred_pct": null,
+          "floors": null,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 65,
+      "document_id": "202600197756",
+      "registration_no": "2026/20/I/3156",
+      "registration_date": "2026-07-17T18:17:04",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "SEEMA WADHWA",
+        "address": "87, MAULANA AZAD SOCIETY, PITAM PURA, DELHI"
+      },
+      "purchaser": {
+        "name": "PRITI GUPTA",
+        "address": "HOUSE NO.17, 2ND FLOOR, KHASRA NO.64/2, BLOCK-V, BUDH VIHAR, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "PROP NO.621 BLOCK-C POCKET-2 SECTOR-28 ROHINI DELHI",
+        "pocket": "C-2",
+        "block": "C",
+        "upic": "031088410342000",
+        "property_id": "596285",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 66,
+      "document_id": "202600197781",
+      "registration_no": "2026/20/I/3157",
+      "registration_date": "2026-07-17T18:18:06",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "SEEMA WADHWA",
+        "address": "87, MAULANA AZAD SOCIETY, PITAM PURA, DELHI"
+      },
+      "purchaser": {
+        "name": "PRITI GUPTA",
+        "address": "HOUSE NO.17, 2ND FLOOR, KHASRA NO.64/2, BLOCK-V, BUDH VIHAR, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "PROP NO.620 BLOCK-C POCKET-2 SECTOR-28 ROHINI DELHI",
+        "pocket": "C-2",
+        "block": "C",
+        "upic": "031088410581500",
+        "property_id": "596299",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 27,
+      "document_id": "202600187207",
+      "registration_no": "2026/20/I/3158",
+      "registration_date": "2026-07-17T18:19:07",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "North Libaspur",
+      "seller": {
+        "name": "DEEPTI GUPTA",
+        "address": "FLAT NO.14, NAV VIKAS APARTMENT, SECTOR-15, ROHINI, DELHI"
+      },
+      "purchaser": {
+        "name": "SOUMYA MITTAL",
+        "address": "B-3/30, SECOND FLOOR, SECTOR-16, ROHINI, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "C-1/83 SECTOR-28 ROHINI DELHI",
+        "pocket": "C-1",
+        "block": "C",
+        "upic": "022089511531200",
+        "property_id": "590000",
+        "village": "Rohini Sector-28, Alipur, North",
+        "description": {
+          "plot_area_sqm": 60.0,
+          "plinth_area_sqm": 20.0,
+          "plinth_area_transferred_sqm": 20.0,
+          "land_share_transferred_sqm": 60.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    }
+  ]
+}

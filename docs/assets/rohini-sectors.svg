@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Map of Rohini residential sectors">
+  <title>Rohini Sectors Map</title>
+  <defs>
+    <style>
+      .sector {
+        fill: #e8eef5;
+        stroke: #ffffff;
+        stroke-width: 1.5;
+        cursor: pointer;
+        transition: fill 0.15s;
+      }
+      .sector:hover, .sector:focus {
+        fill: #c9d8ec;
+        outline: none;
+      }
+      .sector-28 {
+        fill: #2563eb;
+      }
+      .sector-28:hover, .sector-28:focus {
+        fill: #1d4ed8;
+      }
+      .sector.has-data {
+        fill: #93c5fd;
+      }
+      .label {
+        font: 600 12px system-ui, -apple-system, "Segoe UI", sans-serif;
+        fill: #475569;
+        pointer-events: none;
+        text-anchor: middle;
+      }
+      .label-28 {
+        fill: #ffffff;
+        font-size: 16px;
+      }
+      .label-sub {
+        font: 400 10px system-ui, sans-serif;
+        fill: #64748b;
+        text-anchor: middle;
+        pointer-events: none;
+      }
+      .label-28-sub { fill: #dbeafe; }
+      .water { fill: #dbeafe; }
+      .park { fill: #bbf7d0; }
+      .road { stroke: #cbd5e1; stroke-width: 3; fill: none; }
+      .road-major { stroke: #94a3b8; stroke-width: 6; fill: none; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="700" fill="#f8fafc"/>
+
+  <!-- Outer Ring Road (major arterial around Rohini) -->
+  <path class="road-major" d="
+    M 80 80
+    L 920 80
+    L 940 350
+    L 920 620
+    L 80 620
+    L 60 350 Z"/>
+
+  <!-- Sector 1 -->
+  <path class="sector has-data" data-sector="1" tabindex="0" d="M 80 80 L 230 80 L 230 200 L 80 200 Z"/>
+  <text class="label" x="155" y="145">1</text>
+
+  <!-- Sector 2 -->
+  <path class="sector has-data" data-sector="2" tabindex="0" d="M 230 80 L 380 80 L 380 200 L 230 200 Z"/>
+  <text class="label" x="305" y="145">2</text>
+
+  <!-- Sector 3 -->
+  <path class="sector has-data" data-sector="3" tabindex="0" d="M 380 80 L 530 80 L 530 200 L 380 200 Z"/>
+  <text class="label" x="455" y="145">3</text>
+
+  <!-- Sector 4 -->
+  <path class="sector has-data" data-sector="4" tabindex="0" d="M 530 80 L 680 80 L 680 200 L 530 200 Z"/>
+  <text class="label" x="605" y="145">4</text>
+
+  <!-- Sector 5 -->
+  <path class="sector has-data" data-sector="5" tabindex="0" d="M 680 80 L 830 80 L 830 200 L 680 200 Z"/>
+  <text class="label" x="755" y="145">5</text>
+
+  <!-- Sector 6 -->
+  <path class="sector has-data" data-sector="6" tabindex="0" d="M 830 80 L 920 80 L 940 200 L 830 200 Z"/>
+  <text class="label" x="880" y="145">6</text>
+
+  <!-- Sector 7 -->
+  <path class="sector has-data" data-sector="7" tabindex="0" d="M 80 200 L 230 200 L 230 320 L 80 320 Z"/>
+  <text class="label" x="155" y="265">7</text>
+
+  <!-- Sector 8 -->
+  <path class="sector has-data" data-sector="8" tabindex="0" d="M 230 200 L 380 200 L 380 320 L 230 320 Z"/>
+  <text class="label" x="305" y="265">8</text>
+
+  <!-- Sector 9 -->
+  <path class="sector has-data" data-sector="9" tabindex="0" d="M 380 200 L 530 200 L 530 320 L 380 320 Z"/>
+  <text class="label" x="455" y="265">9</text>
+
+  <!-- Sector 10 (park / institutional) -->
+  <path class="park" d="M 530 200 L 680 200 L 680 320 L 530 320 Z"/>
+  <text class="label" x="605" y="265">10</text>
+
+  <!-- Sector 11 -->
+  <path class="sector has-data" data-sector="11" tabindex="0" d="M 680 200 L 830 200 L 830 320 L 680 320 Z"/>
+  <text class="label" x="755" y="265">11</text>
+
+  <!-- Sector 12 -->
+  <path class="sector has-data" data-sector="12" tabindex="0" d="M 830 200 L 940 200 L 940 320 L 830 320 Z"/>
+  <text class="label" x="885" y="265">12</text>
+
+  <!-- Sector 13 -->
+  <path class="sector has-data" data-sector="13" tabindex="0" d="M 80 320 L 230 320 L 230 440 L 80 440 Z"/>
+  <text class="label" x="155" y="385">13</text>
+
+  <!-- Sector 14 -->
+  <path class="sector has-data" data-sector="14" tabindex="0" d="M 230 320 L 380 320 L 380 440 L 230 440 Z"/>
+  <text class="label" x="305" y="385">14</text>
+
+  <!-- Sector 15 -->
+  <path class="sector has-data" data-sector="15" tabindex="0" d="M 380 320 L 530 320 L 530 440 L 380 440 Z"/>
+  <text class="label" x="455" y="385">15</text>
+
+  <!-- Sector 16 -->
+  <path class="sector has-data" data-sector="16" tabindex="0" d="M 530 320 L 680 320 L 680 440 L 530 440 Z"/>
+  <text class="label" x="605" y="385">16</text>
+
+  <!-- Sector 17 -->
+  <path class="sector has-data" data-sector="17" tabindex="0" d="M 680 320 L 830 320 L 830 440 L 680 440 Z"/>
+  <text class="label" x="755" y="385">17</text>
+
+  <!-- Sector 18 -->
+  <path class="sector has-data" data-sector="18" tabindex="0" d="M 830 320 L 940 320 L 940 440 L 830 440 Z"/>
+  <text class="label" x="885" y="385">18</text>
+
+  <!-- Sector 19 -->
+  <path class="sector has-data" data-sector="19" tabindex="0" d="M 80 440 L 230 440 L 230 560 L 80 560 Z"/>
+  <text class="label" x="155" y="505">19</text>
+
+  <!-- Sector 20 (institutional) -->
+  <path class="park" d="M 230 440 L 380 440 L 380 560 L 230 560 Z"/>
+  <text class="label" x="305" y="505">20</text>
+
+  <!-- Sector 21 -->
+  <path class="sector has-data" data-sector="21" tabindex="0" d="M 380 440 L 530 440 L 530 560 L 380 560 Z"/>
+  <text class="label" x="455" y="505">21</text>
+
+  <!-- Sector 22 -->
+  <path class="sector has-data" data-sector="22" tabindex="0" d="M 530 440 L 680 440 L 680 560 L 530 560 Z"/>
+  <text class="label" x="605" y="505">22</text>
+
+  <!-- Sector 23 -->
+  <path class="sector has-data" data-sector="23" tabindex="0" d="M 680 440 L 830 440 L 830 560 L 680 560 Z"/>
+  <text class="label" x="755" y="505">23</text>
+
+  <!-- Sector 24 -->
+  <path class="sector has-data" data-sector="24" tabindex="0" d="M 830 440 L 940 440 L 940 560 L 830 560 Z"/>
+  <text class="label" x="885" y="505">24</text>
+
+  <!-- Sector 25 -->
+  <path class="sector has-data" data-sector="25" tabindex="0" d="M 80 560 L 230 560 L 230 620 L 80 620 Z"/>
+  <text class="label" x="155" y="595">25</text>
+
+  <!-- Sector 26 (water body / drain) -->
+  <path class="water" d="M 230 560 L 380 560 L 380 620 L 230 620 Z"/>
+  <text class="label" x="305" y="595">26</text>
+
+  <!-- Sector 27 -->
+  <path class="sector has-data" data-sector="27" tabindex="0" d="M 380 560 L 530 560 L 530 620 L 380 620 Z"/>
+  <text class="label" x="455" y="595">27</text>
+
+  <!-- Sector 28 (highlighted) -->
+  <path class="sector sector-28" data-sector="28" tabindex="0" d="M 530 560 L 680 560 L 680 620 L 530 620 Z">
+    <title>Sector 28 — 90 registrations in selected period</title>
+  </path>
+  <text class="label label-28" x="605" y="595">28</text>
+  <text class="label-sub label-28-sub" x="605" y="612">90 regs</text>
+
+  <!-- Sector 29 -->
+  <path class="sector has-data" data-sector="29" tabindex="0" d="M 680 560 L 830 560 L 830 620 L 680 620 Z"/>
+  <text class="label" x="755" y="595">29</text>
+
+  <!-- Sector 30 -->
+  <path class="sector has-data" data-sector="30" tabindex="0" d="M 830 560 L 940 560 L 940 620 L 830 620 Z"/>
+  <text class="label" x="885" y="595">30</text>
+
+  <!-- Connecting roads -->
+  <line class="road" x1="230" y1="80" x2="230" y2="620"/>
+  <line class="road" x1="380" y1="80" x2="380" y2="620"/>
+  <line class="road" x1="530" y1="80" x2="530" y2="620"/>
+  <line class="road" x1="680" y1="80" x2="680" y2="620"/>
+  <line class="road" x1="830" y1="80" x2="830" y2="620"/>
+  <line class="road" x1="80" y1="200" x2="940" y2="200"/>
+  <line class="road" x1="80" y1="320" x2="940" y2="320"/>
+  <line class="road" x1="80" y1="440" x2="940" y2="440"/>
+  <line class="road" x1="80" y1="560" x2="940" y2="560"/>
+
+  <!-- Legend -->
+  <g transform="translate(20, 645)">
+    <rect x="0" y="0" width="14" height="14" fill="#2563eb" stroke="#fff"/>
+    <text class="label-sub" x="22" y="11" text-anchor="start" style="text-anchor:start">Selected sector</text>
+    <rect x="120" y="0" width="14" height="14" class="sector" style="fill:#e8eef5"/>
+    <text class="label-sub" x="142" y="11" text-anchor="start" style="text-anchor:start">Other sectors</text>
+    <rect x="240" y="0" width="14" height="14" fill="#bbf7d0"/>
+    <text class="label-sub" x="262" y="11" text-anchor="start" style="text-anchor:start">Park / Institutional</text>
+  </g>
+</svg>
