@@ -842,15 +842,37 @@
       `Last generated ${m.generated_at} · ${m.total_registrations} records`;
   }
 
+  let appInitialized = false;
   function init() {
+    if (appInitialized) return;
+    appInitialized = true;
     initNavToggle();
+    initSignout();
     window.addEventListener("hashchange", render);
     render().then(initFooter);
   }
 
+  function initSignout() {
+    const link = document.getElementById("signout-link");
+    if (!link) return;
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (window.rppLock) {
+        window.rppLock();
+      } else {
+        location.reload();
+      }
+    });
+  }
+
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("DOMContentLoaded", () => {
+      // Wait for auth to complete; auth.js fires rpp:ready when it's safe
+      if (window.rppAuthReady) init();
+      else window.addEventListener("rpp:ready", init, { once: true });
+    });
   } else {
-    init();
+    if (window.rppAuthReady) init();
+    else window.addEventListener("rpp:ready", init, { once: true });
   }
 })();

@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
+  <div id="app-root" hidden>
   <header class="topbar">
     <a href="#/" class="brand" aria-label="Rohini Property Pulse home">
       <span class="brand-icon" aria-hidden="true">
@@ -27,6 +28,7 @@
       <a href="#/" data-nav="overview">Overview</a>
       <a href="#/sector/28" data-nav="sector">Sector 28</a>
       <a href="#/sector/28/all" data-nav="list">All transactions</a>
+      <a href="#" id="signout-link" role="button">Sign out</a>
     </nav>
   </header>
 
@@ -43,7 +45,9 @@
     </div>
     <div id="footer-meta" class="footer-meta"></div>
   </footer>
+  </div>
 
+  <script src="assets/auth.js" defer></script>
   <script src="assets/app.js" defer></script>
 </body>
 </html>
