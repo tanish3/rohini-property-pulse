@@ -22,5 +22,8 @@ data/state/
 .vscode/
 *.log
 
+# Persistent cache for OSM Nominatim lookups (refreshed manually)
+.cache/
+
 # Generated UI data is committed (consumed by docs/ static site)
 # but raw scrape outputs stay local.

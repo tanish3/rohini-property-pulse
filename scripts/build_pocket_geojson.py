@@ -15,7 +15,7 @@ Layout used (based on public DDA Rohini maps):
 import json
 from pathlib import Path
 
-SECTOR_FACE = Path("/tmp/rohini_sectors/sector_28.json")
+SECTOR_FACE = Path(__file__).resolve().parent.parent / ".cache" / "nominatim" / "sector_28.json"
 OUT = Path(__file__).resolve().parent.parent / "docs" / "data" / "sector-28-pockets.geojson"
 
 s28 = json.loads(SECTOR_FACE.read_text())[0]

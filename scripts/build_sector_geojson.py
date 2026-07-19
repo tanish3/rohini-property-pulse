@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 """Build a single GeoJSON FeatureCollection of all Rohini sector polygons
-from the Nominatim /tmp cache. Each feature has properties: sector (int),
-source ('nominatim').
+from the persistent Nominatim cache at .cache/nominatim/.
+
+Run scripts/refresh_sector_cache.py first if the cache is empty.
 """
 import json
+import sys
 from pathlib import Path
 
-CACHE = Path("/tmp/rohini_sectors")
-OUT = Path(__file__).resolve().parent.parent / "docs" / "data" / "sectors.geojson"
+ROOT = Path(__file__).resolve().parent.parent
+CACHE = ROOT / ".cache" / "nominatim"
+OUT = ROOT / "docs" / "data" / "sectors.geojson"
 
 features = []
 for f in sorted(CACHE.glob("sector_*.json")):
