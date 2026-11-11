@@ -512,7 +512,7 @@
           <td>${esc(date)}</td>
           <td>${articleBadge(r.article)}</td>
           <td>${esc(r.seller.name || "—")} → ${esc(r.purchaser.name || "—")}</td>
-          <td>${esc(r.property.raw_plot_number || "—")}<br><span style="font-size:11px;color:var(--text-2)">${esc(r.registration_no)}</span></td>
+          <td>${esc(r.property.raw_plot_number || "—")}<br><span style="font-size:11px;color:var(--text-2)">${esc(r.registration_no)}</span>${r.taluka && r.taluka !== "Alipur" ? `<br><span class="src-tag">${esc(r.taluka)}</span>` : ""}</td>
           <td>${d.plot_area_sqm ? fmtNum(d.plot_area_sqm, 1) + " m²" : "—"}</td>
         </tr>`;
       })
@@ -918,7 +918,7 @@
           <span class="arrow">→</span>
           ${esc(r.purchaser.name || "(unknown)")}
         </td>
-        <td>${esc(pocketLabel(r.property.pocket))}<br><span style="font-size:11px;color:var(--text-2)">${esc(r.property.raw_plot_number)}</span></td>
+        <td>${esc(pocketLabel(r.property.pocket))}<br><span style="font-size:11px;color:var(--text-2)">${esc(r.property.raw_plot_number)}</span>${r.taluka && r.taluka !== "Alipur" ? `<br><span class="src-tag">${esc(r.taluka)}</span>` : ""}</td>
         <td>${area}</td>
       `;
       tr.addEventListener("click", () => openTxDetail(r.id));
@@ -994,6 +994,12 @@
     propFields.push(["Pocket (inferred)", `<a href="#/sector/28/pocket/${encodeURIComponent(r.property.pocket)}" class="link">${esc(pocketLabel(r.property.pocket))}</a>`, true]);
     propFields.push(["Block", blockLabel]);
     if (r.property.property_id) propFields.push(["Property ID", r.property.property_id]);
+    if (r.taluka) {
+      propFields.push([
+        "Registered at",
+        `${esc(r.taluka)} taluka${r.district ? ` · ${esc(r.district)} district` : ""}`,
+      ]);
+    }
     if (r.property.upic && r.property.upic !== "000000000000000")
       propFields.push(["UPIC", r.property.upic, true]);
     propFields.push(["Village", r.property.village]);
@@ -1278,7 +1284,7 @@
           <span class="arrow">→</span>
           ${esc(r.purchaser.name || "(unknown)")}
         </td>
-        <td>${esc(pocketLabel(r.property.pocket))}<br><span style="font-size:11px;color:var(--text-2)">${esc(r.property.raw_plot_number)}</span></td>
+        <td>${esc(pocketLabel(r.property.pocket))}<br><span style="font-size:11px;color:var(--text-2)">${esc(r.property.raw_plot_number)}</span>${r.taluka && r.taluka !== "Alipur" ? `<br><span class="src-tag">${esc(r.taluka)}</span>` : ""}</td>
         <td>${d.plot_area_sqm ? fmtNum(d.plot_area_sqm, 1) + " m²" : "—"}</td>
         <td>${d.plinth_area_sqm ? fmtNum(d.plinth_area_sqm, 1) + " m²" : "—"}</td>
         <td style="font-size:11px;color:var(--text-2)">${esc(r.registration_no)}</td>
