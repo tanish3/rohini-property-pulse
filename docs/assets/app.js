@@ -6,8 +6,12 @@
     meta: null,
     summary: null,
     registrations: null,
+    allMeta: null,
+    allRegistrations: null,
+    month: "",
     route: { name: "overview", params: {} },
   };
+  const MONTH_KEY = "rpp_month";
 
   // -------- DOM helpers --------
   const $ = (sel, el = document) => el.querySelector(sel);
@@ -112,9 +116,171 @@
       fetch("data/sector28-summary.json").then((r) => r.json()),
       fetch("data/registrations.json").then((r) => r.json()),
     ]);
-    state.meta = meta;
-    state.summary = summary;
-    state.registrations = reg.items;
+    state.allMeta = meta;
+    state.allRegistrations = reg.items;
+
+    let month = "";
+    try { month = sessionStorage.getItem(MONTH_KEY) || ""; } catch (e) { /* private mode */ }
+    if (month && !(meta.months || []).some((m) => m.id === month)) month = "";
+    applyMonth(month, { persist: false });
+    initMonthSelect();
+  }
+
+  // -------- Month selection --------
+  // The full history ships in registrations.json; selecting a month filters
+  // the items and recomputes the summary client-side, so every view (stats,
+  // maps, pocket cards, tables) stays consistent without extra requests.
+  function applyMonth(month, { persist = true } = {}) {
+    state.month = month || "";
+    if (persist) {
+      try { sessionStorage.setItem(MONTH_KEY, state.month); } catch (e) { /* ignore */ }
+    }
+    const all = state.allRegistrations || [];
+    const items = state.month ? all.filter((r) => r.month === state.month) : all;
+    state.registrations = items;
+    state.meta = buildMeta(items);
+    state.summary = summarize(items);
+    updatePeriodNote();
+  }
+
+  function buildMeta(items) {
+    const base = state.allMeta || {};
+    const dates = items
+      .map((r) => (r.registration_date || "").slice(0, 10))
+      .filter(Boolean)
+      .sort();
+    const articles = {};
+    const pockets = new Set();
+    for (const r of items) {
+      articles[r.article] = (articles[r.article] || 0) + 1;
+      pockets.add(r.property.pocket);
+    }
+    return {
+      ...base,
+      total_registrations: items.length,
+      unique_pockets: pockets.size,
+      date_from: dates[0] || null,
+      date_to: dates[dates.length - 1] || null,
+      articles,
+      selected_month: state.month || null,
+    };
+  }
+
+  function summarize(items) {
+    const pockets = {};
+    const blocks = {};
+    const articles = {};
+    const byDate = {};
+
+    for (const r of items) {
+      const pid = r.property.pocket;
+      const block = r.property.block;
+      const d = r.property.description || {};
+      if (!pockets[pid]) {
+        pockets[pid] = {
+          count: 0, articles: {}, plot_areas: [], plinth_areas: [],
+          floors: [], construction: {}, parking: {}, earliest: null, latest: null,
+        };
+      }
+      const p = pockets[pid];
+      p.count += 1;
+      p.articles[r.article] = (p.articles[r.article] || 0) + 1;
+      articles[r.article] = (articles[r.article] || 0) + 1;
+
+      if (!blocks[block]) blocks[block] = { count: 0, pockets: new Set() };
+      blocks[block].count += 1;
+      blocks[block].pockets.add(pid);
+
+      const day = (r.registration_date || "").slice(0, 10);
+      if (day) {
+        p.earliest = p.earliest && p.earliest < day ? p.earliest : day;
+        p.latest = p.latest && p.latest > day ? p.latest : day;
+        byDate[day] = (byDate[day] || 0) + 1;
+      }
+      if (d.plot_area_sqm != null) p.plot_areas.push(d.plot_area_sqm);
+      if (d.plinth_area_sqm != null) p.plinth_areas.push(d.plinth_area_sqm);
+      if (d.floors != null) p.floors.push(d.floors);
+      if (d.construction_type) {
+        p.construction[d.construction_type] = (p.construction[d.construction_type] || 0) + 1;
+      }
+      if (d.is_parking_present) {
+        p.parking[d.is_parking_present] = (p.parking[d.is_parking_present] || 0) + 1;
+      }
+    }
+
+    const avg = (xs) =>
+      xs.length ? Math.round((xs.reduce((a, b) => a + b, 0) / xs.length) * 100) / 100 : null;
+
+    const orderKey = (pid) => {
+      if (pid.startsWith("GH-")) return [2, parseInt(pid.slice(3), 10) || 0];
+      if (pid === "Unknown") return [9, 0];
+      const [block, n] = pid.split("-");
+      return [block === "A" ? 0 : 1, parseInt(n, 10) || 0];
+    };
+
+    const pocketsOut = {};
+    Object.keys(pockets)
+      .sort((a, b) => {
+        const [ga, na] = orderKey(a);
+        const [gb, nb] = orderKey(b);
+        return ga - gb || na - nb;
+      })
+      .forEach((pid) => {
+        const p = pockets[pid];
+        pocketsOut[pid] = {
+          count: p.count,
+          articles: p.articles,
+          avg_plot_area_sqm: avg(p.plot_areas),
+          avg_plinth_area_sqm: avg(p.plinth_areas),
+          avg_floors: avg(p.floors),
+          construction: p.construction,
+          parking: p.parking,
+          earliest: p.earliest,
+          latest: p.latest,
+        };
+      });
+
+    const blocksOut = {};
+    Object.keys(blocks).forEach((b) => {
+      blocksOut[b] = { count: blocks[b].count, pockets: Array.from(blocks[b].pockets).sort() };
+    });
+
+    const date_series = Object.keys(byDate)
+      .sort()
+      .map((d) => ({ date: d, count: byDate[d] }));
+
+    return { pockets: pocketsOut, articles, blocks: blocksOut, date_series };
+  }
+
+  function updatePeriodNote() {
+    const note = $("#period-note");
+    if (!note) return;
+    const months = (state.allMeta && state.allMeta.months) || [];
+    const label = state.month
+      ? (months.find((m) => m.id === state.month) || {}).label || state.month
+      : "All months";
+    const m = state.meta;
+    note.textContent = m
+      ? `${label} · ${m.total_registrations} registration${m.total_registrations === 1 ? "" : "s"}` +
+        (m.date_from ? ` · ${m.date_from} → ${m.date_to}` : "")
+      : label;
+  }
+
+  function initMonthSelect() {
+    const sel = $("#month-select");
+    if (!sel) return;
+    const months = (state.allMeta && state.allMeta.months) || [];
+    sel.innerHTML =
+      `<option value="">All months (${state.allMeta.total_registrations})</option>` +
+      months
+        .map((m) => `<option value="${esc(m.id)}">${esc(m.label)} (${m.count})</option>`)
+        .join("");
+    sel.value = state.month || "";
+    sel.addEventListener("change", () => {
+      applyMonth(sel.value);
+      render();
+      initFooter();
+    });
   }
 
   // -------- Views --------

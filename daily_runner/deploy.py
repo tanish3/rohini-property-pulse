@@ -91,11 +91,16 @@ def find_latest_csv(data_dir: Path) -> Optional[Path]:
 # --------------------------------------------------------------------------- #
 
 
-def process_csv_to_json(python: str, csv_path: Path | None = None) -> dict[str, Any]:
-    """Run `scripts/process_data.py` on the freshly scraped CSV.
+def process_csv_to_json(
+    python: str,
+    csv_path: Path | None = None,
+    all_csvs: Optional[list[Path]] = None,
+) -> dict[str, Any]:
+    """Run `scripts/process_data.py` over every known CSV.
 
-    The path is passed explicitly so a stale `rohini_sector28_*.csv` lying
-    around can never be mistaken for today's data.
+    Passing the full list keeps the site's month-by-month history intact
+    while today's window is refreshed (process_data dedupes by registration
+    number).
     """
     script = SCRIPTS_DIR / "process_data.py"
     if not script.exists():
@@ -103,7 +108,9 @@ def process_csv_to_json(python: str, csv_path: Path | None = None) -> dict[str, 
             f"{script} not found — is the daily_runner folder inside the project root?"
         )
     cmd = [python, str(script)]
-    if csv_path is not None:
+    if all_csvs:
+        cmd.extend(str(p) for p in all_csvs)
+    elif csv_path is not None:
         cmd.append(str(csv_path))
     _log(f"running process_data.py  (csv={csv_path}, cwd={REPO_ROOT})")
     out = _run(cmd)
@@ -284,7 +291,10 @@ def run_deploy(
 
     try:
         # ----- step 2: CSV → JSON ----- #
-        result["steps"]["process"] = process_csv_to_json(python, Path(csv_path))
+        all_csvs = sorted(data_dir.glob("rohini_sector28_*.csv"))
+        result["steps"]["process"] = process_csv_to_json(
+            python, Path(csv_path), all_csvs=all_csvs
+        )
 
         # ----- step 3: geojson (optional) ----- #
         if deploy_cfg.get("rebuild_geojson", False):

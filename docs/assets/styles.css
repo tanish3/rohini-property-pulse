@@ -754,3 +754,40 @@ html.modal-open, html.modal-open body { overflow: hidden; }
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
+
+/* === Period (month) selector === */
+.period-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 16px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 56px;
+  z-index: 40;
+}
+.period-bar label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+.period-bar select {
+  font: inherit;
+  font-size: 14px;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  color: var(--text);
+}
+.period-note {
+  font-size: 13px;
+  color: var(--text-2);
+}
+@media (min-width: 768px) {
+  .period-bar { padding: 10px 24px; top: 60px; }
+}

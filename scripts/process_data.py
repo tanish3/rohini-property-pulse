@@ -21,23 +21,34 @@ from typing import Any
 ROOT = Path(__file__).resolve().parent.parent
 
 
-def _pick_source_csv() -> Path:
-    """Newest data/rohini_sector28_*.csv, or an explicit CLI path."""
+def _pick_source_csvs() -> list[Path]:
+    """All data/rohini_sector28_*.csv, or explicit CLI paths/directories.
+
+    Every window ever scraped is merged (deduplicated by registration
+    number), so the site keeps the full history while the daily runner only
+    refreshes the current window.
+    """
     import sys
 
     if len(sys.argv) > 1:
-        return Path(sys.argv[1]).expanduser().resolve()
+        out: list[Path] = []
+        for arg in sys.argv[1:]:
+            p = Path(arg).expanduser()
+            if p.is_dir():
+                out.extend(sorted(p.glob("rohini_sector28_*.csv")))
+            else:
+                out.append(p.resolve())
+        if not out:
+            raise SystemExit(f"No CSV files matched: {sys.argv[1:]}")
+        return out
 
-    candidates = sorted(
-        ROOT.glob("data/rohini_sector28_*.csv"),
-        key=lambda p: p.stat().st_mtime,
-    )
+    candidates = sorted(ROOT.glob("data/rohini_sector28_*.csv"))
     if not candidates:
         raise SystemExit("No data/rohini_sector28_*.csv found — run the scraper first")
-    return candidates[-1]
+    return candidates
 
 
-SRC_CSV = _pick_source_csv()
+SRC_CSVS = _pick_source_csvs()
 OUT_DIR = ROOT / "docs" / "data"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -179,70 +190,88 @@ def infer_pocket(plot_number: str, desc: dict[str, Any]) -> tuple[str, str]:
 
 def load_rows() -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
-    with SRC_CSV.open(newline="", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        for r in reader:
-            article_raw = (r.get("article") or "").strip()
-            article_name, article_code = ARTICLE_MAP.get(
-                article_raw, (article_raw or "Unknown", None)
-            )
-            desc = parse_description(r.get("property_description") or "")
-            plot_number = (r.get("plot_number") or "").strip()
-            pocket_id, block = infer_pocket(plot_number, desc)
-            seller = first(r.get("seller_name"))
-            purchaser = first(r.get("purchaser_name"))
-            rows.append(
-                {
-                    "id": int(r["sno"]),
-                    "document_id": (r.get("document_id") or "").strip(),
-                    "registration_no": (r.get("registration_no") or "").strip(),
-                    "registration_date": parse_date(r.get("registration_date") or ""),
-                    "article": article_name,
-                    "article_raw": article_raw,
-                    "article_code": article_code,
-                    "registration_office": (r.get("registration_office") or "").strip(),
-                    "seller": {
-                        "name": seller,
-                        "address": first(r.get("seller_address")),
-                    },
-                    "purchaser": {
-                        "name": purchaser,
-                        "address": first(r.get("purchaser_address")),
-                    },
-                    "property": {
-                        "raw_plot_number": plot_number,
-                        "pocket": pocket_id,
-                        "block": block,
-                        "upic": (r.get("upic_number") or "").strip(),
-                        "property_id": (r.get("property_id") or "").strip(),
-                        "village": (r.get("village_name") or "").strip(),
-                        "description": {
-                            "plot_area_sqm": num(desc.get("plot area")),
-                            "plinth_area_sqm": num(desc.get("total plinth area/far of the property"))
-                            or num(desc.get("total plinth area")),
-                            "plinth_area_transferred_sqm": num(
-                                desc.get("plinth area under released / transfer")
-                            ),
-                            "land_share_transferred_sqm": num(
-                                desc.get("land share under transfer")
-                            ),
-                            "land_share_transferred_pct": num(
-                                desc.get("land share under trasnfer in percentage")
-                            ),
-                            "floors": num(desc.get("number of floors (1 to 4)"))
-                            or num(desc.get("number of floors")),
-                            "floor_label": first(desc.get("floor")),
-                            "floor_number": num(desc.get("floor number")),
-                            "construction_type": first(desc.get("construction type")),
-                            "category_of_locality": first(desc.get("category of the locality")),
-                            "stilt_parking_sqm": num(desc.get("stilt parking area")),
-                            "is_parking_present": first(desc.get("is parking present")),
-                            "type_of_flats": first(desc.get("type of flats")),
-                        },
-                    },
-                }
-            )
+    seen: set[str] = set()
+    for src in SRC_CSVS:
+        with src.open(newline="", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for r in reader:
+                key = (
+                    (r.get("registration_no") or "").strip()
+                    or f"{r.get('document_id')}|{r.get('registration_date')}|{r.get('plot_number')}"
+                )
+                if key in seen:
+                    continue
+                seen.add(key)
+                rows.append(_row_from_csv(r))
+
+    rows.sort(key=lambda r: r["registration_date"])
+    for i, row in enumerate(rows):
+        row["id"] = i + 1
     return rows
+
+
+def _row_from_csv(r: dict[str, Any]) -> dict[str, Any]:
+    article_raw = (r.get("article") or "").strip()
+    article_name, article_code = ARTICLE_MAP.get(
+        article_raw, (article_raw or "Unknown", None)
+    )
+    desc = parse_description(r.get("property_description") or "")
+    plot_number = (r.get("plot_number") or "").strip()
+    pocket_id, block = infer_pocket(plot_number, desc)
+    seller = first(r.get("seller_name"))
+    purchaser = first(r.get("purchaser_name"))
+    registered = parse_date(r.get("registration_date") or "")
+    return {
+        "id": 0,
+        "document_id": (r.get("document_id") or "").strip(),
+        "registration_no": (r.get("registration_no") or "").strip(),
+        "registration_date": registered,
+        # Calendar month used by the site's month selector.
+        "month": registered[:7],
+        "article": article_name,
+        "article_raw": article_raw,
+        "article_code": article_code,
+        "registration_office": (r.get("registration_office") or "").strip(),
+        "seller": {
+            "name": seller,
+            "address": first(r.get("seller_address")),
+        },
+        "purchaser": {
+            "name": purchaser,
+            "address": first(r.get("purchaser_address")),
+        },
+        "property": {
+            "raw_plot_number": plot_number,
+            "pocket": pocket_id,
+            "block": block,
+            "upic": (r.get("upic_number") or "").strip(),
+            "property_id": (r.get("property_id") or "").strip(),
+            "village": (r.get("village_name") or "").strip(),
+            "description": {
+                "plot_area_sqm": num(desc.get("plot area")),
+                "plinth_area_sqm": num(desc.get("total plinth area/far of the property"))
+                or num(desc.get("total plinth area")),
+                "plinth_area_transferred_sqm": num(
+                    desc.get("plinth area under released / transfer")
+                ),
+                "land_share_transferred_sqm": num(
+                    desc.get("land share under transfer")
+                ),
+                "land_share_transferred_pct": num(
+                    desc.get("land share under trasnfer in percentage")
+                ),
+                "floors": num(desc.get("number of floors (1 to 4)"))
+                or num(desc.get("number of floors")),
+                "floor_label": first(desc.get("floor")),
+                "floor_number": num(desc.get("floor number")),
+                "construction_type": first(desc.get("construction type")),
+                "category_of_locality": first(desc.get("category of the locality")),
+                "stilt_parking_sqm": num(desc.get("stilt parking area")),
+                "is_parking_present": first(desc.get("is parking present")),
+                "type_of_flats": first(desc.get("type of flats")),
+            },
+        },
+    }
 
 
 def aggregate(rows: list[dict[str, Any]]) -> dict[str, Any]:
@@ -335,6 +364,32 @@ def pocket_order_key(pid: str) -> tuple:
     return (0 if block == "A" else 1, int(n))
 
 
+def _month_meta(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Per-calendar-month totals for the site's month selector."""
+    buckets: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for r in rows:
+        if r.get("month"):
+            buckets[r["month"]].append(r)
+
+    out: list[dict[str, Any]] = []
+    for mid in sorted(buckets):
+        mrows = buckets[mid]
+        dates = [r["registration_date"][:10] for r in mrows]
+        articles = Counter(r["article"] for r in mrows)
+        out.append(
+            {
+                "id": mid,
+                "label": datetime.strptime(mid, "%Y-%m").strftime("%b %Y"),
+                "count": len(mrows),
+                "date_from": min(dates),
+                "date_to": max(dates),
+                "articles": dict(articles),
+                "unique_pockets": len({r["property"]["pocket"] for r in mrows}),
+            }
+        )
+    return out
+
+
 def main() -> None:
     rows = load_rows()
     rows.sort(key=lambda r: r["registration_date"])
@@ -349,14 +404,17 @@ def main() -> None:
     )
 
     dates = [r["registration_date"][:10] for r in rows]
+    months = _month_meta(rows)
     meta = {
-        "source_csv": SRC_CSV.name,
+        "source_csv": ", ".join(p.name for p in SRC_CSVS) if len(SRC_CSVS) <= 3 else f"{len(SRC_CSVS)} CSV files",
+        "source_csvs": [p.name for p in SRC_CSVS],
         "generated_at": datetime.now().isoformat(timespec="seconds"),
         "date_from": min(dates) if dates else None,
         "date_to": max(dates) if dates else None,
         "total_registrations": len(rows),
         "unique_pockets": len({r["property"]["pocket"] for r in rows}),
         "articles": summary["articles"],
+        "months": months,
         "sector": "Rohini Sector-28",
         "taluka": "Alipur",
         "district": "North",
@@ -371,7 +429,8 @@ def main() -> None:
     (OUT_DIR / "meta.json").write_text(
         json.dumps(meta, ensure_ascii=False, indent=2)
     )
-    print(f"Wrote {len(rows)} rows to {OUT_DIR}")
+    print(f"Wrote {len(rows)} rows from {len(SRC_CSVS)} CSV(s) to {OUT_DIR}")
+    print(f"Months: {[(m['id'], m['count']) for m in months]}")
     print(f"Pockets: {sorted(summary['pockets'].keys())}")
     print(f"Articles: {summary['articles']}")
 

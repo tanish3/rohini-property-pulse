@@ -39,6 +39,11 @@ from typing import Any, Callable, Iterator, Optional
 # Local imports — kept inside the same folder to keep the module
 # self-contained.
 from captcha_solver import CaptchaSolver
+from session_store import (
+    load as load_session,
+    save_from_context as save_session,
+    as_playwright_cookie,
+)
 
 # Relative paths in config.json are resolved against this folder so a cron
 # job works regardless of its working directory.
@@ -1112,18 +1117,26 @@ def write_csv(
     out_dir: Path,
     date_from: str,
     date_to: str,
+    monthly: bool = False,
 ) -> Path:
-    """Write a date-stamped CSV. Returns the path."""
+    """Write a date-stamped CSV. Returns the path.
+
+    monthly=True produces a stable per-month snapshot
+    (rohini_sector28_<YYYY-MM>.csv) that today's run overwrites, so a daily
+    cron does not accumulate hundreds of sliding-window files.
+    """
     if not rows:
         raise RuntimeError("no rows to export")
     out_dir.mkdir(parents=True, exist_ok=True)
-    # Match the project-wide naming (ISO dates) so process_data's
-    # source_csv metadata reads cleanly.
+
     def _iso(d: str) -> str:
         dd, mm, yyyy = d.split("-")
         return f"{yyyy}-{mm}-{dd}"
 
-    out = out_dir / f"rohini_sector28_{_iso(date_from)}_to_{_iso(date_to)}.csv"
+    if monthly:
+        out = out_dir / f"rohini_sector28_{_iso(date_to)[:7]}.csv"
+    else:
+        out = out_dir / f"rohini_sector28_{_iso(date_from)}_to_{_iso(date_to)}.csv"
     with out.open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
         w.writeheader()
@@ -1208,6 +1221,20 @@ def run_full_scrape(
         extra_args=browser.get("args", ["--start-maximized"]),
     ) as ctx:
         page = _active_page(ctx)
+
+        # Reuse the stored session cookie so a cron run normally never hits
+        # the captcha/OTP flow. _already_logged_in() validates it below; if
+        # it's dead, the normal login path runs and overwrites the store.
+        stored = load_session()
+        if stored:
+            try:
+                ctx.add_cookies([as_playwright_cookie(stored)])
+                sys.stderr.write("[daily-runner] injected stored NGDRS session\n")
+            except Exception as exc:  # noqa: BLE001
+                sys.stderr.write(
+                    f"[daily-runner] could not inject stored session: {exc!r}\n"
+                )
+
         page.goto(URLS["base"], wait_until="domcontentloaded", timeout=TIMING_MS["page_load"])
         try:
             captcha_image = login(
@@ -1222,6 +1249,7 @@ def run_full_scrape(
                     (config.get("verification") or {}).get("skip_get_otp", False)
                 ),
             )
+            save_session(ctx)
             navigate_to_search(page)
             params = fill_search_form(
                 page,
@@ -1249,6 +1277,7 @@ def run_full_scrape(
             out_dir=csv_dir,
             date_from=params.get("date_from", date.today().strftime("%d-%m-%Y")),
             date_to=params.get("date_to", date.today().strftime("%d-%m-%Y")),
+            monthly=True,
         )
 
     finished_at = datetime.now().isoformat(timespec="seconds")
