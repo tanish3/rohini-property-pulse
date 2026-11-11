@@ -1,19 +1,19 @@
 {
-  "source_csv": "rohini_sector28_bawana_2026-06-19_to_2026-11-11.csv, rohini_sector38_bawana_2026-06-19_to_2026-11-11.csv",
+  "source_csv": "rohini_sector28_bawana_2026-06-19_to_2026-11-11.csv, rohini_sector28_bawana_2026-11.csv",
   "source_csvs": [
     "rohini_sector28_bawana_2026-06-19_to_2026-11-11.csv",
-    "rohini_sector38_bawana_2026-06-19_to_2026-11-11.csv"
+    "rohini_sector28_bawana_2026-11.csv"
   ],
-  "generated_at": "2026-11-11T16:51:00",
+  "generated_at": "2026-11-11T16:56:30",
   "date_from": "2026-09-23",
   "date_to": "2026-11-11",
-  "total_registrations": 219,
-  "unique_pockets": 16,
+  "total_registrations": 210,
+  "unique_pockets": 15,
   "articles": {
-    "Sale Deed": 205,
-    "Sale Agreement": 7,
+    "Sale Deed": 199,
+    "Sale Agreement": 5,
     "Gift Deed": 2,
-    "Relinquishment Deed": 5
+    "Relinquishment Deed": 4
   },
   "months": [
     {
@@ -30,28 +30,28 @@
     {
       "id": "2026-10",
       "label": "Oct 2026",
-      "count": 165,
+      "count": 157,
       "date_from": "2026-10-01",
       "date_to": "2026-10-31",
       "articles": {
-        "Sale Deed": 153,
-        "Sale Agreement": 5,
+        "Sale Deed": 148,
+        "Sale Agreement": 3,
         "Gift Deed": 2,
-        "Relinquishment Deed": 5
+        "Relinquishment Deed": 4
       },
-      "unique_pockets": 14
+      "unique_pockets": 13
     },
     {
       "id": "2026-11",
       "label": "Nov 2026",
-      "count": 32,
+      "count": 31,
       "date_from": "2026-11-04",
       "date_to": "2026-11-11",
       "articles": {
-        "Sale Deed": 30,
+        "Sale Deed": 29,
         "Sale Agreement": 2
       },
-      "unique_pockets": 11
+      "unique_pockets": 10
     }
   ],
   "sectors": [
@@ -67,28 +67,16 @@
         "Gift Deed": 2,
         "Relinquishment Deed": 4
       }
-    },
-    {
-      "id": "38",
-      "label": "Sector 38",
-      "count": 9,
-      "date_from": "2026-10-14",
-      "date_to": "2026-11-07",
-      "articles": {
-        "Sale Deed": 6,
-        "Sale Agreement": 2,
-        "Relinquishment Deed": 1
-      }
     }
   ],
   "source_offices": [
     {
       "district": "Outer North",
       "taluka": "Bawana",
-      "count": 219
+      "count": 210
     }
   ],
-  "sector": "Rohini Sectors 28–38",
+  "sector": "Rohini Sector-28",
   "taluka": "Bawana",
   "district": "Outer North"
 }
