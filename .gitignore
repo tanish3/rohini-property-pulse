@@ -27,3 +27,6 @@ data/state/
 
 # Generated UI data is committed (consumed by docs/ static site)
 # but raw scrape outputs stay local.
+
+# Local-only archive of the pre-Bawana (SR Badli / Alipur) scrape
+data/archive_*/
