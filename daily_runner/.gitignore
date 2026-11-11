@@ -1,0 +1,29 @@
+# Runtime data — never commit
+data/
+*.log
+!data/.gitkeep
+
+# Browser profile (created by Playwright)
+chrome-user-data/
+.user-data/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Real config (use config.example.json for the template)
+# config.json holds live NGDRS credentials — keep it local.
+config.json
+
+# The captcha screenshot is committed to data/screenshots/ ONLY when
+# running with the default paths. If you redirect screenshot_dir to a
+# /tmp path on Lambda this won't matter.

@@ -1,7 +1,7 @@
 """Navigate from the welcome screen to the e-Search page."""
 from __future__ import annotations
 
-from playwright.sync_api import BrowserContext, Page
+from playwright.sync_api import BrowserContext, Page, TimeoutError as PlaywrightTimeoutError
 
 from .browser import active_page, log, screenshot
 from .config import CONFIG
@@ -18,11 +18,13 @@ def navigate_to_search(ctx: BrowserContext, state: State) -> None:
     page.wait_for_timeout(CONFIG.timing.short_ms)
 
     # If the sidebar is collapsed, click the hamburger first.
-    if page.locator(CONFIG.sel.search_subitem).count() == 0:
+    try:
+        click_when_ready(page, CONFIG.sel.esearch_link, timeout_ms=3000)
+    except PlaywrightTimeoutError:
         click_when_ready(page, CONFIG.sel.toggle_nav)
         page.wait_for_timeout(CONFIG.timing.short_ms)
+        click_when_ready(page, CONFIG.sel.esearch_link)
 
-    click_when_ready(page, CONFIG.sel.esearch_link)
     page.wait_for_timeout(CONFIG.timing.short_ms)
 
     # E-Search expands inline; click the nested "Search" item.

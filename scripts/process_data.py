@@ -19,7 +19,25 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parent.parent
-SRC_CSV = ROOT / "data" / "rohini_sector28_2026-06-19_to_2026-07-19.csv"
+
+
+def _pick_source_csv() -> Path:
+    """Newest data/rohini_sector28_*.csv, or an explicit CLI path."""
+    import sys
+
+    if len(sys.argv) > 1:
+        return Path(sys.argv[1]).expanduser().resolve()
+
+    candidates = sorted(
+        ROOT.glob("data/rohini_sector28_*.csv"),
+        key=lambda p: p.stat().st_mtime,
+    )
+    if not candidates:
+        raise SystemExit("No data/rohini_sector28_*.csv found — run the scraper first")
+    return candidates[-1]
+
+
+SRC_CSV = _pick_source_csv()
 OUT_DIR = ROOT / "docs" / "data"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 

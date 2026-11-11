@@ -101,9 +101,37 @@ def _normalize_row(tr, idx: int) -> dict[str, Any]:
 
 
 def _select_all_rows(page: Page) -> None:
-    sel = page.locator(CONFIG.sel.page_length).first
-    sel.wait_for(state="visible", timeout=CONFIG.timing.page_load_ms)
-    sel.select_option(value="-1")
+    candidates = page.locator(
+        "#tableparty_length, select[name$='_length'], .dataTables_length select"
+    )
+    sel = None
+    for i in range(candidates.count()):
+        cand = candidates.nth(i)
+        if cand.is_visible():
+            sel = cand
+            break
+
+    if sel is not None:
+        try:
+            sel.select_option(value="-1")
+        except Exception:  # noqa: BLE001
+            sel.select_option(label="All")
+        page.wait_for_timeout(CONFIG.timing.long_ms)
+        return
+
+    # Newer portal builds use a custom pagination widget. DataTables keeps
+    # every row in the DOM, so asking its API for "all" is enough — and if
+    # the table isn't a DataTable at all, scraping proceeds as-is.
+    page.evaluate(
+        """() => {
+            try {
+                if (window.jQuery && jQuery.fn.dataTable &&
+                    jQuery.fn.dataTable.isDataTable('#tableparty')) {
+                    jQuery('#tableparty').DataTable().page.len(-1).draw(false);
+                }
+            } catch (e) { /* ignore */ }
+        }"""
+    )
     page.wait_for_timeout(CONFIG.timing.long_ms)
 
 

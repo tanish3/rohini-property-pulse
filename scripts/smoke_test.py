@@ -22,11 +22,22 @@ errors = []
 
 def login(page):
     page.goto(BASE + "/", wait_until="domcontentloaded")
-    page.wait_for_selector("#login-username", timeout=5000)
-    page.fill("#login-username", "admin")
-    page.fill("#login-password", "rohini2026")
-    page.click("button.login-submit")
-    page.wait_for_selector("#app-root:not([hidden])", timeout=5000)
+    page.wait_for_selector("#login-username", timeout=10000)
+
+    last_err = ""
+    for attempt in range(1, 4):
+        page.fill("#login-username", "admin")
+        page.fill("#login-password", "rohini2026")
+        page.click("button.login-submit")
+        try:
+            page.wait_for_selector("#login-gate", state="detached", timeout=8000)
+            return
+        except Exception:
+            if page.locator("#login-error").count():
+                last_err = (page.locator("#login-error").inner_text() or "").strip()
+            # The gate can be re-rendered between fill and submit; retry.
+            page.wait_for_timeout(300)
+    raise RuntimeError(f"login failed after 3 attempts: {last_err or 'gate did not detach'}")
 
 
 with sync_playwright() as p:
@@ -54,8 +65,21 @@ with sync_playwright() as p:
                 if name in ("overview", "sector"):
                     errors.append(f"{name}: leaflet container missing ({e})")
                     print(f"  ✗ {e}")
-            # Check that the tile layer loaded some images
-            tile_count = page.evaluate("document.querySelectorAll('.leaflet-tile-loaded').length")
+            # Wait for Leaflet tiles to load (networkidle fires before the
+            # tile <img>s finish decoding on hash-route changes).
+            tile_count = 0
+            if name in ("overview", "sector"):
+                for _ in range(12):
+                    tile_count = page.evaluate(
+                        "document.querySelectorAll('.leaflet-tile-loaded').length"
+                    )
+                    if tile_count:
+                        break
+                    page.wait_for_timeout(1000)
+            else:
+                tile_count = page.evaluate(
+                    "document.querySelectorAll('.leaflet-tile-loaded').length"
+                )
             print(f"  tiles loaded: {tile_count}")
             if tile_count == 0 and name in ("overview", "sector"):
                 errors.append(f"{name}: no OSM tiles loaded")

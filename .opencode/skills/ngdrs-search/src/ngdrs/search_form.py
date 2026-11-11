@@ -56,8 +56,11 @@ def fill_form(
     search_by: str | None = None,
 ) -> dict[str, Any]:
     if state.is_done("form_filled"):
-        log("search_form: already done; skipping")
-        return state.search_params
+        page = active_page(ctx)
+        if "srosearch" in page.url:
+            log("search_form: already done; skipping")
+            return state.search_params
+        log("search_form: state says filled but the page is gone; refilling")
 
     page = active_page(ctx)
     if "srosearch" not in page.url:
@@ -96,11 +99,29 @@ def fill_form(
 
 
 def submit_search(ctx: BrowserContext, state: State) -> None:
-    if state.is_done("search_submitted"):
-        log("search_form: already submitted; skipping")
-        return
     page = active_page(ctx)
-    page.locator(CONFIG.sel.search_btn).first.click()
+    if state.is_done("search_submitted"):
+        table = page.locator(CONFIG.sel.table).first
+        if table.count() and table.is_visible():
+            log("search_form: already submitted; skipping")
+            return
+        log("search_form: state says submitted but no results table; resubmitting")
+    # The page contains more than one "Search" button (some hidden), so click
+    # the first visible one whose label is exactly "Search".
+    clicked = False
+    candidates = page.locator("button:has-text('Search'), input[type='submit'][value*='Search' i]")
+    for i in range(candidates.count()):
+        btn = candidates.nth(i)
+        try:
+            label = (btn.inner_text() or btn.get_attribute("value") or "").strip().lower()
+        except Exception:  # noqa: BLE001
+            label = ""
+        if btn.is_visible() and label == "search":
+            btn.click()
+            clicked = True
+            break
+    if not clicked:
+        raise RuntimeError("Visible 'Search' submit button not found on the e-Search form")
     page.wait_for_timeout(CONFIG.timing.long_ms)
     page.locator(CONFIG.sel.table).first.wait_for(
         state="visible", timeout=CONFIG.timing.page_load_ms

@@ -1,0 +1,80 @@
+{
+  "_value_source_map": {
+    "ngdrs.username": "REPLACE \u2014 your citizen login at ngdrs.delhi.gov.in (or set $NGD_USER)",
+    "ngdrs.password": "REPLACE \u2014 your citizen password (or set $NGD_PASS)",
+    "ngdrs.headless": "set to true for cron/lambda; false to see the browser",
+    "ngdrs.channel": "chrome = system Chrome; chromium = bundled (for Lambda)",
+    "ngdrs.days_back": "1 for daily, 7 for weekly, 30 for monthly",
+    "ai.enabled": "false until you wire an API key; then true = Claude reads the captcha",
+    "ai.api_key": "REPLACE \u2014 your Anthropic key (or set $ANTHROPIC_API_KEY)",
+    "deploy.git_user": "your GitHub username: tanish3",
+    "deploy.git_email": "auto-filled from `git log`: tanishmittal@example.com (verify this isn't a placeholder)",
+    "deploy.commit_message_template": "pattern used when --update-site commits the new data"
+  },
+  "ngdrs": {
+    "username": "${NGD_USER}",
+    "password": "${NGD_PASS}",
+    "headless": true,
+    "channel": "chrome",
+    "days_back": 30,
+    "search_by": "Property Details",
+    "district": "North",
+    "taluka": "Alipur",
+    "village": "Rohini Sector-28",
+    "attribute": "Plot Number"
+  },
+  "ai": {
+    "enabled": false,
+    "provider": "anthropic",
+    "api_key": "${ANTHROPIC_API_KEY}",
+    "model": "claude-sonnet-4-5",
+    "max_tokens": 64,
+    "fallback_on_failure": true
+  },
+  "verification": {
+    "_comment_solver": "terminal = prompt in this terminal (best for local head mode); file = write marker + wait for value file (best for cron/lambda)",
+    "solver": "file",
+    "screenshot_on_captcha": true,
+    "share_screenshot_path": true,
+    "share_screenshot_base64": true,
+    "input_timeout_seconds": 300,
+    "poll_interval_seconds": 1.0,
+    "skip_get_otp": true,
+    "image_open_cmd": null,
+    "otp_command": null
+  },
+  "paths": {
+    "screenshot_dir": "data/screenshots",
+    "input_dir": "data/state/inputs",
+    "state_file": "data/state/workflow_state.json",
+    "raw_dir": "data/raw",
+    "csv_dir": "../data",
+    "user_data_dir": "../.opencode/skills/ngdrs-search/.chrome-profile"
+  },
+  "browser": {
+    "user_data_dir": "data/user_data",
+    "viewport_width": 1440,
+    "viewport_height": 900,
+    "channel": "chrome",
+    "args": [
+      "--start-maximized",
+      "--no-sandbox",
+      "--disable-dev-shm-usage"
+    ]
+  },
+  "logging": {
+    "level": "INFO",
+    "log_file": "data/state/last_run.json"
+  },
+  "deploy": {
+    "_comment_1": "Auto-filled from this repo's git config + your GitHub username. The runner runs deploy_site.py which uses these for the commit author.",
+    "_comment_2": "If tanishmittal@example.com is a placeholder, set your real email here or in `git config user.email`.",
+    "enabled": true,
+    "rebuild_geojson": false,
+    "force_geojson": false,
+    "pages_build_timeout_s": 180,
+    "git_user": "tanish3",
+    "git_email": "tanishmittal@example.com",
+    "commit_message_template": "data: daily scrape {date} ({rows} rows)"
+  }
+}

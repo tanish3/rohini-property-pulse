@@ -1,0 +1,17 @@
+# Runtime dependencies for the self-contained daily NGDRS scraper.
+# This is intentionally separate from the ngdrs skill's requirements
+# because the daily runner has zero dependencies on the skill.
+
+# Browser automation
+playwright>=1.45
+
+# Stealth plugin — patches Playwright's automation fingerprints so the
+# NGDRS site doesn't detect us as a bot (it checks navigator.webdriver,
+# missing window.chrome, etc. and refuses to issue the OTP)
+playwright-stealth>=1.0.0
+# The stealth plugin depends on these:
+# (auto-installed but pinned here for clarity)
+# pyee>=9.0.0
+
+# AI captcha solver (optional — only required when ai.enabled=true)
+anthropic>=0.40

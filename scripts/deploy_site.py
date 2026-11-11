@@ -8,7 +8,7 @@ Reads GH_TOKEN / uses `gh auth token` for auth. Exits 0 on success, non-zero on
 any failure (with a clear message).
 
 Steps (all idempotent / deterministic):
-  1. Stage docs/data/*.json, docs/data/*.geojson, and data/*.csv
+  1. Stage docs/ (site + data) and the latest data/*.csv
   2. Bail if there's nothing to commit (already up to date)
   3. Commit with the provided message (or default "data refresh YYYY-MM-DD")
   4. Push to origin/main
@@ -61,11 +61,12 @@ def has_changes_to_commit() -> bool:
         ["git", "status", "--porcelain"],
         cwd=ROOT, check=True, capture_output=True, text=True,
     )
-    # Only count docs/data and the source CSV (not the persistent .cache)
+    # Count the whole site (docs/) plus the source CSV — UI fixes must
+    # ship together with the data refresh. The persistent .cache is ignored.
     tracked = []
     for line in out.stdout.splitlines():
         path = line[3:].strip().strip('"')
-        if path.startswith("docs/data/") or path.startswith("data/") and path.endswith(".csv"):
+        if path.startswith("docs/") or (path.startswith("data/") and path.endswith(".csv")):
             tracked.append(line)
     return bool(tracked)
 
@@ -80,7 +81,7 @@ def main() -> int:
         return 2
 
     if not has_changes_to_commit():
-        print("No docs/data or data/*.csv changes to commit. Site already up to date.")
+        print("No docs/ or data/*.csv changes to commit. Site already up to date.")
         # Still verify the live build is healthy
         try:
             owner = get_repo_owner()
@@ -92,7 +93,7 @@ def main() -> int:
         return 0
 
     print("=== Staging changes ===")
-    run(["git", "add", "docs/data/"])
+    run(["git", "add", "docs/"])
     # Also stage the freshly exported CSV (data/*.csv is git-ignored, so use -f)
     csvs = list((ROOT / "data").glob("rohini_sector28_*.csv"))
     if csvs:

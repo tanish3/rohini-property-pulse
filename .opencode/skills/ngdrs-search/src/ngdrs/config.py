@@ -53,30 +53,30 @@ class Paths:
 
 @dataclass(frozen=True)
 class Selectors:
-    # login form
-    username: str = "input[placeholder='Enter Username']"
-    password: str = "input[placeholder='Enter Password']"
-    captcha: str = "input[placeholder='Enter Captcha']"
-    captcha_img: str = "img[alt*='aptcha' i], img[src*='aptcha' i], #captcha_image"
-    get_otp: str = "button:has-text('Get OTP')"
-    otp: str = "input[placeholder='Enter OTP']"
-    login_btn: str = "button:has-text('Login'):not(:has-text('Citizen'))"
+    # login form (IDs first — the portal dropped placeholder attributes)
+    username: str = "#username, input[placeholder='Enter Username']"
+    password: str = "#password, input[placeholder='Enter Password']"
+    captcha: str = "#captcha, input[placeholder='Enter Captcha']"
+    captcha_img: str = "#captcha_image, img[alt*='aptcha' i], img[src*='aptcha' i]"
+    get_otp: str = "#btnotp, button:has-text('Get OTP')"
+    otp: str = "#otp, input[placeholder='Enter OTP']"
+    login_btn: str = "#btnSubmit, button:has-text('Login'):not(:has-text('Citizen'))"
 
     # navigation
     toggle_nav: str = "button[aria-label*='oggle' i], .navbar-toggle, button:has-text('Toggle navigation')"
-    esearch_link: str = "a:has-text('E-Search')"
-    search_subitem: str = "a:has-text('Search')"
+    esearch_link: str = "a[href*='TRSearch/searchindex'], a:has-text('E-Search')"
+    search_subitem: str = "a[href*='srosearch'], a:text-is('Search')"
 
     # search form
     search_by: str = "select[name*='Search' i]:not([name*='table' i])"
     district: str = "select[name*='district_id' i]"
-    date_from: str = "input[placeholder='Search For Date']"
-    date_to: str = "input[placeholder='To']"
+    date_from: str = "#fromdate, input[placeholder='Search For Date']"
+    date_to: str = "#todate, input[placeholder='To']"
     taluka: str = "select[name*='taluka_id' i]"
     village: str = "select[name*='village_id' i]"
     attribute: str = "select[name*='attribute_id' i]"
     attribute_value: str = "input[placeholder='Plot']"
-    search_btn: str = "button:has-text('Search')"
+    search_btn: str = "#btnsearch2, button:has-text('Search')"
 
     # results
     table: str = "#tableparty"
