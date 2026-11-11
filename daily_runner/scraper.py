@@ -1050,9 +1050,11 @@ def _scrape_rows(page) -> list[dict[str, Any]]:
             if not m:
                 continue
             name, role, addr = m.group(1).strip(), m.group(2).lower(), m.group(3).strip()
-            if "seller" in role:
+            # NGDRS labels the first party "ONE PART" in certificate-of-sale
+            # and similar deeds, so map those roles onto seller/purchaser.
+            if "seller" in role or "one part" in role or "first part" in role:
                 seller_name, seller_addr = name, addr
-            elif "purchaser" in role:
+            elif "purchaser" in role or "other part" in role or "second part" in role:
                 purchaser_name, purchaser_addr = name, addr
 
         village = prop_desc = plot_no = upic = ""
