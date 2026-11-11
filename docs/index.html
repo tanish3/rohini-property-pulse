@@ -5,64 +5,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#1e3a8a" />
   <title>Rohini Property Pulse</title>
-  <meta name="description" content="Property registration activity across Rohini sectors. Drill from sector → pocket → transaction." />
+  <meta name="description" content="Property registration activity across Rohini sectors 18–38. Compare sectors, drill into Sector 28 pockets and read individual transactions." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231e3a8a'/%3E%3Cpath d='M14 38 L32 20 L50 38 L50 52 L14 52 Z' fill='%23fbbf24'/%3E%3C/svg%3E" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="assets/styles.css?v=7" />
 </head>
 <body>
   <div id="app-root" hidden>
-  <header class="topbar">
-    <a href="#/" class="brand" aria-label="Rohini Property Pulse home">
-      <span class="brand-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="24" height="24"><path d="M3 11 L12 3 L21 11 L21 21 L14 21 L14 14 L10 14 L10 21 L3 21 Z" fill="currentColor"/></svg>
-      </span>
-      <span class="brand-text">
-        <span class="brand-name">Rohini Property Pulse</span>
-        <span class="brand-sub" id="brand-sub">NGDRS · Citizen e-Search</span>
-      </span>
-    </a>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
-      <span></span><span></span><span></span>
-    </button>
-    <nav id="primary-nav" class="primary-nav" aria-label="Primary">
-      <a href="#/" data-nav="overview">Overview</a>
-      <a href="#/sector/28" data-nav="sector">Sector 28</a>
-      <a href="#/sector/28/all" data-nav="list">All transactions</a>
-      <a href="#" id="signout-link" role="button">Sign out</a>
-    </nav>
-  </header>
+  <div class="chrome">
+    <header class="topbar">
+      <a href="#/" class="brand" aria-label="Rohini Property Pulse home">
+        <span class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="24" height="24"><path d="M3 11 L12 3 L21 11 L21 21 L14 21 L14 14 L10 14 L10 21 L3 21 Z" fill="currentColor"/></svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">Rohini Property Pulse</span>
+          <span class="brand-sub">Property registrations · Delhi</span>
+        </span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+        <a href="#/" data-nav="overview">Overview</a>
+        <a href="#/sector/28" data-nav="sector">Sector 28</a>
+        <a href="#/transactions" data-nav="list">Transactions</a>
+        <a href="#/about" data-nav="about">How to read this</a>
+        <a href="#" id="signout-link" role="button">Sign out</a>
+      </nav>
+    </header>
 
-  <div class="period-bar">
-    <label for="sector-select">Sector</label>
-    <select id="sector-select" aria-label="Filter data by sector">
-      <option value="">All sectors</option>
-    </select>
-    <label for="month-select">Period</label>
-    <select id="month-select" aria-label="Filter data by month">
-      <option value="">All months</option>
-    </select>
-    <span class="period-note" id="period-note"></span>
+    <div class="period-bar">
+      <label class="lbl" for="sector-select">Sector</label>
+      <select id="sector-select" aria-label="Filter by sector">
+        <option value="">All sectors</option>
+      </select>
+      <label class="lbl" for="month-select">Period</label>
+      <select id="month-select" aria-label="Filter by month">
+        <option value="">All months</option>
+      </select>
+      <span class="period-note" id="period-note"></span>
+    </div>
   </div>
 
   <div id="breadcrumbs" class="breadcrumbs" aria-label="Breadcrumb"></div>
 
-  <main id="view" class="view" aria-live="polite">
+  <main id="view" class="view">
     <div class="loading">Loading…</div>
   </main>
 
   <footer class="site-footer">
     <div>
-      Data source: <a href="https://ngdrs.delhi.gov.in" target="_blank" rel="noopener">NGDRS Delhi</a>
-      · Citizen e-Search · Scraper repo: <span>Rohini_prop_scrape</span>
+      Source: <a href="https://ngdrs.delhi.gov.in" target="_blank" rel="noopener">NGDRS Delhi, Citizen e-Search</a>.
+      Not an official record. Verify with the Sub-Registrar's office.
     </div>
     <div id="footer-meta" class="footer-meta"></div>
   </footer>
   </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script src="assets/auth.js" defer></script>
-  <script src="assets/maps.js" defer></script>
-  <script src="assets/app.js" defer></script>
+  <script src="assets/auth.js?v=7" defer></script>
+  <script src="assets/maps.js?v=12" defer></script>
+  <script src="assets/app.js?v=8" defer></script>
 </body>
 </html>

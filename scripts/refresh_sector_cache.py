@@ -18,22 +18,38 @@ ROOT = Path(__file__).resolve().parent.parent
 CACHE = ROOT / ".cache" / "nominatim"
 CACHE.mkdir(parents=True, exist_ok=True)
 
-# Rohini has sectors 1-30, plus 35-38 (some are skipped).
-SECTORS = list(range(1, 31)) + [35, 36, 37, 38]
+# Rohini has sectors 1-38 (39-41 are outside the scraped set).
+SECTORS = list(range(1, 39))
 
 UA = "rohini-property-pulse/1.0 (https://github.com/tanish3/rohini-property-pulse)"
 
+QUERIES = [
+    "Sector {n}, Rohini, Delhi",
+    "Sector {n}, Rohini, Narela, Delhi",
+    "Sector {n} Rohini Delhi",
+]
+
 def fetch(n: int) -> list | None:
-    q = urllib.parse.urlencode({
-        "q": f"Sector {n} Rohini Delhi",
-        "format": "json",
-        "polygon_geojson": "1",
-        "limit": "1",
-    })
-    url = f"https://nominatim.openstreetmap.org/search?{q}"
-    req = urllib.request.Request(url, headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return json.loads(r.read())
+    # The top hit is often a nearby sector or a railway point, so take the
+    # first polygon whose name is exactly this sector, trying several phrasings.
+    for template in QUERIES:
+        q = urllib.parse.urlencode({
+            "q": template.format(n=n),
+            "format": "json",
+            "polygon_geojson": "1",
+            "limit": "8",
+        })
+        url = f"https://nominatim.openstreetmap.org/search?{q}"
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            results = json.loads(r.read())
+        for item in results:
+            name = item.get("display_name", "")
+            geom = item.get("geojson") or {}
+            if geom.get("type") in ("Polygon", "MultiPolygon") and name.startswith(f"Sector {n},"):
+                return [item]
+        time.sleep(1.1)
+    return None
 
 def main() -> int:
     only = sys.argv[1] if len(sys.argv) > 1 else None  # optional: a specific sector number

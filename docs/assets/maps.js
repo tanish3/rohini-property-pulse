@@ -1,4 +1,4 @@
-// Rohini Property Pulse — interactive Leaflet map helpers
+// Rohini Property Pulse — interactive Leaflet map helpers.
 // Uses OpenStreetMap tiles (no API key, free, attribution required).
 (() => {
   "use strict";
@@ -12,245 +12,231 @@
     attribution: TILE_ATTR,
   };
 
-  // Sector colors
-  const COLOR_S28 = "#1d4ed8";
-  const COLOR_OTHER_STROKE = "#1e3a8a";
-  const COLOR_OTHER_FILL = "#3b82f6";
+  const SECTOR_MIN = 18;
+  const SECTOR_MAX = 38;
 
-  // Pocket heatmap
-  const POCKET_COLOR = (n) => {
-    if (n >= 12) return "#b91c1c";
-    if (n >= 10) return "#dc2626";
-    if (n >= 7)  return "#ea580c";
-    if (n >= 5)  return "#f97316";
-    if (n >= 3)  return "#fb923c";
-    if (n >= 1)  return "#fed7aa";
-    return "#94a3b8";
+  const COLORS = {
+    dataFill: "#3b82f6",
+    dataStroke: "#1e3a8a",
+    noneFill: "#cbd5e1",
+    noneStroke: "#64748b",
+    selFill: "#1d4ed8",
+    selStroke: "#fbbf24",
   };
-  const POCKET_LABEL_COLOR = (n) => (n >= 3 ? "#ffffff" : "#1e293b");
 
-  // -------- Public: render Rohini overview --------
-  async function renderRohiniMap(containerId, onSectorClick, activeSector = 28) {
+  const esc = (s) =>
+    s == null ? "" : String(s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+  const fmt = (n) => Number(n).toLocaleString("en-IN");
+  const plural = (n, one) => `${fmt(n)} ${n === 1 ? one : one + "s"}`;
+
+  const blockName = (b) =>
+    b === "GH" ? "DDA Flats" : b === "Unknown" ? "Unmapped" : `Block ${b}`;
+  const pocketTitle = (id) =>
+    id === "Unknown" ? "Unmapped plots" :
+    /^[A-Z]$/.test(id) ? `Block ${id} (unnumbered)` : `Pocket ${id}`;
+
+  // Makes a Leaflet path reachable by Tab and activatable with Enter/Space.
+  function makeFocusable(lyr, label, activate) {
+    lyr.on("add", () => {
+      const node = lyr.getElement();
+      if (!node || node.dataset.rppFocus) return;
+      node.dataset.rppFocus = "1";
+      node.setAttribute("tabindex", "0");
+      node.setAttribute("role", "button");
+      node.setAttribute("aria-label", label);
+      node.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          activate();
+        }
+      });
+      node.addEventListener("focus", () => lyr.fire("mouseover"));
+      node.addEventListener("blur", () => lyr.fire("mouseout"));
+    });
+  }
+
+  // -------- Public: Rohini sectors overview --------
+  async function renderRohiniMap(containerId, onSectorClick, activeSector = null) {
     const el = document.getElementById(containerId);
     if (!el) return null;
     el.innerHTML = "";
 
     const counts = (window.RPP_STATE && window.RPP_STATE.sectorCounts) || {};
     const countOf = (s) => counts[String(s)] || 0;
-    const isActive = (s) => Number(s) === Number(activeSector);
+    const isActive = (s) => activeSector != null && Number(s) === Number(activeSector);
 
     const map = L.map(el, {
       center: [28.74, 77.085],
       zoom: 12,
       minZoom: 11,
       maxZoom: 18,
-      zoomControl: true,
       scrollWheelZoom: true,
     });
     L.tileLayer(TILE_URL, TILE_OPTS).addTo(map);
+    map.attributionControl.setPrefix(false);
 
-    const sectors = await fetch("data/sectors.geojson").then((r) => r.json());
-    const layer = L.geoJSON(sectors, {
-      style: (feat) => {
-        const s = feat.properties.sector;
-        const active = isActive(s);
-        return {
-          color: active ? "#fbbf24" : COLOR_OTHER_STROKE,
-          weight: active ? 5 : 2.5,
-          opacity: active ? 1 : 0.9,
-          fillColor: active ? COLOR_S28 : COLOR_OTHER_FILL,
-          fillOpacity: active ? 0.65 : 0.45,
-        };
-      },
+    const geo = await fetch("data/sectors.geojson").then((r) => r.json());
+    const features = geo.features.filter(
+      (f) => f.properties.sector >= SECTOR_MIN && f.properties.sector <= SECTOR_MAX
+    );
+
+    const styleFor = (s) => {
+      if (isActive(s)) {
+        return { color: COLORS.selStroke, weight: 5, opacity: 1, fillColor: COLORS.selFill, fillOpacity: 0.6 };
+      }
+      if (countOf(s) > 0) {
+        return { color: COLORS.dataStroke, weight: 2.5, opacity: 0.9, fillColor: COLORS.dataFill, fillOpacity: 0.45 };
+      }
+      return { color: COLORS.noneStroke, weight: 1.5, opacity: 0.8, fillColor: COLORS.noneFill, fillOpacity: 0.35, dashArray: "4 3" };
+    };
+
+    const layer = L.geoJSON({ type: "FeatureCollection", features }, {
+      style: (feat) => styleFor(feat.properties.sector),
       onEachFeature: (feat, lyr) => {
         const s = feat.properties.sector;
-        const active = isActive(s);
-        const has = countOf(s) > 0;
-        const baseStyle = {
-          color: active ? "#fbbf24" : COLOR_OTHER_STROKE,
-          weight: active ? 5 : 2.5,
-          fillOpacity: active ? 0.65 : 0.45,
-        };
+        const n = countOf(s);
+        const hasData = n > 0;
+        const base = styleFor(s);
         lyr.bindTooltip(
           `<div class="rpp-tip">
-             <div class="rpp-tip-title">Sector ${s}${active ? " · Selected" : ""}</div>
-             <div class="rpp-tip-sub">${has ? `${countOf(s)} registration${countOf(s) === 1 ? "" : "s"} in selected period` : "No scraped data"}</div>
-             ${has ? `<div class="rpp-tip-cta">Tap to drill in →</div>` : ""}
+             <div class="rpp-tip-title">Sector ${s}${isActive(s) ? " · Selected" : ""}</div>
+             <div class="rpp-tip-sub">${hasData ? `${plural(n, "record")} in this period` : "No records in this period"}</div>
+             ${hasData ? `<div class="rpp-tip-cta">Click to open →</div>` : ""}
            </div>`,
           { sticky: true, direction: "top", className: "rpp-tooltip", opacity: 1 }
         );
         lyr.on("mouseover", () => {
-          lyr.setStyle({
-            weight: active ? 6 : 4,
-            fillOpacity: active ? 0.8 : 0.65,
-          });
+          lyr.setStyle({ weight: base.weight + 1.5, fillOpacity: Math.min(0.8, (base.fillOpacity || 0.4) + 0.25) });
           lyr.openTooltip();
           lyr.bringToFront();
         });
-        lyr.on("mouseout", () => lyr.setStyle(baseStyle));
-        lyr.on("click", () => onSectorClick && onSectorClick(s, has));
-        lyr.on("keypress", (e) => {
-          if (e.originalEvent.key === "Enter") lyr.fire("click");
-        });
+        lyr.on("mouseout", () => lyr.setStyle(base));
+        lyr.on("click", () => onSectorClick && onSectorClick(s, hasData));
+        makeFocusable(lyr, `Sector ${s}, ${hasData ? plural(n, "record") : "no records"}`, () => lyr.fire("click"));
       },
     }).addTo(map);
 
-    // Sector number labels at polygon centroids
     layer.eachLayer((lyr) => {
       const s = lyr.feature.properties.sector;
-      const active = isActive(s);
-      const c = lyr.getBounds().getCenter();
-      const html = active
-        ? `<div class="sec-label sec-label-28"><b>${s}</b><span>${countOf(s)} regs</span></div>`
-        : `<div class="sec-label">${s}</div>`;
-      L.marker(c, {
-        icon: L.divIcon({
-          className: "sec-label-wrap",
-          html,
-          iconSize: null,
-          iconAnchor: [0, 0],
-        }),
+      const n = countOf(s);
+      const html = isActive(s)
+        ? `<div class="sec-label sec-label-active"><b>${s}</b><span>${fmt(n)} records</span></div>`
+        : `<div class="sec-label${n > 0 ? "" : " dim"}">${s}</div>`;
+      L.marker(lyr.getBounds().getCenter(), {
+        icon: L.divIcon({ className: "sec-label-wrap", html, iconSize: null, iconAnchor: [0, 0] }),
         interactive: false,
       }).addTo(map);
     });
 
-    // Fit to all sectors with a baseline zoom that keeps them readable
-    const bounds = layer.getBounds();
-    map.fitBounds(bounds, { padding: [24, 24] });
-    // Don't let users zoom out so far that sectors become dots
+    map.fitBounds(layer.getBounds(), { padding: [16, 16] });
     map.setMinZoom(map.getZoom() - 1);
 
     return { map, layer };
   }
 
-  // -------- Public: render Sector 28 pocket map --------
-  async function renderSector28Map(containerId, onPocketClick, activePocket) {
+  // -------- Public: Sector 28 pocket map (same styling as the sector map) --------
+  async function renderSector28Map(containerId, onPocketClick, activePocket = null) {
     const el = document.getElementById(containerId);
     if (!el) return null;
     el.innerHTML = "";
 
     const map = L.map(el, {
-      center: [28.756, 77.100],
-      zoom: 16,
-      minZoom: 14,
+      center: [28.756, 77.1],
+      zoom: 15,
+      minZoom: 13,
       maxZoom: 19,
-      zoomControl: true,
       scrollWheelZoom: true,
     });
     L.tileLayer(TILE_URL, TILE_OPTS).addTo(map);
+    map.attributionControl.setPrefix(false);
 
-    // Sector 28 outline (for context)
     const sectors = await fetch("data/sectors.geojson").then((r) => r.json());
     const s28 = sectors.features.find((f) => f.properties.sector === 28);
-    if (s28) {
-      L.geoJSON(s28, {
-        style: {
-          color: "#1e3a8a",
-          weight: 3,
-          opacity: 0.9,
-          fillColor: "#1e3a8a",
-          fillOpacity: 0.04,
-          dashArray: "8 4",
-        },
-      }).addTo(map);
-    }
+    const outline = s28
+      ? L.geoJSON(s28, {
+          interactive: false,
+          style: { color: COLORS.dataStroke, weight: 2, opacity: 0.7, fillOpacity: 0, dashArray: "6 4" },
+        }).addTo(map)
+      : null;
 
     const pocketGeo = await fetch("data/sector-28-pockets.geojson").then((r) => r.json());
-    const counts = (window.RPP_STATE && window.RPP_STATE.pocketCounts) || {};
-    const articles = (window.RPP_STATE && window.RPP_STATE.pocketArticles) || {};
+    const pockets = (window.RPP_STATE && window.RPP_STATE.pockets) || {};
+    const countOf = (id) => (pockets[id] ? pockets[id].count : 0);
+    const isActive = (id) => id === activePocket;
+
+    const styleFor = (id) => {
+      const n = countOf(id);
+      if (isActive(id)) {
+        return { color: COLORS.selStroke, weight: 4, opacity: 1, fillColor: COLORS.selFill, fillOpacity: 0.6 };
+      }
+      if (n > 0) {
+        const fillOpacity = 0.3 + 0.4 * Math.min(1, n / 40);
+        return { color: COLORS.dataStroke, weight: 2, opacity: 0.9, fillColor: COLORS.dataFill, fillOpacity };
+      }
+      return { color: COLORS.noneStroke, weight: 1.2, opacity: 0.8, fillColor: COLORS.noneFill, fillOpacity: 0.3, dashArray: "4 3" };
+    };
 
     const pocketLayer = L.geoJSON(pocketGeo, {
-      style: (feat) => {
-        const id = feat.properties.pocket;
-        const n = counts[id] || 0;
-        const isActive = id === activePocket;
-        const isUnmapped = n === 0;
-        return {
-          color: isActive ? "#fbbf24" : COLOR_OTHER_STROKE,
-          weight: isActive ? 5 : 2.5,
-          opacity: isUnmapped ? 0.6 : 0.9,
-          fillColor: isUnmapped ? "#e2e8f0" : (isActive ? COLOR_S28 : COLOR_OTHER_FILL),
-          fillOpacity: isUnmapped ? 0.35 : (isActive ? 0.65 : 0.45),
-          dashArray: isUnmapped ? "5 3" : null,
-        };
-      },
+      style: (feat) => styleFor(feat.properties.pocket),
       onEachFeature: (feat, lyr) => {
         const id = feat.properties.pocket;
-        const n = counts[id] || 0;
-        const block = feat.properties.block;
-        const blockLabel =
-          block === "GH" ? "DDA Flats" :
-          block === "Unknown" ? "Unmapped" :
-          `Block ${block}`;
-        const topArticle = articles[id] ? Object.entries(articles[id]).sort((a, b) => b[1] - a[1])[0] : null;
-        const topArticleHtml = topArticle
-          ? `<div class="rpp-tip-row">Top article: <b>${topArticle[0]}</b> (${topArticle[1]})</div>`
-          : "";
+        const n = countOf(id);
+        const p = pockets[id];
+        const base = styleFor(id);
+        const top = p ? Object.entries(p.articles).sort((a, b) => b[1] - a[1])[0] : null;
         lyr.bindTooltip(
           `<div class="rpp-tip">
-             <div class="rpp-tip-title">Pocket ${id} <span class="rpp-tip-badge">${blockLabel}</span></div>
-             <div class="rpp-tip-sub">${n > 0 ? `${n} registration${n === 1 ? "" : "s"} in selected period` : "No scraped data"}</div>
-             ${topArticleHtml}
-             ${n > 0 ? `<div class="rpp-tip-cta">Tap to drill in →</div>` : ""}
+             <div class="rpp-tip-title">${esc(pocketTitle(id))} <span class="rpp-tip-badge">${esc(blockName(feat.properties.block))}</span></div>
+             <div class="rpp-tip-sub">${n > 0 ? `${plural(n, "record")} in this period` : "No records in this period"}</div>
+             ${p && p.avg_plot_area_sqm ? `<div class="rpp-tip-row">Avg plot ${esc(p.avg_plot_area_sqm)} m²</div>` : ""}
+             ${top ? `<div class="rpp-tip-row">Top article: <b>${esc(top[0])}</b> (${top[1]})</div>` : ""}
+             ${n > 0 ? `<div class="rpp-tip-cta">Click to open →</div>` : ""}
            </div>`,
           { sticky: true, direction: "top", className: "rpp-tooltip", opacity: 1 }
         );
-        const isUnmapped = n === 0;
-        const baseStyle = {
-          color: id === activePocket ? "#fbbf24" : COLOR_OTHER_STROKE,
-          weight: id === activePocket ? 5 : 2.5,
-          fillOpacity: isUnmapped ? 0.35 : (id === activePocket ? 0.65 : 0.45),
-        };
         lyr.on("mouseover", () => {
-          lyr.setStyle({ weight: 4, fillOpacity: 0.9, color: "#0f172a" });
+          lyr.setStyle({ weight: base.weight + 1.5, fillOpacity: Math.min(0.85, (base.fillOpacity || 0.4) + 0.25) });
           lyr.openTooltip();
           lyr.bringToFront();
         });
-        lyr.on("mouseout", () => lyr.setStyle(baseStyle));
-        if (n > 0) {
-          lyr.on("click", () => onPocketClick && onPocketClick(id));
-        }
+        lyr.on("mouseout", () => lyr.setStyle(base));
+        if (n > 0) lyr.on("click", () => onPocketClick && onPocketClick(id));
+        makeFocusable(lyr, `${pocketTitle(id)}, ${n > 0 ? plural(n, "record") : "no records"}`, () => {
+          if (n > 0) lyr.fire("click");
+        });
       },
     }).addTo(map);
 
-    // Pocket labels: only pockets with data, alternating vertical offset so
-    // adjacent (small) polygons do not overlap. Counts live in the tooltip.
-    let labelIdx = 0;
+    map.fitBounds((outline || pocketLayer).getBounds(), { padding: [16, 16], animate: false });
+    map.setMinZoom(map.getZoom() - 1);
+
+    // Number pills at pocket centres. Pills that would collide with one already placed are skipped
+    // (the tooltip and the leaderboard still name them).
+    const placed = [];
     pocketLayer.eachLayer((lyr) => {
       const id = lyr.feature.properties.pocket;
-      const n = counts[id] || 0;
-      if (n === 0) return;
-      const c = lyr.getBounds().getCenter();
-      const up = labelIdx++ % 2 === 0;
-      const html = `<div class="pkt-label"><b>${id}</b></div>`;
-      L.marker(c, {
-        icon: L.divIcon({
-          className: "pkt-label-wrap",
-          html,
-          iconSize: null,
-          iconAnchor: [0, up ? 20 : -4],
-        }),
+      const n = countOf(id);
+      if (n === 0 || id === "Unknown") return;
+      const center = lyr.getBounds().getCenter();
+      const pt = map.latLngToContainerPoint(center);
+      const active = isActive(id);
+      const w = 6.2 * id.length + 12;
+      if (!active && placed.some((q) => Math.abs(q.x - pt.x) < (q.w + w) / 2 + 2 && Math.abs(q.y - pt.y) < 16)) return;
+      placed.push({ x: pt.x, y: pt.y, w });
+      const html = active
+        ? `<div class="sec-label sec-label-active"><b>${esc(id)}</b><span>${fmt(n)} records</span></div>`
+        : `<div class="sec-label pocket-pill">${esc(id)}</div>`;
+      L.marker(center, {
+        icon: L.divIcon({ className: "sec-label-wrap", html, iconSize: null, iconAnchor: [0, 0] }),
         interactive: false,
       }).addTo(map);
     });
 
-    // Frame the pockets that actually have registrations; empty / unmapped
-    // polygons would otherwise zoom the view out and make the map unreadable.
-    const withData = [];
-    pocketLayer.eachLayer((lyr) => {
-      if ((counts[lyr.feature.properties.pocket] || 0) > 0) withData.push(lyr);
-    });
-    const bounds = withData.length
-      ? L.featureGroup(withData).getBounds()
-      : pocketLayer.getBounds();
-    map.fitBounds(bounds, { padding: [24, 24] });
-    if (map.getZoom() < 16) map.setZoom(16);
-    map.setMinZoom(Math.max(14, map.getZoom() - 2));
-
     return { map, layer: pocketLayer };
   }
 
-  // Inject CSS for labels and tooltips
   function injectCss() {
     if (document.getElementById("rpp-map-css")) return;
     const css = document.createElement("style");
@@ -258,39 +244,37 @@
     css.textContent = `
       .leaflet-container { font: inherit; border-radius: 12px; }
       .leaflet-control-attribution { font-size: 10px; }
+      path.leaflet-interactive:focus { outline: none; stroke: #fbbf24; stroke-width: 4px; }
 
       /* === Sector labels (overview map) === */
       .sec-label-wrap, .pkt-label-wrap { background: transparent !important; border: 0 !important; }
       .sec-label {
         font: 700 13px system-ui, -apple-system, "Segoe UI", sans-serif;
         color: #fff;
-        text-align: center;
-        pointer-events: none;
-        line-height: 1;
-        white-space: nowrap;
         background: #1e3a8a;
         border-radius: 10px;
         padding: 3px 7px;
-        min-width: 22px;
+        min-width: 24px;
+        text-align: center;
+        white-space: nowrap;
+        line-height: 1.2;
         box-shadow: 0 1px 3px rgba(0,0,0,0.4);
-        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        pointer-events: none;
+        transform: translate(-50%, -50%);
       }
-      .sec-label.dim { opacity: .55; }
-      .sec-label-28 {
+      .sec-label.dim { background: #64748b; opacity: 0.85; }
+      .sec-label-active {
         background: #1d4ed8;
-        color: #fff;
         font-size: 14px;
-        padding: 4px 8px;
-        box-shadow: 0 2px 6px rgba(29, 78, 216, 0.5);
+        padding: 4px 9px;
         outline: 2px solid #fbbf24;
         outline-offset: 1px;
       }
-      .sec-label-28 b { font-size: 16px; }
-      .sec-label-28 span {
-        display: block;
-        font: 600 10px system-ui, sans-serif;
-        color: #fde68a;
-        margin-top: 1px;
+      .sec-label-active b { font-size: 16px; display: block; }
+      .sec-label.pocket-pill { font-size: 10px; padding: 2px 5px; }
+      .sec-label-active span { display: block; font: 600 10px system-ui, sans-serif; color: #fde68a; }
+      @media (max-width: 599px) {
+        .sec-label-wrap .sec-label:not(.sec-label-active) { display: none; }
       }
 
       /* === Pocket labels (sector 28 map) === */
@@ -307,16 +291,6 @@
         pointer-events: none;
         box-shadow: 0 1px 3px rgba(15, 23, 42, 0.35);
       }
-      .pkt-label b { font-size: 9px; }
-      .pkt-label .pkt-count {
-        background: #1e3a8a;
-        color: #fff;
-        border-radius: 999px;
-        padding: 0 5px;
-        font: 700 9px system-ui, sans-serif;
-      }
-      .pkt-label.dim { opacity: 0.6; }
-      .pkt-label.dim .pkt-count { background: #64748b; }
 
       /* === Custom tooltips === */
       .rpp-tooltip {
