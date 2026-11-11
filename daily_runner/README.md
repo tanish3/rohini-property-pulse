@@ -183,8 +183,8 @@ Two jobs: a **daily scrape** and a **session keepalive**.
 
 ```cron
 # crontab -e
-# keep the NGDRS session warm (cookie has a ~15 min sliding expiry)
-*/10 * * * * /Users/tanishmittal/codes/Property/Rohini_prop_scrape/daily_runner/run_keepalive.sh
+# keep the NGDRS session warm (offset so it never overlaps the 09:30 scrape)
+5,15,25,35,45,55 * * * * /Users/tanishmittal/codes/Property/Rohini_prop_scrape/daily_runner/run_keepalive.sh
 # refresh the site at 09:30
 30 9 * * * /Users/tanishmittal/codes/Property/Rohini_prop_scrape/daily_runner/run_daily.sh
 ```
