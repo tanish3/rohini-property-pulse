@@ -111,13 +111,17 @@
   }
 
   // -------- Data load --------
+  let dataPromise = null;
   async function loadData() {
     if (state.meta && state.summary && state.registrations) return;
-    const [meta, summary, reg] = await Promise.all([
-      fetch("data/meta.json").then((r) => r.json()),
-      fetch("data/sector28-summary.json").then((r) => r.json()),
-      fetch("data/registrations.json").then((r) => r.json()),
-    ]);
+    if (!dataPromise) {
+      dataPromise = Promise.all([
+        fetch("data/meta.json").then((r) => r.json()),
+        fetch("data/sector28-summary.json").then((r) => r.json()),
+        fetch("data/registrations.json").then((r) => r.json()),
+      ]);
+    }
+    const [meta, summary, reg] = await dataPromise;
     state.allMeta = meta;
     state.allRegistrations = reg.items;
 
@@ -512,7 +516,7 @@
           <td>${esc(date)}</td>
           <td>${articleBadge(r.article)}</td>
           <td>${esc(r.seller.name || "—")} → ${esc(r.purchaser.name || "—")}</td>
-          <td>${esc(r.property.raw_plot_number || "—")}<br><span style="font-size:11px;color:var(--text-2)">${esc(r.registration_no)}</span>${r.taluka && r.taluka !== "Alipur" ? `<br><span class="src-tag">${esc(r.taluka)}</span>` : ""}</td>
+          <td>${esc(r.property.raw_plot_number || "—")}<br><span style="font-size:11px;color:var(--text-2)">${esc(r.registration_no)}</span>${r.taluka && (state.allMeta.source_offices || []).length > 1 ? `<br><span class="src-tag">${esc(r.taluka)}</span>` : ""}</td>
           <td>${d.plot_area_sqm ? fmtNum(d.plot_area_sqm, 1) + " m²" : "—"}</td>
         </tr>`;
       })
@@ -918,7 +922,7 @@
           <span class="arrow">→</span>
           ${esc(r.purchaser.name || "(unknown)")}
         </td>
-        <td>${esc(pocketLabel(r.property.pocket))}<br><span style="font-size:11px;color:var(--text-2)">${esc(r.property.raw_plot_number)}</span>${r.taluka && r.taluka !== "Alipur" ? `<br><span class="src-tag">${esc(r.taluka)}</span>` : ""}</td>
+        <td>${esc(pocketLabel(r.property.pocket))}<br><span style="font-size:11px;color:var(--text-2)">${esc(r.property.raw_plot_number)}</span>${r.taluka && (state.allMeta.source_offices || []).length > 1 ? `<br><span class="src-tag">${esc(r.taluka)}</span>` : ""}</td>
         <td>${area}</td>
       `;
       tr.addEventListener("click", () => openTxDetail(r.id));
@@ -1284,7 +1288,7 @@
           <span class="arrow">→</span>
           ${esc(r.purchaser.name || "(unknown)")}
         </td>
-        <td>${esc(pocketLabel(r.property.pocket))}<br><span style="font-size:11px;color:var(--text-2)">${esc(r.property.raw_plot_number)}</span>${r.taluka && r.taluka !== "Alipur" ? `<br><span class="src-tag">${esc(r.taluka)}</span>` : ""}</td>
+        <td>${esc(pocketLabel(r.property.pocket))}<br><span style="font-size:11px;color:var(--text-2)">${esc(r.property.raw_plot_number)}</span>${r.taluka && (state.allMeta.source_offices || []).length > 1 ? `<br><span class="src-tag">${esc(r.taluka)}</span>` : ""}</td>
         <td>${d.plot_area_sqm ? fmtNum(d.plot_area_sqm, 1) + " m²" : "—"}</td>
         <td>${d.plinth_area_sqm ? fmtNum(d.plinth_area_sqm, 1) + " m²" : "—"}</td>
         <td style="font-size:11px;color:var(--text-2)">${esc(r.registration_no)}</td>

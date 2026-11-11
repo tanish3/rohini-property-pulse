@@ -18,10 +18,24 @@
     "channel": "chrome",
     "days_back": 30,
     "search_by": "Property Details",
-    "district": "North",
-    "taluka": "Alipur",
+    "district": "Outer North",
+    "taluka": "Bawana",
     "village": "Rohini Sector-28",
-    "attribute": "Plot Number"
+    "attribute": "Plot Number",
+    "villages": [
+      {
+        "district": "Outer North",
+        "taluka": "Bawana",
+        "village": "Rohini Sector-28",
+        "prefix": "rohini_sector28_bawana"
+      },
+      {
+        "district": "Outer North",
+        "taluka": "Bawana",
+        "village": "Rohini Sector 38",
+        "prefix": "rohini_sector38_bawana"
+      }
+    ]
   },
   "ai": {
     "enabled": false,

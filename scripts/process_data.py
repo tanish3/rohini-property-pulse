@@ -202,7 +202,7 @@ def load_rows() -> list[dict[str, Any]]:
                 if key in seen:
                     continue
                 seen.add(key)
-                rows.append(_row_from_csv(r))
+                rows.append(_row_from_csv(r, src.name))
 
     rows.sort(key=lambda r: r["registration_date"])
     for i, row in enumerate(rows):
@@ -221,7 +221,22 @@ def _sector_of(r: dict[str, Any]) -> str:
     return ""
 
 
-def _row_from_csv(r: dict[str, Any]) -> dict[str, Any]:
+def _source_office(src_name: str) -> tuple[str, str]:
+    """(district, taluka) of the CSV that produced a row.
+
+    The same village name (e.g. Rohini Sector-28) exists under more than one
+    taluka, so the file name is the only reliable provenance marker.
+    """
+    n = src_name.lower()
+    if "_bawana" in n:
+        return "Outer North", "Bawana"
+    if "sector38" in n:
+        return "North West", "Sdm Rohini"
+    return "North", "Alipur"
+
+
+def _row_from_csv(r: dict[str, Any], src_name: str = "") -> dict[str, Any]:
+    district, taluka = _source_office(src_name)
     article_raw = (r.get("article") or "").strip()
     article_name, article_code = ARTICLE_MAP.get(
         article_raw, (article_raw or "Unknown", None)
@@ -250,6 +265,8 @@ def _row_from_csv(r: dict[str, Any]) -> dict[str, Any]:
         "article_raw": article_raw,
         "article_code": article_code,
         "registration_office": (r.get("registration_office") or "").strip(),
+        "district": district,
+        "taluka": taluka,
         "seller": {
             "name": seller,
             "address": first(r.get("seller_address")),
@@ -380,7 +397,9 @@ def pocket_order_key(pid: str) -> tuple:
         return (9, 0)
     if pid.startswith("S") and pid[1:].isdigit():  # non-28 sector bucket
         return (3, int(pid[1:]))
-    block, n = pid.split("-")
+    block, _, n = pid.partition("-")
+    if not n.isdigit():
+        return (8, 0)  # unexpected label — keep it at the end
     return (0 if block == "A" else 1, int(n))
 
 
@@ -447,6 +466,17 @@ def main() -> None:
     dates = [r["registration_date"][:10] for r in rows]
     months = _month_meta(rows)
     sectors = _sector_meta(rows)
+    offices: dict[tuple[str, str], int] = {}
+    for r in rows:
+        key = (r.get("district", ""), r.get("taluka", ""))
+        offices[key] = offices.get(key, 0) + 1
+    dominant = max(offices.items(), key=lambda kv: kv[1])[0] if offices else ("North", "Alipur")
+    sector_ids = [x["id"] for x in sectors if x["id"].isdigit()]
+    sector_label = (
+        f"Rohini Sector-{sector_ids[0]}" if len(sector_ids) == 1
+        else f"Rohini Sectors {min(sector_ids)}–{max(sector_ids)}" if sector_ids
+        else "Rohini"
+    )
     meta = {
         "source_csv": ", ".join(p.name for p in SRC_CSVS) if len(SRC_CSVS) <= 3 else f"{len(SRC_CSVS)} CSV files",
         "source_csvs": [p.name for p in SRC_CSVS],
@@ -458,9 +488,13 @@ def main() -> None:
         "articles": summary["articles"],
         "months": months,
         "sectors": sectors,
-        "sector": "Rohini Sector-28",
-        "taluka": "Alipur",
-        "district": "North",
+        "source_offices": [
+            {"district": d, "taluka": t, "count": c}
+            for (d, t), c in sorted(offices.items(), key=lambda kv: -kv[1])
+        ],
+        "sector": sector_label,
+        "taluka": dominant[1],
+        "district": dominant[0],
     }
 
     (OUT_DIR / "registrations.json").write_text(

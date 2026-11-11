@@ -1219,6 +1219,7 @@ def run_full_scrape(
     started_at = datetime.now().isoformat(timespec="seconds")
     captcha_image: Optional[Path] = None
     rows: list[dict[str, Any]] = []
+    csv_paths: list[Path] = []
     csv_path: Optional[Path] = None
     json_path: Optional[Path] = None
     params: dict[str, str] = {}
@@ -1256,18 +1257,55 @@ def run_full_scrape(
             )
             save_session(ctx)
             navigate_to_search(page)
-            params = fill_search_form(
-                page,
-                days_back=days_back,
-                search_by=ngdrs.get("search_by", DEFAULT_SEARCH["search_by"]),
-                district=ngdrs.get("district", DEFAULT_SEARCH["district"]),
-                taluka=ngdrs.get("taluka", DEFAULT_SEARCH["taluka"]),
-                village=ngdrs.get("village", DEFAULT_SEARCH["village"]),
-                attribute=ngdrs.get("attribute", DEFAULT_SEARCH["attribute"]),
-                screenshot_dir=screenshot_dir,
-            )
-            submit_search(page, screenshot_dir=screenshot_dir)
-            rows = extract_table(page, screenshot_dir=screenshot_dir)
+
+            # One or more villages can be configured. NGDRS registers the same
+            # sector name under different talukas (e.g. Sector-28 in Alipur and
+            # in Bawana), so each target gets its own CSV prefix.
+            targets = ngdrs.get("villages") or [
+                {
+                    "district": ngdrs.get("district", DEFAULT_SEARCH["district"]),
+                    "taluka": ngdrs.get("taluka", DEFAULT_SEARCH["taluka"]),
+                    "village": ngdrs.get("village", DEFAULT_SEARCH["village"]),
+                    "prefix": "rohini_sector28",
+                }
+            ]
+            for target in targets:
+                prefix = target.get("prefix", "rohini_sector28")
+                try:
+                    page.goto(URLS["search"], wait_until="domcontentloaded", timeout=TIMING_MS["page_load"])
+                    page.wait_for_timeout(TIMING_MS["short"])
+                    params = fill_search_form(
+                        page,
+                        days_back=days_back,
+                        search_by=ngdrs.get("search_by", DEFAULT_SEARCH["search_by"]),
+                        district=target.get("district", DEFAULT_SEARCH["district"]),
+                        taluka=target.get("taluka", DEFAULT_SEARCH["taluka"]),
+                        village=target.get("village", DEFAULT_SEARCH["village"]),
+                        attribute=ngdrs.get("attribute", DEFAULT_SEARCH["attribute"]),
+                        screenshot_dir=screenshot_dir,
+                    )
+                    submit_search(page, screenshot_dir=screenshot_dir)
+                    target_rows = extract_table(page, screenshot_dir=screenshot_dir)
+                except Exception as exc:  # noqa: BLE001
+                    # An empty result set has no table to wait for, and a
+                    # single bad village must not kill the rest of the run.
+                    sys.stderr.write(f"[daily-runner] {prefix}: FAILED {exc!r}\n")
+                    if "citizenlogin" in page.url:
+                        break  # session lost — no point trying the rest
+                    continue
+
+                sys.stderr.write(f"[daily-runner] {prefix}: {len(target_rows)} rows\n")
+                if target_rows:
+                    out = write_csv(
+                        target_rows,
+                        out_dir=csv_dir,
+                        date_from=params.get("date_from", date.today().strftime("%d-%m-%Y")),
+                        date_to=params.get("date_to", date.today().strftime("%d-%m-%Y")),
+                        monthly=True,
+                        prefix=prefix,
+                    )
+                    csv_paths.append(out)
+                rows.extend(target_rows)
             # The session ID rotates on use; persist the final value, not the
             # one from login time (otherwise the stored cookie is already dead).
             save_session(ctx)
@@ -1280,13 +1318,7 @@ def run_full_scrape(
 
     if rows:
         json_path = write_json(rows, out_dir=raw_dir)
-        csv_path = write_csv(
-            rows,
-            out_dir=csv_dir,
-            date_from=params.get("date_from", date.today().strftime("%d-%m-%Y")),
-            date_to=params.get("date_to", date.today().strftime("%d-%m-%Y")),
-            monthly=True,
-        )
+        csv_path = csv_paths[0] if csv_paths else None
 
     finished_at = datetime.now().isoformat(timespec="seconds")
     return {
@@ -1302,6 +1334,7 @@ def run_full_scrape(
         "captcha_image": str(captcha_image) if captcha_image else None,
         "rows_extracted": len(rows),
         "csv_path": str(csv_path) if csv_path else None,
+        "csv_paths": [str(p) for p in csv_paths],
         "json_path": str(json_path) if json_path else None,
         "error": error,
         "error_type": error_type,
