@@ -677,6 +677,20 @@ def login(
         sys.stderr.write("[daily-runner] session still valid, skipping login\n")
         return screenshot_dir / "captcha.png"
 
+    # The profile cookie is authoritative (it rotates as the server issues new
+    # ones). Only if it is gone/expired do we try the stored session — e.g. on
+    # a brand-new profile that has never logged in.
+    stored = load_session()
+    if stored:
+        try:
+            page.context.add_cookies([as_playwright_cookie(stored)])
+            if _already_logged_in(page):
+                sys.stderr.write("[daily-runner] stored session cookie accepted\n")
+                return screenshot_dir / "captcha.png"
+            sys.stderr.write("[daily-runner] stored session cookie is stale\n")
+        except Exception as exc:  # noqa: BLE001
+            sys.stderr.write(f"[daily-runner] stored session injection failed: {exc!r}\n")
+
     # Install dialog handler — captures any alert/confirm the site throws
     # (e.g. "Invalid Captcha", "Authentication failed", "Not Allowed Right Click")
     dialog_messages, dialog_handler = _install_dialog_handler(page)
@@ -1225,16 +1239,6 @@ def run_full_scrape(
         # Reuse the stored session cookie so a cron run normally never hits
         # the captcha/OTP flow. _already_logged_in() validates it below; if
         # it's dead, the normal login path runs and overwrites the store.
-        stored = load_session()
-        if stored:
-            try:
-                ctx.add_cookies([as_playwright_cookie(stored)])
-                sys.stderr.write("[daily-runner] injected stored NGDRS session\n")
-            except Exception as exc:  # noqa: BLE001
-                sys.stderr.write(
-                    f"[daily-runner] could not inject stored session: {exc!r}\n"
-                )
-
         page.goto(URLS["base"], wait_until="domcontentloaded", timeout=TIMING_MS["page_load"])
         try:
             captcha_image = login(
@@ -1263,6 +1267,9 @@ def run_full_scrape(
             )
             submit_search(page, screenshot_dir=screenshot_dir)
             rows = extract_table(page, screenshot_dir=screenshot_dir)
+            # The session ID rotates on use; persist the final value, not the
+            # one from login time (otherwise the stored cookie is already dead).
+            save_session(ctx)
         except TimeoutError as exc:
             error = f"timeout: {exc}"
             error_type = "TimeoutError"

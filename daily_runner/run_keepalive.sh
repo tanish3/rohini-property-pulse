@@ -18,7 +18,7 @@ cd "$REPO_ROOT" || exit 1
 
 {
     echo "=== $(date '+%F %T %Z') keepalive ==="
-    .venv/bin/python daily_runner/session_store.py "$@"
+    .venv/bin/python daily_runner/session_store.py --touch "$@"
     rc=$?
     echo "=== exit=$rc ==="
     exit "$rc"

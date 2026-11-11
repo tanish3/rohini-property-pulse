@@ -22,7 +22,11 @@ sys.path.insert(0, str(ROOT / "daily_runner"))
 
 import scraper as S  # noqa: E402
 from captcha_solver import create_solver  # noqa: E402
-from session_store import as_playwright_cookie, load as load_session  # noqa: E402
+from session_store import (  # noqa: E402
+    as_playwright_cookie,
+    load as load_session,
+    save_from_context as save_session,
+)
 
 DEFAULT_CONFIG = ROOT / "daily_runner" / "config.json"
 
@@ -116,6 +120,9 @@ def main() -> int:
             if rows:
                 out = S.write_csv(rows, out_dir=csv_dir, date_from=d1, date_to=d2)
                 print(f"[backfill]   wrote {out.name}", flush=True)
+
+        # Persist the final rotated cookie so the next run can skip login.
+        save_session(ctx)
 
     print(f"[backfill] done: {total} rows across {len(windows(start, end, args.window))} windows")
     return 0

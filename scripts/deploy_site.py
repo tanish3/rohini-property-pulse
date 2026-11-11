@@ -81,30 +81,43 @@ def main() -> int:
         return 2
 
     if not has_changes_to_commit():
-        print("No docs/ or data/*.csv changes to commit. Site already up to date.")
-        # Still verify the live build is healthy
+        # Nothing new on disk, but a previous run may have committed
+        # locally without pushing (e.g. a manual commit or a crashed push).
+        ahead = 0
         try:
-            owner = get_repo_owner()
-            repo = os.environ.get("GH_REPO", GH_REPO)
-            status = gh_api(f"/repos/{owner}/{repo}/pages/builds/latest").get("status")
-            print(f"Latest Pages build: {status}")
-        except Exception as e:
-            print(f"  (could not query Pages status: {e})")
-        return 0
+            run(["git", "fetch", "origin", "main"])
+            out = run(["git", "rev-list", "--count", "origin/main..HEAD"])
+            ahead = int(out.stdout.strip() or "0")
+        except Exception as exc:  # noqa: BLE001
+            print(f"  (could not compare with origin: {exc})")
 
-    print("=== Staging changes ===")
-    run(["git", "add", "docs/"])
-    # Also stage the freshly exported CSV (data/*.csv is git-ignored, so use -f)
-    csvs = list((ROOT / "data").glob("rohini_sector28_*.csv"))
-    if csvs:
-        latest = max(csvs, key=lambda p: p.stat().st_mtime)
-        # Use --force so the .gitignore'd CSV is staged
-        run(["git", "add", "-f", str(latest.relative_to(ROOT))])
-    run(["git", "status", "--short"])
+        if ahead == 0:
+            print("No docs/ or data/*.csv changes to commit. Site already up to date.")
+            # Still verify the live build is healthy
+            try:
+                owner = get_repo_owner()
+                repo = os.environ.get("GH_REPO", GH_REPO)
+                status = gh_api(f"/repos/{owner}/{repo}/pages/builds/latest").get("status")
+                print(f"Latest Pages build: {status}")
+            except Exception as e:
+                print(f"  (could not query Pages status: {e})")
+            return 0
 
-    print("\n=== Committing ===")
-    run(["git", "commit", "-m", msg])
-    print(f"  → {msg}")
+        print(f"{ahead} local commit(s) not on origin/main — pushing them")
+    else:
+        print("=== Staging changes ===")
+        run(["git", "add", "docs/"])
+        # Also stage the freshly exported CSV (data/*.csv is git-ignored, so use -f)
+        csvs = list((ROOT / "data").glob("rohini_sector28_*.csv"))
+        if csvs:
+            latest = max(csvs, key=lambda p: p.stat().st_mtime)
+            # Use --force so the .gitignore'd CSV is staged
+            run(["git", "add", "-f", str(latest.relative_to(ROOT))])
+        run(["git", "status", "--short"])
+
+        print("\n=== Committing ===")
+        run(["git", "commit", "-m", msg])
+        print(f"  → {msg}")
 
     print("\n=== Pushing to origin/main ===")
     run(["git", "push", "origin", "main"])

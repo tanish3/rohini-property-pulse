@@ -52,6 +52,22 @@ The same file protocol works for both captcha and OTP. Sessions normally
 last days/weeks, so most cron runs skip login entirely (the runner logs
 `session still valid, skipping login`).
 
+## Backfilling history
+
+The site keeps every window it has ever scraped. To fill gaps (or pull a
+long history for the month selector):
+
+```bash
+# scrape 30-day windows from START to END (inclusive)
+.venv/bin/python scripts/backfill_history.py 2026-07-19 2026-11-11 --window 30
+
+# merge every data/rohini_sector28_*.csv into docs/data (deduped by reg no.)
+.venv/bin/python scripts/process_data.py
+```
+
+`process_data.py` tags each row with its calendar month and writes
+`meta.months`, which powers the “Period” selector on the site.
+
 ## File layout
 
 ```
@@ -163,15 +179,40 @@ Every run writes its result to `data/state/last_run.json` and (with
 
 ## Daily cron (macOS)
 
-The wrapper handles PATH, logging, and the working directory:
+Two jobs: a **daily scrape** and a **session keepalive**.
 
 ```cron
-# crontab -e  (09:30 every day)
+# crontab -e
+# keep the NGDRS session warm (cookie has a ~15 min sliding expiry)
+*/10 * * * * /Users/tanishmittal/codes/Property/Rohini_prop_scrape/daily_runner/run_keepalive.sh
+# refresh the site at 09:30
 30 9 * * * /Users/tanishmittal/codes/Property/Rohini_prop_scrape/daily_runner/run_daily.sh
 ```
 
-Logs land in `daily_runner/data/state/cron-YYYY-MM-DD.log`; the result dict
-is always at `daily_runner/data/state/last_run.json`.
+The wrappers handle PATH, logging, and the working directory:
+
+- scrape log: `daily_runner/data/state/cron-YYYY-MM-DD.log`
+- keepalive log: `daily_runner/data/state/keepalive.log`
+- result dict: `daily_runner/data/state/last_run.json`
+
+### How the login is automated
+
+NGDRS has no OAuth/JWT refresh token — login issues one httpOnly `NGDRS`
+cookie that identifies a server-side session (the browser-side expiry is
+~15 minutes). `session_store.py` automates it:
+
+1. After any successful login the cookie is saved to
+   `data/state/session.json`.
+2. Every scrape injects that cookie into Playwright (with `expires=-1`), so
+   the SMS OTP is normally never needed.
+3. The cookie rotates when the server reissues it, so `run_keepalive.sh`
+   opens the real Chrome profile every 10 minutes, visits `/welcome`,
+   refreshes and re-saves the cookie — which also keeps the server-side
+   idle timer from expiring.
+
+If the server session really dies (portal restart, long machine downtime),
+the keepalive clears the store; the next scrape falls back to the normal
+captcha + OTP flow, or to `otp_command` below.
 
 macOS also supports launchd if you prefer it over cron:
 
@@ -193,7 +234,8 @@ macOS also supports launchd if you prefer it over cron:
 </dict></plist>
 ```
 
-Load it with `launchctl load ~/Library/LaunchAgents/com.rohini.pulse.daily.plist`.
+Add a second agent (or cron line) pointing at `run_keepalive.sh` with a
+`StartInterval` of 600 seconds.
 
 ### Fully unattended OTP
 

@@ -112,7 +112,10 @@ def process_csv_to_json(
         cmd.extend(str(p) for p in all_csvs)
     elif csv_path is not None:
         cmd.append(str(csv_path))
-    _log(f"running process_data.py  (csv={csv_path}, cwd={REPO_ROOT})")
+    _log(
+        f"running process_data.py  ({len(all_csvs or [])} CSVs"
+        f"{', latest=' + csv_path.name if csv_path else ''})"
+    )
     out = _run(cmd)
     # process_data.py prints to stdout; surface the last few lines.
     tail = "\n".join(out.stdout.splitlines()[-6:])
@@ -280,7 +283,9 @@ def run_deploy(
     csv_paths_cfg = config.get("paths", {}) or {}
     data_dir = Path(csv_paths_cfg.get("csv_dir", "data"))
     if not data_dir.is_absolute():
-        data_dir = REPO_ROOT / data_dir
+        # Resolve exactly like scraper.run_full_scrape does (relative to
+        # daily_runner/), so "../data" always means <repo>/data.
+        data_dir = (_HERE / data_dir).resolve()
     csv_path = scrape_result.get("csv_path") or find_latest_csv(data_dir)
     if not csv_path:
         raise FileNotFoundError(

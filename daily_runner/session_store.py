@@ -123,6 +123,55 @@ def clear() -> None:
         pass
 
 
+def touch(config_path: Path | None = None) -> int:
+    """Visit the portal with the real Chrome profile, refresh + re-save the
+    cookie, and report whether the session is alive.
+
+    The NGDRS cookie rotates when the server issues a new one, so a stored
+    value can go stale after any browser run. Reading it from the profile is
+    the only reliable way to keep the store in sync.
+    """
+    import json as _json
+
+    from scraper import TIMING_MS, URLS, _active_page, open_browser
+
+    cfg_path = config_path or (_HERE / "config.json")
+    config = _json.loads(Path(cfg_path).read_text())
+    ngdrs = config.get("ngdrs", {})
+    paths = config.get("paths", {})
+    browser = config.get("browser", {})
+    user_data = Path(paths.get("user_data_dir", "data/user_data"))
+    if not user_data.is_absolute():
+        user_data = (_HERE / user_data).resolve()
+
+    stored = load()
+    with open_browser(
+        user_data_dir=user_data,
+        headless=bool(ngdrs.get("headless", True)),
+        channel=browser.get("channel", ngdrs.get("channel", "chrome")),
+        viewport=(1280, 800),
+        extra_args=browser.get("args", ["--start-maximized"]),
+    ) as ctx:
+        if stored:
+            try:
+                ctx.add_cookies([as_playwright_cookie(stored)])
+            except Exception:
+                pass
+        page = _active_page(ctx)
+        page.goto(URLS["welcome"], wait_until="domcontentloaded", timeout=TIMING_MS["page_load"])
+        page.wait_for_timeout(TIMING_MS["short"])
+        html = page.content()
+        authed = "logout" in html.lower() and 'id="captcha"' not in html
+        if authed:
+            save_from_context(ctx)
+            print("session alive (cookie refreshed)")
+            return 0
+
+    print("session expired — cleared; next scrape will log in")
+    clear()
+    return 3
+
+
 def main(argv: list[str] | None = None) -> int:
     args = list(sys.argv[1:] if argv is None else argv)
     rec = load()
@@ -131,6 +180,9 @@ def main(argv: list[str] | None = None) -> int:
         clear()
         print("stored session cleared")
         return 0
+
+    if "--touch" in args:
+        return touch()
 
     if not rec:
         print("no stored session — run the daily runner once to log in")
