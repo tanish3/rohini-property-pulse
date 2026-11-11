@@ -12,6 +12,9 @@
   // -------- DOM helpers --------
   const $ = (sel, el = document) => el.querySelector(sel);
   const $$ = (sel, el = document) => Array.from(el.querySelectorAll(sel));
+  // "Unknown" is the parser's bucket for plot numbers outside the DDA
+  // keyplan; show it as "Unmapped" so it is not mistaken for missing data.
+  const pocketLabel = (p) => (p === "Unknown" ? "Unmapped" : p);
   const el = (tag, attrs = {}, ...children) => {
     const node = document.createElement(tag);
     for (const [k, v] of Object.entries(attrs)) {
@@ -136,7 +139,7 @@
         <div class="stat">
           <div class="label">Active pockets</div>
           <div class="value">${m.unique_pockets}</div>
-          <div class="sub">Across 3 blocks</div>
+          <div class="sub">Across ${Object.keys(s.blocks || {}).length} blocks</div>
         </div>
         <div class="stat">
           <div class="label">Sale deeds</div>
@@ -146,7 +149,12 @@
         <div class="stat">
           <div class="label">Other articles</div>
           <div class="value">${m.total_registrations - (m.articles["Sale Deed"] || 0)}</div>
-          <div class="sub">Gift, relinquishment, agreements</div>
+          <div class="sub">${esc(
+            Object.entries(m.articles || {})
+              .filter(([name]) => name !== "Sale Deed")
+              .map(([name, n]) => `${name} (${n})`)
+              .join(", ") || "None in this period"
+          )}</div>
         </div>
       </div>
 
@@ -288,10 +296,16 @@
         const cls =
           block === "A" ? "block-A" : block === "C" ? "block-C" :
           block === "GH" ? "block-GH" : "block-unknown";
+        const label = block === "Unknown" ? "Unmapped" : `Block ${esc(block)}`;
+        const pocketWord = b.pockets.length === 1 ? "pocket" : "pockets";
+        const detail =
+          block === "Unknown"
+            ? `${b.count} ${b.count === 1 ? "registration" : "registrations"} · plot number not in the DDA keyplan`
+            : `${b.count} ${b.count === 1 ? "registration" : "registrations"} · ${b.pockets.length} ${pocketWord} · ${esc(b.pockets.join(", "))}`;
         return `<div class="stat">
-          <div class="label">Block ${esc(block)}</div>
+          <div class="label">${label}</div>
           <div class="value">${b.count}</div>
-          <div class="sub">${b.pockets.length} pockets · ${esc(b.pockets.join(", "))}</div>
+          <div class="sub">${detail}</div>
         </div>`;
       })
       .join("");
@@ -398,9 +412,10 @@
 
   function renderPocketCard(pid, p) {
     const topArticle = Object.entries(p.articles).sort((a, b) => b[1] - a[1])[0];
+    const displayName = pid === "Unknown" ? "Unmapped" : pid;
     return `
       <a class="pocket-card" href="#/sector/28/pocket/${encodeURIComponent(pid)}">
-        <div class="pocket-name">${esc(pid)}</div>
+        <div class="pocket-name">${esc(displayName)}</div>
         <div class="pocket-block">${pid.startsWith("GH-") ? "DDA Flats" : pid === "Unknown" ? "Unmapped" : "Block " + esc(pid.split("-")[0])}</div>
         <div class="pocket-count">${p.count}</div>
         <div class="pocket-articles">${articleBadge(topArticle[0])} <span style="font-size:11px;color:var(--text-2);align-self:center">${topArticle[1]}</span></div>
@@ -488,7 +503,7 @@
     const html = `
       <a href="#/sector/28" class="back-link">Back to Sector 28</a>
       <section class="hero">
-        <h1>Pocket ${esc(pocket)}</h1>
+        <h1>${pocket === "Unknown" ? "Unmapped plots" : "Pocket " + esc(pocket)}</h1>
         <p>${esc(blockLabel)} · ${s.count} registrations · ${esc(s.earliest)} → ${esc(s.latest)}</p>
       </section>
 
@@ -610,7 +625,7 @@
           <span class="arrow">→</span>
           ${esc(r.purchaser.name || "(unknown)")}
         </td>
-        <td>${esc(r.property.pocket)}<br><span style="font-size:11px;color:var(--text-2)">${esc(r.property.raw_plot_number)}</span></td>
+        <td>${esc(pocketLabel(r.property.pocket))}<br><span style="font-size:11px;color:var(--text-2)">${esc(r.property.raw_plot_number)}</span></td>
         <td>${area}</td>
       `;
       tr.addEventListener("click", () => openTxDetail(r.id));
@@ -643,7 +658,7 @@
         `${esc(r.seller.name || "(unknown)")}<span class="arrow">→</span>${esc(r.purchaser.name || "(unknown)")}` }),
       el("div", { class: "tx-plot" }, esc(r.property.raw_plot_number)),
       el("div", { class: "tx-meta" },
-        el("span", {}, `📍 ${esc(r.property.pocket)}`),
+        el("span", {}, `📍 ${esc(pocketLabel(r.property.pocket))}`),
         area ? el("span", {}, `📐 ${area}`) : null,
         r.property.upic && r.property.upic !== "000000000000000"
           ? el("span", {}, `UPIC ${esc(r.property.upic)}`)
@@ -683,7 +698,7 @@
 
     const propFields = [];
     propFields.push(["Plot (as registered)", r.property.raw_plot_number]);
-    propFields.push(["Pocket (inferred)", `<a href="#/sector/28/pocket/${encodeURIComponent(r.property.pocket)}" class="link">${esc(r.property.pocket)}</a>`, true]);
+    propFields.push(["Pocket (inferred)", `<a href="#/sector/28/pocket/${encodeURIComponent(r.property.pocket)}" class="link">${esc(pocketLabel(r.property.pocket))}</a>`, true]);
     propFields.push(["Block", blockLabel]);
     if (r.property.property_id) propFields.push(["Property ID", r.property.property_id]);
     if (r.property.upic && r.property.upic !== "000000000000000")
@@ -759,7 +774,7 @@
         </section>
 
         <footer class="rpp-modal-foot">
-          <a href="#/sector/28/pocket/${encodeURIComponent(r.property.pocket)}" class="btn btn-primary" data-close>View pocket ${esc(r.property.pocket)} →</a>
+          <a href="#/sector/28/pocket/${encodeURIComponent(r.property.pocket)}" class="btn btn-primary" data-close>View ${esc(pocketLabel(r.property.pocket))} →</a>
           <button class="btn" data-close>Close</button>
         </footer>
       </div>
@@ -877,7 +892,9 @@
           <input type="search" id="tx-search" placeholder="Search…" inputmode="search" />
           <select id="tx-pocket">
             <option value="">All pockets</option>
-            ${Object.keys(state.summary.pockets).map((p) => `<option value="${esc(p)}">${esc(p)}</option>`).join("")}
+            ${Object.keys(state.summary.pockets)
+              .map((p) => `<option value="${esc(p)}">${esc(p === "Unknown" ? "Unmapped" : p)}</option>`)
+              .join("")}
           </select>
           <select id="tx-article">
             <option value="">All articles</option>
@@ -966,7 +983,7 @@
           <span class="arrow">→</span>
           ${esc(r.purchaser.name || "(unknown)")}
         </td>
-        <td>${esc(r.property.pocket)}<br><span style="font-size:11px;color:var(--text-2)">${esc(r.property.raw_plot_number)}</span></td>
+        <td>${esc(pocketLabel(r.property.pocket))}<br><span style="font-size:11px;color:var(--text-2)">${esc(r.property.raw_plot_number)}</span></td>
         <td>${d.plot_area_sqm ? fmtNum(d.plot_area_sqm, 1) + " m²" : "—"}</td>
         <td>${d.plinth_area_sqm ? fmtNum(d.plinth_area_sqm, 1) + " m²" : "—"}</td>
         <td style="font-size:11px;color:var(--text-2)">${esc(r.registration_no)}</td>
