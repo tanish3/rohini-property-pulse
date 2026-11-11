@@ -79,7 +79,7 @@ def find_latest_csv(data_dir: Path) -> Optional[Path]:
     if not data_dir.exists():
         return None
     csvs = sorted(
-        data_dir.glob("rohini_sector28_*.csv"),
+        data_dir.glob("rohini_sector*.csv"),
         key=lambda p: p.stat().st_mtime,
         reverse=True,
     )
@@ -296,7 +296,7 @@ def run_deploy(
 
     try:
         # ----- step 2: CSV → JSON ----- #
-        all_csvs = sorted(data_dir.glob("rohini_sector28_*.csv"))
+        all_csvs = sorted(data_dir.glob("rohini_sector*.csv"))
         result["steps"]["process"] = process_csv_to_json(
             python, Path(csv_path), all_csvs=all_csvs
         )

@@ -18,6 +18,29 @@ mkdir -p "$STATE_DIR"
 
 cd "$REPO_ROOT" || exit 1
 
+LOCK_DIR="$STATE_DIR/chrome-profile.lock"
+acquire_lock() {
+    if mkdir "$LOCK_DIR" 2>/dev/null; then
+        echo $$ > "$LOCK_DIR/pid"
+        return 0
+    fi
+    # Stale lock from a crashed run (older than 15 minutes) -> reclaim.
+    if [ -d "$LOCK_DIR" ]; then
+        now=$(date +%s)
+        mtime=$(stat -f %m "$LOCK_DIR" 2>/dev/null || echo "$now")
+        if [ $((now - mtime)) -gt 900 ]; then
+            rm -rf "$LOCK_DIR"
+            mkdir "$LOCK_DIR" 2>/dev/null && echo $$ > "$LOCK_DIR/pid" && return 0
+        fi
+    fi
+    return 1
+}
+if ! acquire_lock; then
+    echo "=== $(date '+%F %T %Z') another scrape/keepalive holds the Chrome profile — skipping ===" >> "$STATE_DIR/chrome-lock.log"
+    exit 0
+fi
+trap 'rm -rf "$LOCK_DIR"' EXIT
+
 {
     echo "=== $(date '+%F %T %Z') starting daily refresh ==="
     .venv/bin/python daily_runner/daily_runner.py --update-site --print-json

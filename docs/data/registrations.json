@@ -1,20 +1,22 @@
 {
   "meta": {
-    "source_csv": "rohini_sector28_bawana_2026-06-19_to_2026-11-11.csv, rohini_sector28_bawana_2026-11.csv",
+    "source_csv": "4 CSV files",
     "source_csvs": [
       "rohini_sector28_bawana_2026-06-19_to_2026-11-11.csv",
-      "rohini_sector28_bawana_2026-11.csv"
+      "rohini_sector28_bawana_2026-11.csv",
+      "rohini_sector38_bawana_2026-06-19_to_2026-11-11.csv",
+      "rohini_sector38_bawana_2026-11.csv"
     ],
-    "generated_at": "2026-11-11T16:56:30",
+    "generated_at": "2026-11-11T16:57:05",
     "date_from": "2026-09-23",
     "date_to": "2026-11-11",
-    "total_registrations": 210,
-    "unique_pockets": 15,
+    "total_registrations": 219,
+    "unique_pockets": 16,
     "articles": {
-      "Sale Deed": 199,
-      "Sale Agreement": 5,
+      "Sale Deed": 205,
+      "Sale Agreement": 7,
       "Gift Deed": 2,
-      "Relinquishment Deed": 4
+      "Relinquishment Deed": 5
     },
     "months": [
       {
@@ -31,28 +33,28 @@
       {
         "id": "2026-10",
         "label": "Oct 2026",
-        "count": 157,
+        "count": 165,
         "date_from": "2026-10-01",
         "date_to": "2026-10-31",
         "articles": {
-          "Sale Deed": 148,
-          "Sale Agreement": 3,
+          "Sale Deed": 153,
+          "Sale Agreement": 5,
           "Gift Deed": 2,
-          "Relinquishment Deed": 4
+          "Relinquishment Deed": 5
         },
-        "unique_pockets": 13
+        "unique_pockets": 14
       },
       {
         "id": "2026-11",
         "label": "Nov 2026",
-        "count": 31,
+        "count": 32,
         "date_from": "2026-11-04",
         "date_to": "2026-11-11",
         "articles": {
-          "Sale Deed": 29,
+          "Sale Deed": 30,
           "Sale Agreement": 2
         },
-        "unique_pockets": 10
+        "unique_pockets": 11
       }
     ],
     "sectors": [
@@ -68,16 +70,28 @@
           "Gift Deed": 2,
           "Relinquishment Deed": 4
         }
+      },
+      {
+        "id": "38",
+        "label": "Sector 38",
+        "count": 9,
+        "date_from": "2026-10-14",
+        "date_to": "2026-11-07",
+        "articles": {
+          "Sale Deed": 6,
+          "Sale Agreement": 2,
+          "Relinquishment Deed": 1
+        }
       }
     ],
     "source_offices": [
       {
         "district": "Outer North",
         "taluka": "Bawana",
-        "count": 210
+        "count": 219
       }
     ],
-    "sector": "Rohini Sector-28",
+    "sector": "Rohini Sectors 28–38",
     "taluka": "Bawana",
     "district": "Outer North"
   },
@@ -3909,6 +3923,51 @@
     },
     {
       "id": 86,
+      "document_id": "202600294375",
+      "registration_no": "2026/72/I/910",
+      "registration_date": "2026-10-14T13:33:13",
+      "month": "2026-10",
+      "sector": "38",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "SR Bawana",
+      "district": "Outer North",
+      "taluka": "Bawana",
+      "seller": {
+        "name": "KASHISH KHANNA",
+        "address": "A-10, 2ND FLOOR, WEST PATEL NAGAR, DELHI"
+      },
+      "purchaser": {
+        "name": "SADHNA SINGH",
+        "address": "OF F-578, F-BLOCK, MADIPUR COLONY, MADIPUR, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "C-1/665 SEC-38 ROHINI DELHI",
+        "pocket": "S38",
+        "block": "S38",
+        "upic": "000000000000000",
+        "property_id": "661187",
+        "village": "Rohini Sector 38, Bawana, Outer North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 87,
       "document_id": "202600292931",
       "registration_no": "2026/72/I/933",
       "registration_date": "2026-10-14T14:07:44",
@@ -3953,7 +4012,7 @@
       }
     },
     {
-      "id": 87,
+      "id": 88,
       "document_id": "202600279148",
       "registration_no": "2026/72/I/939",
       "registration_date": "2026-10-14T14:14:26",
@@ -3998,7 +4057,7 @@
       }
     },
     {
-      "id": 88,
+      "id": 89,
       "document_id": "202600283050",
       "registration_no": "2026/72/I/1015",
       "registration_date": "2026-10-17T16:05:18",
@@ -4043,7 +4102,7 @@
       }
     },
     {
-      "id": 89,
+      "id": 90,
       "document_id": "202600284365",
       "registration_no": "2026/72/I/1041",
       "registration_date": "2026-10-17T16:49:35",
@@ -4088,7 +4147,7 @@
       }
     },
     {
-      "id": 90,
+      "id": 91,
       "document_id": "202600283099",
       "registration_no": "2026/72/I/1043",
       "registration_date": "2026-10-17T16:51:50",
@@ -4133,7 +4192,7 @@
       }
     },
     {
-      "id": 91,
+      "id": 92,
       "document_id": "202600285144",
       "registration_no": "2026/72/I/1049",
       "registration_date": "2026-10-17T16:58:54",
@@ -4178,7 +4237,7 @@
       }
     },
     {
-      "id": 92,
+      "id": 93,
       "document_id": "202600275189",
       "registration_no": "2026/72/I/1052",
       "registration_date": "2026-10-19T12:02:48",
@@ -4223,7 +4282,7 @@
       }
     },
     {
-      "id": 93,
+      "id": 94,
       "document_id": "202600271696",
       "registration_no": "2026/72/I/1084",
       "registration_date": "2026-10-21T15:47:57",
@@ -4268,7 +4327,7 @@
       }
     },
     {
-      "id": 94,
+      "id": 95,
       "document_id": "202600271647",
       "registration_no": "2026/72/I/1086",
       "registration_date": "2026-10-21T17:04:26",
@@ -4313,7 +4372,7 @@
       }
     },
     {
-      "id": 95,
+      "id": 96,
       "document_id": "202600275240",
       "registration_no": "2026/72/I/1128",
       "registration_date": "2026-10-22T12:48:48",
@@ -4358,7 +4417,7 @@
       }
     },
     {
-      "id": 96,
+      "id": 97,
       "document_id": "202600275211",
       "registration_no": "2026/72/I/1129",
       "registration_date": "2026-10-22T12:49:52",
@@ -4403,7 +4462,7 @@
       }
     },
     {
-      "id": 97,
+      "id": 98,
       "document_id": "202600275179",
       "registration_no": "2026/72/I/1130",
       "registration_date": "2026-10-22T12:51:22",
@@ -4448,7 +4507,7 @@
       }
     },
     {
-      "id": 98,
+      "id": 99,
       "document_id": "202600293970",
       "registration_no": "2026/72/I/1138",
       "registration_date": "2026-10-22T13:03:45",
@@ -4493,7 +4552,7 @@
       }
     },
     {
-      "id": 99,
+      "id": 100,
       "document_id": "202600293994",
       "registration_no": "2026/72/I/1140",
       "registration_date": "2026-10-22T13:06:36",
@@ -4538,7 +4597,7 @@
       }
     },
     {
-      "id": 100,
+      "id": 101,
       "document_id": "202600280556",
       "registration_no": "2026/72/I/1156",
       "registration_date": "2026-10-22T13:30:53",
@@ -4583,7 +4642,7 @@
       }
     },
     {
-      "id": 101,
+      "id": 102,
       "document_id": "202600291297",
       "registration_no": "2026/72/I/1171",
       "registration_date": "2026-10-22T15:16:10",
@@ -4628,7 +4687,7 @@
       }
     },
     {
-      "id": 102,
+      "id": 103,
       "document_id": "202600291355",
       "registration_no": "2026/72/I/1172",
       "registration_date": "2026-10-22T15:17:43",
@@ -4673,7 +4732,7 @@
       }
     },
     {
-      "id": 103,
+      "id": 104,
       "document_id": "202600277628",
       "registration_no": "2026/72/I/1181",
       "registration_date": "2026-10-23T09:15:01",
@@ -4718,7 +4777,7 @@
       }
     },
     {
-      "id": 104,
+      "id": 105,
       "document_id": "202600294089",
       "registration_no": "2026/72/I/1191",
       "registration_date": "2026-10-23T09:25:19",
@@ -4763,7 +4822,7 @@
       }
     },
     {
-      "id": 105,
+      "id": 106,
       "document_id": "202600278101",
       "registration_no": "2026/72/I/1203",
       "registration_date": "2026-10-23T09:36:10",
@@ -4808,7 +4867,7 @@
       }
     },
     {
-      "id": 106,
+      "id": 107,
       "document_id": "202600281318",
       "registration_no": "2026/72/I/1210",
       "registration_date": "2026-10-23T09:42:15",
@@ -4853,7 +4912,7 @@
       }
     },
     {
-      "id": 107,
+      "id": 108,
       "document_id": "202600282549",
       "registration_no": "2026/72/I/1211",
       "registration_date": "2026-10-23T09:42:56",
@@ -4898,7 +4957,7 @@
       }
     },
     {
-      "id": 108,
+      "id": 109,
       "document_id": "202600282564",
       "registration_no": "2026/72/I/1217",
       "registration_date": "2026-10-23T09:47:36",
@@ -4943,7 +5002,7 @@
       }
     },
     {
-      "id": 109,
+      "id": 110,
       "document_id": "202600282566",
       "registration_no": "2026/72/I/1218",
       "registration_date": "2026-10-23T09:48:13",
@@ -4988,7 +5047,7 @@
       }
     },
     {
-      "id": 110,
+      "id": 111,
       "document_id": "202600283458",
       "registration_no": "2026/72/I/1224",
       "registration_date": "2026-10-23T09:53:51",
@@ -5033,7 +5092,52 @@
       }
     },
     {
-      "id": 111,
+      "id": 112,
+      "document_id": "202600295633",
+      "registration_no": "2026/72/I/1225",
+      "registration_date": "2026-10-23T09:54:49",
+      "month": "2026-10",
+      "sector": "38",
+      "article": "Sale Agreement",
+      "article_raw": "Sale Agreement - 23 A",
+      "article_code": "23 A",
+      "registration_office": "SR Bawana",
+      "district": "Outer North",
+      "taluka": "Bawana",
+      "seller": {
+        "name": null,
+        "address": null
+      },
+      "purchaser": {
+        "name": null,
+        "address": null
+      },
+      "property": {
+        "raw_plot_number": "C-1/551 SEC-38 ROHINI DELHI",
+        "pocket": "S38",
+        "block": "S38",
+        "upic": "000000000000000",
+        "property_id": "662093",
+        "village": "Rohini Sector 38, Bawana, Outer North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": null,
+          "plinth_area_transferred_sqm": null,
+          "land_share_transferred_sqm": null,
+          "land_share_transferred_pct": null,
+          "floors": null,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 113,
       "document_id": "202600284259",
       "registration_no": "2026/72/I/1238",
       "registration_date": "2026-10-23T10:08:01",
@@ -5078,7 +5182,7 @@
       }
     },
     {
-      "id": 112,
+      "id": 114,
       "document_id": "202600296635",
       "registration_no": "2026/72/I/1246",
       "registration_date": "2026-10-23T10:36:38",
@@ -5123,7 +5227,7 @@
       }
     },
     {
-      "id": 113,
+      "id": 115,
       "document_id": "202600296613",
       "registration_no": "2026/72/I/1247",
       "registration_date": "2026-10-23T10:37:17",
@@ -5168,7 +5272,7 @@
       }
     },
     {
-      "id": 114,
+      "id": 116,
       "document_id": "202600284203",
       "registration_no": "2026/72/I/1251",
       "registration_date": "2026-10-23T10:40:01",
@@ -5213,7 +5317,7 @@
       }
     },
     {
-      "id": 115,
+      "id": 117,
       "document_id": "202600292926",
       "registration_no": "2026/72/I/1284",
       "registration_date": "2026-10-23T11:23:04",
@@ -5258,7 +5362,7 @@
       }
     },
     {
-      "id": 116,
+      "id": 118,
       "document_id": "202600284441",
       "registration_no": "2026/72/I/1291",
       "registration_date": "2026-10-23T11:29:39",
@@ -5303,7 +5407,7 @@
       }
     },
     {
-      "id": 117,
+      "id": 119,
       "document_id": "202600294333",
       "registration_no": "2026/72/I/1300",
       "registration_date": "2026-10-23T11:37:30",
@@ -5348,7 +5452,7 @@
       }
     },
     {
-      "id": 118,
+      "id": 120,
       "document_id": "202600276788",
       "registration_no": "2026/72/I/1304",
       "registration_date": "2026-10-23T11:41:33",
@@ -5393,7 +5497,7 @@
       }
     },
     {
-      "id": 119,
+      "id": 121,
       "document_id": "202600282488",
       "registration_no": "2026/72/I/1308",
       "registration_date": "2026-10-23T11:44:45",
@@ -5438,7 +5542,7 @@
       }
     },
     {
-      "id": 120,
+      "id": 122,
       "document_id": "202600288461",
       "registration_no": "2026/72/I/1309",
       "registration_date": "2026-10-23T11:45:51",
@@ -5483,7 +5587,52 @@
       }
     },
     {
-      "id": 121,
+      "id": 123,
+      "document_id": "202600271193",
+      "registration_no": "2026/72/I/1321",
+      "registration_date": "2026-10-23T11:56:18",
+      "month": "2026-10",
+      "sector": "38",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "SR Bawana",
+      "district": "Outer North",
+      "taluka": "Bawana",
+      "seller": {
+        "name": "REKHA",
+        "address": "G-26/418 SECTOR-3 ROHINI DELHI"
+      },
+      "purchaser": {
+        "name": "ANIL KUMAR",
+        "address": "F-24/226 GROUND FLOOR SECTOR-3 ROHINI DELHI"
+      },
+      "property": {
+        "raw_plot_number": "PROPERTY NO.349 BLOCK-C POCKET-1 SECTOR-38 ROHINI DELHI",
+        "pocket": "S38",
+        "block": "S38",
+        "upic": "000000000000000",
+        "property_id": "661675",
+        "village": "Rohini Sector 38, Bawana, Outer North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 10.56,
+          "plinth_area_transferred_sqm": 10.56,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 124,
       "document_id": "202600277940",
       "registration_no": "2026/72/I/1326",
       "registration_date": "2026-10-23T15:45:03",
@@ -5528,7 +5677,7 @@
       }
     },
     {
-      "id": 122,
+      "id": 125,
       "document_id": "202600264035",
       "registration_no": "2026/72/I/1346",
       "registration_date": "2026-10-24T10:56:15",
@@ -5573,7 +5722,7 @@
       }
     },
     {
-      "id": 123,
+      "id": 126,
       "document_id": "202600293837",
       "registration_no": "2026/72/I/1352",
       "registration_date": "2026-10-24T11:00:38",
@@ -5618,7 +5767,7 @@
       }
     },
     {
-      "id": 124,
+      "id": 127,
       "document_id": "202600293807",
       "registration_no": "2026/72/I/1353",
       "registration_date": "2026-10-24T11:01:18",
@@ -5663,7 +5812,7 @@
       }
     },
     {
-      "id": 125,
+      "id": 128,
       "document_id": "202600254015",
       "registration_no": "2026/72/I/1356",
       "registration_date": "2026-10-24T11:03:25",
@@ -5708,7 +5857,7 @@
       }
     },
     {
-      "id": 126,
+      "id": 129,
       "document_id": "202600279068",
       "registration_no": "2026/72/I/1367",
       "registration_date": "2026-10-24T11:31:46",
@@ -5753,7 +5902,7 @@
       }
     },
     {
-      "id": 127,
+      "id": 130,
       "document_id": "202600279113",
       "registration_no": "2026/72/I/1369",
       "registration_date": "2026-10-24T11:33:08",
@@ -5798,7 +5947,52 @@
       }
     },
     {
-      "id": 128,
+      "id": 131,
+      "document_id": "202600294599",
+      "registration_no": "2026/72/I/1370",
+      "registration_date": "2026-10-24T11:33:58",
+      "month": "2026-10",
+      "sector": "38",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "SR Bawana",
+      "district": "Outer North",
+      "taluka": "Bawana",
+      "seller": {
+        "name": "BRAHAM PAL",
+        "address": "H.NO. 72, TAIMOOR NAGAR, SRINIWASPURI, DELHI"
+      },
+      "purchaser": {
+        "name": "MOHIT JAIN",
+        "address": "D-11/99, SECOND FLOOR, SECTOR-8, ROHINI, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "C-1/363 SECTOR-38 ROHINI DELHI",
+        "pocket": "S38",
+        "block": "S38",
+        "upic": "031089410014300",
+        "property_id": "661331",
+        "village": "Rohini Sector 38, Bawana, Outer North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 132,
       "document_id": "202600279152",
       "registration_no": "2026/72/I/1377",
       "registration_date": "2026-10-24T11:40:19",
@@ -5843,7 +6037,7 @@
       }
     },
     {
-      "id": 129,
+      "id": 133,
       "document_id": "202600279021",
       "registration_no": "2026/72/I/1378",
       "registration_date": "2026-10-24T11:41:04",
@@ -5888,7 +6082,7 @@
       }
     },
     {
-      "id": 130,
+      "id": 134,
       "document_id": "202600292860",
       "registration_no": "2026/72/I/1382",
       "registration_date": "2026-10-24T11:44:31",
@@ -5933,7 +6127,7 @@
       }
     },
     {
-      "id": 131,
+      "id": 135,
       "document_id": "202600279352",
       "registration_no": "2026/72/I/1384",
       "registration_date": "2026-10-24T11:48:08",
@@ -5978,7 +6172,7 @@
       }
     },
     {
-      "id": 132,
+      "id": 136,
       "document_id": "202600279391",
       "registration_no": "2026/72/I/1385",
       "registration_date": "2026-10-24T11:48:49",
@@ -6023,7 +6217,7 @@
       }
     },
     {
-      "id": 133,
+      "id": 137,
       "document_id": "202600269076",
       "registration_no": "2026/72/I/1388",
       "registration_date": "2026-10-24T11:51:17",
@@ -6068,7 +6262,7 @@
       }
     },
     {
-      "id": 134,
+      "id": 138,
       "document_id": "202600294917",
       "registration_no": "2026/72/I/1390",
       "registration_date": "2026-10-24T11:53:17",
@@ -6113,7 +6307,7 @@
       }
     },
     {
-      "id": 135,
+      "id": 139,
       "document_id": "202600297144",
       "registration_no": "2026/72/I/1394",
       "registration_date": "2026-10-24T11:58:39",
@@ -6158,7 +6352,7 @@
       }
     },
     {
-      "id": 136,
+      "id": 140,
       "document_id": "202600280684",
       "registration_no": "2026/72/I/1408",
       "registration_date": "2026-10-24T13:41:53",
@@ -6203,7 +6397,7 @@
       }
     },
     {
-      "id": 137,
+      "id": 141,
       "document_id": "202600280645",
       "registration_no": "2026/72/I/1417",
       "registration_date": "2026-10-24T13:50:24",
@@ -6248,7 +6442,7 @@
       }
     },
     {
-      "id": 138,
+      "id": 142,
       "document_id": "202600284256",
       "registration_no": "2026/72/I/1429",
       "registration_date": "2026-10-24T13:59:12",
@@ -6293,7 +6487,7 @@
       }
     },
     {
-      "id": 139,
+      "id": 143,
       "document_id": "202600295593",
       "registration_no": "2026/72/I/1430",
       "registration_date": "2026-10-24T14:00:23",
@@ -6338,7 +6532,7 @@
       }
     },
     {
-      "id": 140,
+      "id": 144,
       "document_id": "202600274730",
       "registration_no": "2026/72/I/1439",
       "registration_date": "2026-10-24T14:11:21",
@@ -6383,7 +6577,7 @@
       }
     },
     {
-      "id": 141,
+      "id": 145,
       "document_id": "202600298697",
       "registration_no": "2026/72/I/1449",
       "registration_date": "2026-10-24T14:21:15",
@@ -6428,7 +6622,7 @@
       }
     },
     {
-      "id": 142,
+      "id": 146,
       "document_id": "202600298675",
       "registration_no": "2026/72/I/1459",
       "registration_date": "2026-10-24T14:35:30",
@@ -6473,7 +6667,7 @@
       }
     },
     {
-      "id": 143,
+      "id": 147,
       "document_id": "202600295518",
       "registration_no": "2026/72/I/1461",
       "registration_date": "2026-10-24T14:38:15",
@@ -6518,7 +6712,7 @@
       }
     },
     {
-      "id": 144,
+      "id": 148,
       "document_id": "202600284802",
       "registration_no": "2026/72/I/1462",
       "registration_date": "2026-10-24T14:38:53",
@@ -6563,7 +6757,52 @@
       }
     },
     {
-      "id": 145,
+      "id": 149,
+      "document_id": "202600293846",
+      "registration_no": "2026/72/I/1472",
+      "registration_date": "2026-10-24T15:14:52",
+      "month": "2026-10",
+      "sector": "38",
+      "article": "Sale Agreement",
+      "article_raw": "Sale Agreement - 23 A",
+      "article_code": "23 A",
+      "registration_office": "SR Bawana",
+      "district": "Outer North",
+      "taluka": "Bawana",
+      "seller": {
+        "name": null,
+        "address": null
+      },
+      "purchaser": {
+        "name": null,
+        "address": null
+      },
+      "property": {
+        "raw_plot_number": "PLOT NO.584 BLOCK-C POCKET-1 SECTOR-38 ROHINI DELHI",
+        "pocket": "S38",
+        "block": "S38",
+        "upic": "000000000000000",
+        "property_id": "660863",
+        "village": "Rohini Sector 38, Bawana, Outer North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": null,
+          "plinth_area_transferred_sqm": null,
+          "land_share_transferred_sqm": null,
+          "land_share_transferred_pct": null,
+          "floors": null,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 150,
       "document_id": "202600289922",
       "registration_no": "2026/72/I/1483",
       "registration_date": "2026-10-24T15:24:50",
@@ -6608,7 +6847,7 @@
       }
     },
     {
-      "id": 146,
+      "id": 151,
       "document_id": "202600272848",
       "registration_no": "2026/72/I/1494",
       "registration_date": "2026-10-24T15:45:26",
@@ -6653,7 +6892,7 @@
       }
     },
     {
-      "id": 147,
+      "id": 152,
       "document_id": "202600294496",
       "registration_no": "2026/72/I/1496",
       "registration_date": "2026-10-24T15:50:51",
@@ -6698,7 +6937,7 @@
       }
     },
     {
-      "id": 148,
+      "id": 153,
       "document_id": "202600299187",
       "registration_no": "2026/72/I/1513",
       "registration_date": "2026-10-27T11:24:55",
@@ -6743,7 +6982,7 @@
       }
     },
     {
-      "id": 149,
+      "id": 154,
       "document_id": "202600302823",
       "registration_no": "2026/72/I/1528",
       "registration_date": "2026-10-27T12:00:57",
@@ -6788,7 +7027,7 @@
       }
     },
     {
-      "id": 150,
+      "id": 155,
       "document_id": "202600302860",
       "registration_no": "2026/72/I/1529",
       "registration_date": "2026-10-27T12:09:25",
@@ -6833,7 +7072,7 @@
       }
     },
     {
-      "id": 151,
+      "id": 156,
       "document_id": "202600278505",
       "registration_no": "2026/72/I/1540",
       "registration_date": "2026-10-27T12:31:11",
@@ -6878,7 +7117,7 @@
       }
     },
     {
-      "id": 152,
+      "id": 157,
       "document_id": "202600278522",
       "registration_no": "2026/72/I/1541",
       "registration_date": "2026-10-27T12:31:57",
@@ -6923,7 +7162,7 @@
       }
     },
     {
-      "id": 153,
+      "id": 158,
       "document_id": "202600270509",
       "registration_no": "2026/72/I/1543",
       "registration_date": "2026-10-27T12:34:49",
@@ -6968,7 +7207,7 @@
       }
     },
     {
-      "id": 154,
+      "id": 159,
       "document_id": "202600270437",
       "registration_no": "2026/72/I/1565",
       "registration_date": "2026-10-27T13:24:56",
@@ -7013,7 +7252,7 @@
       }
     },
     {
-      "id": 155,
+      "id": 160,
       "document_id": "202600302590",
       "registration_no": "2026/72/I/1590",
       "registration_date": "2026-10-28T11:05:17",
@@ -7058,7 +7297,7 @@
       }
     },
     {
-      "id": 156,
+      "id": 161,
       "document_id": "202600283807",
       "registration_no": "2026/72/I/1593",
       "registration_date": "2026-10-28T11:07:45",
@@ -7103,7 +7342,7 @@
       }
     },
     {
-      "id": 157,
+      "id": 162,
       "document_id": "202600285282",
       "registration_no": "2026/72/I/1623",
       "registration_date": "2026-10-28T12:52:34",
@@ -7148,7 +7387,7 @@
       }
     },
     {
-      "id": 158,
+      "id": 163,
       "document_id": "202600308691",
       "registration_no": "2026/72/I/1678",
       "registration_date": "2026-10-29T10:54:51",
@@ -7193,7 +7432,7 @@
       }
     },
     {
-      "id": 159,
+      "id": 164,
       "document_id": "202600281119",
       "registration_no": "2026/72/I/1679",
       "registration_date": "2026-10-29T10:55:50",
@@ -7238,7 +7477,52 @@
       }
     },
     {
-      "id": 160,
+      "id": 165,
+      "document_id": "202600306402",
+      "registration_no": "2026/72/I/1711",
+      "registration_date": "2026-10-29T11:57:32",
+      "month": "2026-10",
+      "sector": "38",
+      "article": "Relinquishment Deed",
+      "article_raw": "Relinquishment deed - 55",
+      "article_code": 55,
+      "registration_office": "SR Bawana",
+      "district": "Outer North",
+      "taluka": "Bawana",
+      "seller": {
+        "name": "SANGITA",
+        "address": "RZ-76, PALAM ROAD, DABRI EXTN MAIN  SOUTH WEST DELHI"
+      },
+      "purchaser": {
+        "name": "SANJEEV KHOKHAR",
+        "address": "RZ-76, GALI NO.4, DABRI EXTN, MAIN DABRI, SOUTH WEST DELHI-110045"
+      },
+      "property": {
+        "raw_plot_number": "123",
+        "pocket": "S38",
+        "block": "S38",
+        "upic": "000000000000000",
+        "property_id": "670003",
+        "village": "Rohini Sector 38, Bawana, Outer North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": null,
+          "plinth_area_transferred_sqm": null,
+          "land_share_transferred_sqm": null,
+          "land_share_transferred_pct": null,
+          "floors": null,
+          "floor_label": null,
+          "floor_number": null,
+          "construction_type": null,
+          "category_of_locality": null,
+          "stilt_parking_sqm": null,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 166,
       "document_id": "202600278927",
       "registration_no": "2026/72/I/1714",
       "registration_date": "2026-10-29T13:42:17",
@@ -7283,7 +7567,52 @@
       }
     },
     {
-      "id": 161,
+      "id": 167,
+      "document_id": "202600305416",
+      "registration_no": "2026/72/I/1731",
+      "registration_date": "2026-10-30T11:57:08",
+      "month": "2026-10",
+      "sector": "38",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "SR Bawana",
+      "district": "Outer North",
+      "taluka": "Bawana",
+      "seller": {
+        "name": "POONAM DIXIT",
+        "address": "HOUSE NO.76, BLOCK-F, POCKET-3, SECTOR-16, ROHINI, DELHI"
+      },
+      "purchaser": {
+        "name": "ANITA ANOD DHAWAN",
+        "address": "QU-286-A, PITAMPURA, DELHI-"
+      },
+      "property": {
+        "raw_plot_number": "PROP NO.51 BLOCK-C POCKET-1 SECTOR-38 ROHINI DELHI",
+        "pocket": "S38",
+        "block": "S38",
+        "upic": "032089410034400",
+        "property_id": "669261",
+        "village": "Rohini Sector 38, Bawana, Outer North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 168,
       "document_id": "202600306551",
       "registration_no": "2026/72/I/1737",
       "registration_date": "2026-10-30T12:01:11",
@@ -7328,7 +7657,7 @@
       }
     },
     {
-      "id": 162,
+      "id": 169,
       "document_id": "202600308737",
       "registration_no": "2026/72/I/1745",
       "registration_date": "2026-10-30T12:05:42",
@@ -7373,7 +7702,7 @@
       }
     },
     {
-      "id": 163,
+      "id": 170,
       "document_id": "202600278524",
       "registration_no": "2026/72/I/1770",
       "registration_date": "2026-10-30T17:44:30",
@@ -7418,7 +7747,7 @@
       }
     },
     {
-      "id": 164,
+      "id": 171,
       "document_id": "202600278475",
       "registration_no": "2026/72/I/1771",
       "registration_date": "2026-10-30T17:46:14",
@@ -7463,7 +7792,7 @@
       }
     },
     {
-      "id": 165,
+      "id": 172,
       "document_id": "202600301725",
       "registration_no": "2026/72/I/1781",
       "registration_date": "2026-10-31T11:34:04",
@@ -7508,7 +7837,7 @@
       }
     },
     {
-      "id": 166,
+      "id": 173,
       "document_id": "202600308650",
       "registration_no": "2026/72/I/1782",
       "registration_date": "2026-10-31T11:34:40",
@@ -7553,7 +7882,7 @@
       }
     },
     {
-      "id": 167,
+      "id": 174,
       "document_id": "202600288531",
       "registration_no": "2026/72/I/1805",
       "registration_date": "2026-10-31T12:07:43",
@@ -7598,7 +7927,7 @@
       }
     },
     {
-      "id": 168,
+      "id": 175,
       "document_id": "202600273476",
       "registration_no": "2026/72/I/1816",
       "registration_date": "2026-10-31T12:47:37",
@@ -7643,7 +7972,7 @@
       }
     },
     {
-      "id": 169,
+      "id": 176,
       "document_id": "202600277869",
       "registration_no": "2026/72/I/1825",
       "registration_date": "2026-10-31T13:00:16",
@@ -7688,7 +8017,52 @@
       }
     },
     {
-      "id": 170,
+      "id": 177,
+      "document_id": "202600308833",
+      "registration_no": "2026/72/I/1849",
+      "registration_date": "2026-10-31T13:26:44",
+      "month": "2026-10",
+      "sector": "38",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "SR Bawana",
+      "district": "Outer North",
+      "taluka": "Bawana",
+      "seller": {
+        "name": "RAMAN",
+        "address": "H.NO. 420, V.P.O. KARALA, DELHI"
+      },
+      "purchaser": {
+        "name": "KRISHAN KUMAR MUDGAL",
+        "address": "A-8/41, SECTOR-17, ROHINI, DELHI"
+      },
+      "property": {
+        "raw_plot_number": "C-1/04 SECTOR-38 ROHINI DELHI",
+        "pocket": "S38",
+        "block": "S38",
+        "upic": "031089410005800",
+        "property_id": "671748",
+        "village": "Rohini Sector 38, Bawana, Outer North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 178,
       "document_id": "202600308611",
       "registration_no": "2026/72/I/1851",
       "registration_date": "2026-10-31T13:28:44",
@@ -7733,7 +8107,7 @@
       }
     },
     {
-      "id": 171,
+      "id": 179,
       "document_id": "202600309754",
       "registration_no": "2026/72/I/1861",
       "registration_date": "2026-10-31T13:39:40",
@@ -7778,7 +8152,7 @@
       }
     },
     {
-      "id": 172,
+      "id": 180,
       "document_id": "202600309996",
       "registration_no": "2026/72/I/1862",
       "registration_date": "2026-10-31T13:40:33",
@@ -7823,7 +8197,7 @@
       }
     },
     {
-      "id": 173,
+      "id": 181,
       "document_id": "202600310060",
       "registration_no": "2026/72/I/1863",
       "registration_date": "2026-10-31T13:41:19",
@@ -7868,7 +8242,7 @@
       }
     },
     {
-      "id": 174,
+      "id": 182,
       "document_id": "202600309467",
       "registration_no": "2026/72/I/1864",
       "registration_date": "2026-10-31T13:42:03",
@@ -7913,7 +8287,7 @@
       }
     },
     {
-      "id": 175,
+      "id": 183,
       "document_id": "202600309580",
       "registration_no": "2026/72/I/1865",
       "registration_date": "2026-10-31T13:42:43",
@@ -7958,7 +8332,7 @@
       }
     },
     {
-      "id": 176,
+      "id": 184,
       "document_id": "202600309618",
       "registration_no": "2026/72/I/1866",
       "registration_date": "2026-10-31T13:43:26",
@@ -8003,7 +8377,7 @@
       }
     },
     {
-      "id": 177,
+      "id": 185,
       "document_id": "202600305672",
       "registration_no": "2026/72/I/1869",
       "registration_date": "2026-10-31T13:48:34",
@@ -8048,7 +8422,7 @@
       }
     },
     {
-      "id": 178,
+      "id": 186,
       "document_id": "202600305832",
       "registration_no": "2026/72/I/1870",
       "registration_date": "2026-10-31T13:49:29",
@@ -8093,7 +8467,7 @@
       }
     },
     {
-      "id": 179,
+      "id": 187,
       "document_id": "202600292998",
       "registration_no": "2026/72/I/1885",
       "registration_date": "2026-10-31T14:06:14",
@@ -8138,7 +8512,7 @@
       }
     },
     {
-      "id": 180,
+      "id": 188,
       "document_id": "202600265090",
       "registration_no": "2026/72/I/1911",
       "registration_date": "2026-11-04T16:08:11",
@@ -8183,7 +8557,7 @@
       }
     },
     {
-      "id": 181,
+      "id": 189,
       "document_id": "202600308720",
       "registration_no": "2026/72/I/1930",
       "registration_date": "2026-11-05T09:22:57",
@@ -8228,7 +8602,7 @@
       }
     },
     {
-      "id": 182,
+      "id": 190,
       "document_id": "202600308706",
       "registration_no": "2026/72/I/1931",
       "registration_date": "2026-11-05T09:24:19",
@@ -8273,7 +8647,7 @@
       }
     },
     {
-      "id": 183,
+      "id": 191,
       "document_id": "202600306281",
       "registration_no": "2026/72/I/1938",
       "registration_date": "2026-11-05T09:59:34",
@@ -8318,7 +8692,7 @@
       }
     },
     {
-      "id": 184,
+      "id": 192,
       "document_id": "202600310201",
       "registration_no": "2026/72/I/1941",
       "registration_date": "2026-11-05T10:01:33",
@@ -8363,7 +8737,7 @@
       }
     },
     {
-      "id": 185,
+      "id": 193,
       "document_id": "202600309878",
       "registration_no": "2026/72/I/1943",
       "registration_date": "2026-11-05T10:02:51",
@@ -8408,7 +8782,7 @@
       }
     },
     {
-      "id": 186,
+      "id": 194,
       "document_id": "202600307838",
       "registration_no": "2026/72/I/1948",
       "registration_date": "2026-11-05T10:06:29",
@@ -8453,7 +8827,7 @@
       }
     },
     {
-      "id": 187,
+      "id": 195,
       "document_id": "202600309914",
       "registration_no": "2026/72/I/1982",
       "registration_date": "2026-11-05T12:54:41",
@@ -8498,7 +8872,7 @@
       }
     },
     {
-      "id": 188,
+      "id": 196,
       "document_id": "202600311262",
       "registration_no": "2026/72/I/2007",
       "registration_date": "2026-11-06T10:13:32",
@@ -8543,7 +8917,7 @@
       }
     },
     {
-      "id": 189,
+      "id": 197,
       "document_id": "202600312340",
       "registration_no": "2026/72/I/2012",
       "registration_date": "2026-11-06T10:30:10",
@@ -8588,7 +8962,7 @@
       }
     },
     {
-      "id": 190,
+      "id": 198,
       "document_id": "202600308392",
       "registration_no": "2026/72/I/2018",
       "registration_date": "2026-11-06T10:36:39",
@@ -8633,7 +9007,7 @@
       }
     },
     {
-      "id": 191,
+      "id": 199,
       "document_id": "202600290246",
       "registration_no": "2026/72/I/2026",
       "registration_date": "2026-11-06T10:42:31",
@@ -8678,7 +9052,7 @@
       }
     },
     {
-      "id": 192,
+      "id": 200,
       "document_id": "202600311597",
       "registration_no": "2026/72/I/2057",
       "registration_date": "2026-11-06T11:17:20",
@@ -8723,7 +9097,52 @@
       }
     },
     {
-      "id": 193,
+      "id": 201,
+      "document_id": "202600314677",
+      "registration_no": "2026/72/I/2090",
+      "registration_date": "2026-11-07T12:15:10",
+      "month": "2026-11",
+      "sector": "38",
+      "article": "Sale Deed",
+      "article_raw": "Sale Deed - 23",
+      "article_code": 23,
+      "registration_office": "SR Bawana",
+      "district": "Outer North",
+      "taluka": "Bawana",
+      "seller": {
+        "name": "ANAND PRAKASH",
+        "address": "HOUSE NO. RP-118, MAURYA ENCLAVE, PITAMPURA, DELHI-110034"
+      },
+      "purchaser": {
+        "name": "PRITISH SHOKEEN",
+        "address": "HOUSE NO. A-82, FIRST FLOOR, PUSHPANJALI ENCLAVE, PITAMPURA, DELHI-110034"
+      },
+      "property": {
+        "raw_plot_number": "PROP. NO. 19 BLOCK AND POCKET-C-1 SECTOR-38 ROHINI DELHI",
+        "pocket": "S38",
+        "block": "S38",
+        "upic": "000000000000000",
+        "property_id": "675852",
+        "village": "Rohini Sector 38, Bawana, Outer North",
+        "description": {
+          "plot_area_sqm": 32.0,
+          "plinth_area_sqm": 11.0,
+          "plinth_area_transferred_sqm": 11.0,
+          "land_share_transferred_sqm": 32.0,
+          "land_share_transferred_pct": null,
+          "floors": 1.0,
+          "floor_label": "Ground Floor",
+          "floor_number": null,
+          "construction_type": "Pucca",
+          "category_of_locality": "E",
+          "stilt_parking_sqm": 0.0,
+          "is_parking_present": null,
+          "type_of_flats": null
+        }
+      }
+    },
+    {
+      "id": 202,
       "document_id": "202600300734",
       "registration_no": "2026/72/I/2094",
       "registration_date": "2026-11-07T12:21:26",
@@ -8768,7 +9187,7 @@
       }
     },
     {
-      "id": 194,
+      "id": 203,
       "document_id": "202600309497",
       "registration_no": "2026/72/I/2112",
       "registration_date": "2026-11-07T12:59:55",
@@ -8813,7 +9232,7 @@
       }
     },
     {
-      "id": 195,
+      "id": 204,
       "document_id": "202600313825",
       "registration_no": "2026/72/I/2116",
       "registration_date": "2026-11-07T13:02:42",
@@ -8858,7 +9277,7 @@
       }
     },
     {
-      "id": 196,
+      "id": 205,
       "document_id": "202600313814",
       "registration_no": "2026/72/I/2117",
       "registration_date": "2026-11-07T13:03:11",
@@ -8903,7 +9322,7 @@
       }
     },
     {
-      "id": 197,
+      "id": 206,
       "document_id": "202600313764",
       "registration_no": "2026/72/I/2118",
       "registration_date": "2026-11-07T13:03:38",
@@ -8948,7 +9367,7 @@
       }
     },
     {
-      "id": 198,
+      "id": 207,
       "document_id": "202600315776",
       "registration_no": "2026/72/I/2123",
       "registration_date": "2026-11-07T13:05:51",
@@ -8993,7 +9412,7 @@
       }
     },
     {
-      "id": 199,
+      "id": 208,
       "document_id": "202600312151",
       "registration_no": "2026/72/I/2135",
       "registration_date": "2026-11-07T13:19:22",
@@ -9038,7 +9457,7 @@
       }
     },
     {
-      "id": 200,
+      "id": 209,
       "document_id": "202600310539",
       "registration_no": "2026/72/I/2138",
       "registration_date": "2026-11-07T13:22:30",
@@ -9083,7 +9502,7 @@
       }
     },
     {
-      "id": 201,
+      "id": 210,
       "document_id": "202600310677",
       "registration_no": "2026/72/I/2139",
       "registration_date": "2026-11-07T13:23:20",
@@ -9128,7 +9547,7 @@
       }
     },
     {
-      "id": 202,
+      "id": 211,
       "document_id": "202600313099",
       "registration_no": "2026/72/I/2140",
       "registration_date": "2026-11-07T13:25:55",
@@ -9173,7 +9592,7 @@
       }
     },
     {
-      "id": 203,
+      "id": 212,
       "document_id": "202600311965",
       "registration_no": "2026/72/I/2166",
       "registration_date": "2026-11-07T13:58:10",
@@ -9218,7 +9637,7 @@
       }
     },
     {
-      "id": 204,
+      "id": 213,
       "document_id": "202600306015",
       "registration_no": "2026/72/I/2180",
       "registration_date": "2026-11-07T14:19:39",
@@ -9263,7 +9682,7 @@
       }
     },
     {
-      "id": 205,
+      "id": 214,
       "document_id": "202600306065",
       "registration_no": "2026/72/I/2181",
       "registration_date": "2026-11-07T14:20:13",
@@ -9308,7 +9727,7 @@
       }
     },
     {
-      "id": 206,
+      "id": 215,
       "document_id": "202600311861",
       "registration_no": "2026/72/I/2194",
       "registration_date": "2026-11-07T14:37:32",
@@ -9353,7 +9772,7 @@
       }
     },
     {
-      "id": 207,
+      "id": 216,
       "document_id": "202600315535",
       "registration_no": "2026/72/I/2232",
       "registration_date": "2026-11-10T12:18:43",
@@ -9398,7 +9817,7 @@
       }
     },
     {
-      "id": 208,
+      "id": 217,
       "document_id": "202600314324",
       "registration_no": "2026/72/I/2243",
       "registration_date": "2026-11-11T09:06:59",
@@ -9443,7 +9862,7 @@
       }
     },
     {
-      "id": 209,
+      "id": 218,
       "document_id": "202600301894",
       "registration_no": "2026/72/I/2255",
       "registration_date": "2026-11-11T09:27:09",
@@ -9488,7 +9907,7 @@
       }
     },
     {
-      "id": 210,
+      "id": 219,
       "document_id": "202600307352",
       "registration_no": "2026/72/I/2268",
       "registration_date": "2026-11-11T09:49:47",
