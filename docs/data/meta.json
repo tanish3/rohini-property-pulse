@@ -1,24 +1,32 @@
 {
-  "source_csv": "7 CSV files",
+  "source_csv": "13 CSV files",
   "source_csvs": [
+    "rohini_sector18_2026-06-19_to_2026-11-11.csv",
+    "rohini_sector19_2026-06-19_to_2026-11-11.csv",
+    "rohini_sector26_2026-06-19_to_2026-11-11.csv",
+    "rohini_sector27_2026-06-19_to_2026-11-11.csv",
     "rohini_sector28_2026-06-19_to_2026-07-19.csv",
+    "rohini_sector28_2026-06-19_to_2026-11-11.csv",
     "rohini_sector28_2026-07-19_to_2026-08-17.csv",
     "rohini_sector28_2026-08-18_to_2026-09-16.csv",
     "rohini_sector28_2026-09-17_to_2026-10-16.csv",
     "rohini_sector28_2026-10-12_to_2026-11-11.csv",
     "rohini_sector28_2026-10-17_to_2026-11-11.csv",
-    "rohini_sector28_2026-11.csv"
+    "rohini_sector28_2026-11.csv",
+    "rohini_sector38_2026-06-19_to_2026-11-11.csv"
   ],
-  "generated_at": "2026-11-11T16:06:49",
-  "date_from": "2026-06-20",
+  "generated_at": "2026-11-11T16:31:11",
+  "date_from": "2026-06-19",
   "date_to": "2026-10-31",
-  "total_registrations": 355,
-  "unique_pockets": 14,
+  "total_registrations": 515,
+  "unique_pockets": 19,
   "articles": {
-    "Sale Deed": 323,
-    "Gift Deed": 6,
-    "Relinquishment Deed": 13,
-    "Sale Agreement": 9,
+    "Sale Deed": 454,
+    "Gift Deed": 10,
+    "Relinquishment Deed": 23,
+    "Conveyance - 23": 1,
+    "Sale Agreement": 19,
+    "Partition - 45": 4,
     "Cancellation of Instrument - 17": 2,
     "Certificate of sale - 18": 2
   },
@@ -26,69 +34,149 @@
     {
       "id": "2026-06",
       "label": "Jun 2026",
-      "count": 24,
-      "date_from": "2026-06-20",
+      "count": 40,
+      "date_from": "2026-06-19",
       "date_to": "2026-06-30",
       "articles": {
-        "Sale Deed": 23,
+        "Sale Deed": 39,
         "Gift Deed": 1
       },
-      "unique_pockets": 9
+      "unique_pockets": 14
     },
     {
       "id": "2026-07",
       "label": "Jul 2026",
-      "count": 138,
+      "count": 210,
       "date_from": "2026-07-02",
       "date_to": "2026-07-31",
       "articles": {
-        "Sale Deed": 123,
-        "Relinquishment Deed": 9,
-        "Sale Agreement": 4,
-        "Gift Deed": 2
+        "Sale Deed": 181,
+        "Relinquishment Deed": 13,
+        "Gift Deed": 4,
+        "Conveyance - 23": 1,
+        "Sale Agreement": 11
       },
-      "unique_pockets": 14
+      "unique_pockets": 19
     },
     {
       "id": "2026-08",
       "label": "Aug 2026",
-      "count": 149,
+      "count": 209,
       "date_from": "2026-08-01",
       "date_to": "2026-08-29",
       "articles": {
-        "Relinquishment Deed": 3,
-        "Sale Deed": 140,
-        "Sale Agreement": 4,
-        "Gift Deed": 2
+        "Relinquishment Deed": 8,
+        "Sale Deed": 186,
+        "Sale Agreement": 7,
+        "Gift Deed": 4,
+        "Partition - 45": 4
       },
-      "unique_pockets": 14
+      "unique_pockets": 19
     },
     {
       "id": "2026-09",
       "label": "Sep 2026",
-      "count": 40,
+      "count": 48,
       "date_from": "2026-09-01",
       "date_to": "2026-09-28",
       "articles": {
-        "Sale Deed": 35,
+        "Sale Deed": 42,
+        "Relinquishment Deed": 2,
         "Sale Agreement": 1,
         "Gift Deed": 1,
-        "Cancellation of Instrument - 17": 2,
-        "Relinquishment Deed": 1
+        "Cancellation of Instrument - 17": 2
       },
-      "unique_pockets": 11
+      "unique_pockets": 14
     },
     {
       "id": "2026-10",
       "label": "Oct 2026",
-      "count": 4,
+      "count": 8,
       "date_from": "2026-10-05",
       "date_to": "2026-10-31",
       "articles": {
-        "Sale Deed": 2,
+        "Sale Deed": 6,
         "Certificate of sale - 18": 2
       },
-      "unique_pockets": 2
+      "unique_pockets": 4
+    }
+  ],
+  "sectors": [
+    {
+      "id": "18",
+      "label": "Sector 18",
+      "count": 66,
+      "date_from": "2026-06-20",
+      "date_to": "2026-10-31",
+      "articles": {
+        "Sale Deed": 52,
+        "Relinquishment Deed": 6,
+        "Gift Deed": 2,
+        "Conveyance - 23": 1,
+        "Sale Agreement": 5
+      }
+    },
+    {
+      "id": "19",
+      "label": "Sector 19",
+      "count": 6,
+      "date_from": "2026-06-23",
+      "date_to": "2026-08-17",
+      "articles": {
+        "Sale Deed": 6
+      }
+    },
+    {
+      "id": "26",
+      "label": "Sector 26",
+      "count": 38,
+      "date_from": "2026-06-27",
+      "date_to": "2026-08-27",
+      "articles": {
+        "Sale Deed": 31,
+        "Relinquishment Deed": 1,
+        "Partition - 45": 4,
+        "Gift Deed": 2
+      }
+    },
+    {
+      "id": "27",
+      "label": "Sector 27",
+      "count": 28,
+      "date_from": "2026-06-22",
+      "date_to": "2026-09-03",
+      "articles": {
+        "Sale Deed": 25,
+        "Sale Agreement": 2,
+        "Relinquishment Deed": 1
+      }
+    },
+    {
+      "id": "28",
+      "label": "Sector 28",
+      "count": 355,
+      "date_from": "2026-06-20",
+      "date_to": "2026-10-31",
+      "articles": {
+        "Sale Deed": 323,
+        "Gift Deed": 6,
+        "Relinquishment Deed": 13,
+        "Sale Agreement": 9,
+        "Cancellation of Instrument - 17": 2,
+        "Certificate of sale - 18": 2
+      }
+    },
+    {
+      "id": "38",
+      "label": "Sector 38",
+      "count": 22,
+      "date_from": "2026-06-19",
+      "date_to": "2026-10-09",
+      "articles": {
+        "Sale Deed": 17,
+        "Sale Agreement": 3,
+        "Relinquishment Deed": 2
+      }
     }
   ],
   "sector": "Rohini Sector-28",

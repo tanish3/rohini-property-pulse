@@ -1132,6 +1132,7 @@ def write_csv(
     date_from: str,
     date_to: str,
     monthly: bool = False,
+    prefix: str = "rohini_sector28",
 ) -> Path:
     """Write a date-stamped CSV. Returns the path.
 
@@ -1148,9 +1149,9 @@ def write_csv(
         return f"{yyyy}-{mm}-{dd}"
 
     if monthly:
-        out = out_dir / f"rohini_sector28_{_iso(date_to)[:7]}.csv"
+        out = out_dir / f"{prefix}_{_iso(date_to)[:7]}.csv"
     else:
-        out = out_dir / f"rohini_sector28_{_iso(date_from)}_to_{_iso(date_to)}.csv"
+        out = out_dir / f"{prefix}_{_iso(date_from)}_to_{_iso(date_to)}.csv"
     with out.open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
         w.writeheader()

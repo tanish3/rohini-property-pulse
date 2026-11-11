@@ -35,16 +35,16 @@ def _pick_source_csvs() -> list[Path]:
         for arg in sys.argv[1:]:
             p = Path(arg).expanduser()
             if p.is_dir():
-                out.extend(sorted(p.glob("rohini_sector28_*.csv")))
+                out.extend(sorted(p.glob("rohini_sector*.csv")))
             else:
                 out.append(p.resolve())
         if not out:
             raise SystemExit(f"No CSV files matched: {sys.argv[1:]}")
         return out
 
-    candidates = sorted(ROOT.glob("data/rohini_sector28_*.csv"))
+    candidates = sorted(ROOT.glob("data/rohini_sector*.csv"))
     if not candidates:
-        raise SystemExit("No data/rohini_sector28_*.csv found — run the scraper first")
+        raise SystemExit("No data/rohini_sector*.csv found — run the scraper first")
     return candidates
 
 
@@ -210,6 +210,17 @@ def load_rows() -> list[dict[str, Any]]:
     return rows
 
 
+SECTOR_RE = re.compile(r"rohini\s+sector[-\s]?(\d+)", re.IGNORECASE)
+
+
+def _sector_of(r: dict[str, Any]) -> str:
+    """'Rohini Sector-28' → '28'. Falls back to the CSV file name."""
+    m = SECTOR_RE.search((r.get("village_name") or "").strip())
+    if m:
+        return m.group(1)
+    return ""
+
+
 def _row_from_csv(r: dict[str, Any]) -> dict[str, Any]:
     article_raw = (r.get("article") or "").strip()
     article_name, article_code = ARTICLE_MAP.get(
@@ -217,7 +228,13 @@ def _row_from_csv(r: dict[str, Any]) -> dict[str, Any]:
     )
     desc = parse_description(r.get("property_description") or "")
     plot_number = (r.get("plot_number") or "").strip()
-    pocket_id, block = infer_pocket(plot_number, desc)
+    sector = _sector_of(r)
+    if sector == "28":
+        pocket_id, block = infer_pocket(plot_number, desc)
+    else:
+        # Pocket inference is DDA keyplan data for Sector 28 only. Other
+        # sectors get a single sector-level bucket instead of wrong pockets.
+        pocket_id, block = (f"S{sector}" if sector else "Unknown"), (f"S{sector}" if sector else "Unknown")
     seller = first(r.get("seller_name"))
     purchaser = first(r.get("purchaser_name"))
     registered = parse_date(r.get("registration_date") or "")
@@ -226,8 +243,9 @@ def _row_from_csv(r: dict[str, Any]) -> dict[str, Any]:
         "document_id": (r.get("document_id") or "").strip(),
         "registration_no": (r.get("registration_no") or "").strip(),
         "registration_date": registered,
-        # Calendar month used by the site's month selector.
+        # Calendar month / sector used by the site's selectors.
         "month": registered[:7],
+        "sector": sector,
         "article": article_name,
         "article_raw": article_raw,
         "article_code": article_code,
@@ -360,6 +378,8 @@ def pocket_order_key(pid: str) -> tuple:
         return (2, int(pid[3:]))
     if pid == "Unknown":
         return (9, 0)
+    if pid.startswith("S") and pid[1:].isdigit():  # non-28 sector bucket
+        return (3, int(pid[1:]))
     block, n = pid.split("-")
     return (0 if block == "A" else 1, int(n))
 
@@ -390,6 +410,27 @@ def _month_meta(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return out
 
 
+def _sector_meta(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    buckets: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for r in rows:
+        buckets[r.get("sector") or "?"].append(r)
+    out = []
+    for sid in sorted(buckets, key=lambda x: (len(x), x)):
+        srows = buckets[sid]
+        dates = [r["registration_date"][:10] for r in srows]
+        out.append(
+            {
+                "id": sid,
+                "label": f"Sector {sid}" if sid.isdigit() else "Unknown",
+                "count": len(srows),
+                "date_from": min(dates),
+                "date_to": max(dates),
+                "articles": dict(Counter(r["article"] for r in srows)),
+            }
+        )
+    return out
+
+
 def main() -> None:
     rows = load_rows()
     rows.sort(key=lambda r: r["registration_date"])
@@ -405,6 +446,7 @@ def main() -> None:
 
     dates = [r["registration_date"][:10] for r in rows]
     months = _month_meta(rows)
+    sectors = _sector_meta(rows)
     meta = {
         "source_csv": ", ".join(p.name for p in SRC_CSVS) if len(SRC_CSVS) <= 3 else f"{len(SRC_CSVS)} CSV files",
         "source_csvs": [p.name for p in SRC_CSVS],
@@ -415,6 +457,7 @@ def main() -> None:
         "unique_pockets": len({r["property"]["pocket"] for r in rows}),
         "articles": summary["articles"],
         "months": months,
+        "sectors": sectors,
         "sector": "Rohini Sector-28",
         "taluka": "Alipur",
         "district": "North",
@@ -431,6 +474,7 @@ def main() -> None:
     )
     print(f"Wrote {len(rows)} rows from {len(SRC_CSVS)} CSV(s) to {OUT_DIR}")
     print(f"Months: {[(m['id'], m['count']) for m in months]}")
+    print(f"Sectors: {[(x['id'], x['count']) for x in sectors]}")
     print(f"Pockets: {sorted(summary['pockets'].keys())}")
     print(f"Articles: {summary['articles']}")
 

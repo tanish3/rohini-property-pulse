@@ -9,6 +9,7 @@
     allMeta: null,
     allRegistrations: null,
     month: "",
+    sector: "",
     route: { name: "overview", params: {} },
   };
   const MONTH_KEY = "rpp_month";
@@ -18,7 +19,8 @@
   const $$ = (sel, el = document) => Array.from(el.querySelectorAll(sel));
   // "Unknown" is the parser's bucket for plot numbers outside the DDA
   // keyplan; show it as "Unmapped" so it is not mistaken for missing data.
-  const pocketLabel = (p) => (p === "Unknown" ? "Unmapped" : p);
+  const pocketLabel = (p) =>
+    p === "Unknown" ? "Unmapped" : /^S\d+$/.test(p) ? `Sector ${p.slice(1)}` : p;
   const el = (tag, attrs = {}, ...children) => {
     const node = document.createElement(tag);
     for (const [k, v] of Object.entries(attrs)) {
@@ -124,6 +126,7 @@
     if (month && !(meta.months || []).some((m) => m.id === month)) month = "";
     applyMonth(month, { persist: false });
     initMonthSelect();
+    initSectorSelect();
   }
 
   // -------- Month selection --------
@@ -136,7 +139,11 @@
       try { sessionStorage.setItem(MONTH_KEY, state.month); } catch (e) { /* ignore */ }
     }
     const all = state.allRegistrations || [];
-    const items = state.month ? all.filter((r) => r.month === state.month) : all;
+    const items = all.filter(
+      (r) =>
+        (!state.sector || String(r.sector) === String(state.sector)) &&
+        (!state.month || r.month === state.month)
+    );
     state.registrations = items;
     state.meta = buildMeta(items);
     state.summary = summarize(items);
@@ -151,14 +158,17 @@
       .sort();
     const articles = {};
     const pockets = new Set();
+    const sectors = new Set();
     for (const r of items) {
       articles[r.article] = (articles[r.article] || 0) + 1;
       pockets.add(r.property.pocket);
+      if (r.sector) sectors.add(String(r.sector));
     }
     return {
       ...base,
       total_registrations: items.length,
       unique_pockets: pockets.size,
+      sector_count: sectors.size,
       date_from: dates[0] || null,
       date_to: dates[dates.length - 1] || null,
       articles,
@@ -259,11 +269,45 @@
     const label = state.month
       ? (months.find((m) => m.id === state.month) || {}).label || state.month
       : "All months";
+    const sectorLabel = state.sector ? `Sector ${state.sector}` : "All sectors";
     const m = state.meta;
     note.textContent = m
-      ? `${label} · ${m.total_registrations} registration${m.total_registrations === 1 ? "" : "s"}` +
+      ? `${sectorLabel} · ${label} · ${m.total_registrations} registration${m.total_registrations === 1 ? "" : "s"}` +
         (m.date_from ? ` · ${m.date_from} → ${m.date_to}` : "")
-      : label;
+      : `${sectorLabel} · ${label}`;
+  }
+
+  function initSectorSelect() {
+    const sel = $("#sector-select");
+    if (!sel) return;
+    const sectors = (state.allMeta && state.allMeta.sectors) || [];
+    sel.innerHTML =
+      `<option value="">All sectors (${state.allMeta.total_registrations})</option>` +
+      sectors
+        .map((s) => `<option value="${esc(s.id)}">${esc(s.label)} (${s.count})</option>`)
+        .join("");
+    sel.value = state.sector || "";
+    sel.addEventListener("change", () => {
+      state.sector = sel.value;
+      applyMonth(state.month);
+      if (["sector", "pocket", "list"].includes(state.route.name)) {
+        location.hash = state.sector ? `#/sector/${state.sector}` : "#/";
+      } else {
+        render();
+        initFooter();
+      }
+    });
+  }
+
+  function syncSectorFromRoute(r) {
+    const sid =
+      r.params && r.params.sector != null ? String(r.params.sector) : null;
+    if (sid && state.sector !== sid) {
+      state.sector = sid;
+      applyMonth(state.month);
+      const sel = $("#sector-select");
+      if (sel) sel.value = sid;
+    }
   }
 
   function initMonthSelect() {
@@ -303,9 +347,9 @@
           <div class="sub">In selected period</div>
         </div>
         <div class="stat">
-          <div class="label">Active pockets</div>
-          <div class="value">${m.unique_pockets}</div>
-          <div class="sub">Across ${Object.keys(s.blocks || {}).length} blocks</div>
+          <div class="label">Sectors</div>
+          <div class="value">${m.sector_count || 0}</div>
+          <div class="sub">${state.sector ? `Sector ${esc(state.sector)} selected` : "Active in period"}</div>
         </div>
         <div class="stat">
           <div class="label">Sale deeds</div>
@@ -352,9 +396,13 @@
     setRppState();
     if (window.RPPMap) {
       window.RPPMap.injectCss();
-      window.RPPMap.renderRohiniMap("sector-map", (sector, hasData) => {
-        if (hasData) location.hash = "#/sector/28";
-      });
+      window.RPPMap.renderRohiniMap(
+        "sector-map",
+        (sector, hasData) => {
+          if (hasData) location.hash = `#/sector/${sector}`;
+        },
+        state.sector ? Number(state.sector) : 28
+      );
     }
     renderArticleChart();
     renderDateChart();
@@ -442,7 +490,82 @@
   }
 
   // -------- Sector 28 --------
+  function viewSectorGeneric(sid) {
+    setActiveNav("sector");
+    renderBreadcrumb([
+      { label: "Overview", href: "#/" },
+      { label: `Sector ${sid}` },
+    ]);
+    const m = state.meta;
+    const items = (state.registrations || [])
+      .slice()
+      .sort((a, b) => (b.registration_date || "").localeCompare(a.registration_date || ""));
+    const cats = Object.entries(m.articles || {}).sort((a, b) => b[1] - a[1]);
+    const other = (m.total_registrations || 0) - (m.articles["Sale Deed"] || 0);
+    const top = cats[0];
+
+    const rows = items
+      .map((r) => {
+        const d = r.property.description || {};
+        const date = (r.registration_date || "").slice(0, 10);
+        return `<tr>
+          <td>${esc(date)}</td>
+          <td>${articleBadge(r.article)}</td>
+          <td>${esc(r.seller.name || "—")} → ${esc(r.purchaser.name || "—")}</td>
+          <td>${esc(r.property.raw_plot_number || "—")}<br><span style="font-size:11px;color:var(--text-2)">${esc(r.registration_no)}</span></td>
+          <td>${d.plot_area_sqm ? fmtNum(d.plot_area_sqm, 1) + " m²" : "—"}</td>
+        </tr>`;
+      })
+      .join("");
+
+    const html = `
+      <a href="#/" class="back-link">Back to overview</a>
+      <section class="hero">
+        <h1>Sector ${esc(sid)} — Registrations</h1>
+        <p>${esc(m.date_from)} → ${esc(m.date_to)} · ${m.total_registrations} registrations</p>
+      </section>
+
+      <div class="stat-grid">
+        <div class="stat"><div class="label">Registrations</div><div class="value">${m.total_registrations}</div><div class="sub">In selected period</div></div>
+        <div class="stat"><div class="label">Sale deeds</div><div class="value">${m.articles["Sale Deed"] || 0}</div><div class="sub">${m.total_registrations ? Math.round(((m.articles["Sale Deed"] || 0) / m.total_registrations) * 100) : 0}% of activity</div></div>
+        <div class="stat"><div class="label">Other articles</div><div class="value">${other}</div><div class="sub">${cats.filter(([n]) => n !== "Sale Deed").map(([n, c]) => `${esc(n)} (${c})`).join(", ") || "None in this period"}</div></div>
+        <div class="stat"><div class="label">Top article</div><div class="value">${top ? top[1] : 0}</div><div class="sub">${top ? esc(top[0]) : "—"}</div></div>
+      </div>
+
+      <div class="card">
+        <h2>Sector ${esc(sid)} on the Rohini map</h2>
+        <div class="map-toolbar"><div>Tap another sector to switch</div></div>
+        <div id="sector-detail-map" class="map-wrap leaflet-wrap" style="height:480px"></div>
+      </div>
+
+      <div class="card">
+        <h2>Transactions <span class="pill">${items.length}</span></h2>
+        <div class="table-wrap">
+          <table class="tx-table">
+            <thead><tr><th>Date</th><th>Article</th><th>Parties</th><th>Plot / Reg #</th><th>Plot area</th></tr></thead>
+            <tbody>${rows || '<tr><td colspan="5">No registrations in this period.</td></tr>'}</tbody>
+          </table>
+        </div>
+      </div>
+    `;
+
+    $("#view").innerHTML = html;
+    setRppState();
+    if (window.RPPMap) {
+      window.RPPMap.injectCss();
+      window.RPPMap.renderRohiniMap(
+        "sector-detail-map",
+        (sector, hasData) => {
+          if (hasData) location.hash = `#/sector/${sector}`;
+        },
+        Number(sid)
+      );
+    }
+  }
+
   function viewSector(params) {
+    const sid = String((params && params.sector) || 28);
+    if (sid !== "28") return viewSectorGeneric(sid);
     setActiveNav("sector");
     renderBreadcrumb([
       { label: "Overview", href: "#/" },
@@ -524,7 +647,7 @@
         <div class="filters">
           <input type="search" id="tx-search" placeholder="Search seller / purchaser / plot…" inputmode="search" />
           <select id="tx-pocket">
-            <option value="">All pockets</option>
+            <option value="">${sid === "28" ? "All pockets" : "All plots"}</option>
             ${Object.keys(s.pockets).map((p) => `<option value="${esc(p)}">${esc(p)}</option>`).join("")}
           </select>
           <select id="tx-article">
@@ -573,7 +696,11 @@
         counts[pid] = p.count;
       }
     }
-    window.RPP_STATE = { pocketCounts: counts };
+    const sectorCounts = {};
+    for (const r of state.registrations || []) {
+      if (r.sector) sectorCounts[r.sector] = (sectorCounts[r.sector] || 0) + 1;
+    }
+    window.RPP_STATE = { pocketCounts: counts, sectorCounts };
   }
 
   function renderPocketCard(pid, p) {
@@ -1041,15 +1168,17 @@
   // -------- List view (all transactions) --------
   function viewList() {
     setActiveNav("list");
+    const sid = state.sector || "";
+    const scope = sid ? `Sector ${sid}` : "All sectors";
     renderBreadcrumb([
       { label: "Overview", href: "#/" },
-      { label: "Sector 28", href: "#/sector/28" },
+      { label: scope, href: sid ? `#/sector/${sid}` : "#/" },
       { label: "All transactions" },
     ]);
     const html = `
-      <a href="#/sector/28" class="back-link">Back to Sector 28</a>
+      <a href="${sid ? `#/sector/${sid}` : "#/"}" class="back-link">Back to ${esc(scope)}</a>
       <section class="hero">
-        <h1>All Sector 28 Transactions</h1>
+        <h1>${esc(scope)} — Transactions</h1>
         <p>${state.meta.total_registrations} registrations · ${esc(state.meta.date_from)} → ${esc(state.meta.date_to)}</p>
       </section>
 
@@ -1057,7 +1186,7 @@
         <div class="filters">
           <input type="search" id="tx-search" placeholder="Search…" inputmode="search" />
           <select id="tx-pocket">
-            <option value="">All pockets</option>
+            <option value="">${sid === "28" ? "All pockets" : "All plots"}</option>
             ${Object.keys(state.summary.pockets)
               .map((p) => `<option value="${esc(p)}">${esc(p === "Unknown" ? "Unmapped" : p)}</option>`)
               .join("")}
@@ -1172,6 +1301,7 @@
     closeMobileNav();
     try {
       await loadData();
+      syncSectorFromRoute(r);
       if (r.name === "overview") return viewOverview();
       if (r.name === "sector") return viewSector(r.params);
       if (r.name === "pocket") return viewPocket(r.params);

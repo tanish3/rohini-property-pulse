@@ -217,6 +217,97 @@
       "earliest": "2026-06-23",
       "latest": "2026-09-02"
     },
+    "S18": {
+      "count": 66,
+      "articles": {
+        "Sale Deed": 52,
+        "Relinquishment Deed": 6,
+        "Gift Deed": 2,
+        "Conveyance - 23": 1,
+        "Sale Agreement": 5
+      },
+      "avg_plot_area_sqm": 3632.27,
+      "avg_plinth_area_sqm": 889.49,
+      "avg_floors": 3.85,
+      "construction": {
+        "Pucca": 13
+      },
+      "parking": {},
+      "earliest": "2026-06-20",
+      "latest": "2026-10-31"
+    },
+    "S19": {
+      "count": 6,
+      "articles": {
+        "Sale Deed": 6
+      },
+      "avg_plot_area_sqm": 1100.0,
+      "avg_plinth_area_sqm": 248.61,
+      "avg_floors": 3.0,
+      "construction": {
+        "Pucca": 1
+      },
+      "parking": {},
+      "earliest": "2026-06-23",
+      "latest": "2026-08-17"
+    },
+    "S26": {
+      "count": 38,
+      "articles": {
+        "Sale Deed": 31,
+        "Relinquishment Deed": 1,
+        "Partition - 45": 4,
+        "Gift Deed": 2
+      },
+      "avg_plot_area_sqm": 136.71,
+      "avg_plinth_area_sqm": 489.89,
+      "avg_floors": 3.76,
+      "construction": {
+        "Pucca": 4
+      },
+      "parking": {
+        "Yes": 32,
+        "No": 2
+      },
+      "earliest": "2026-06-27",
+      "latest": "2026-08-27"
+    },
+    "S27": {
+      "count": 28,
+      "articles": {
+        "Sale Deed": 25,
+        "Sale Agreement": 2,
+        "Relinquishment Deed": 1
+      },
+      "avg_plot_area_sqm": 41.99,
+      "avg_plinth_area_sqm": 13.69,
+      "avg_floors": 1.0,
+      "construction": {
+        "Pucca": 24
+      },
+      "parking": {},
+      "earliest": "2026-06-22",
+      "latest": "2026-09-03"
+    },
+    "S38": {
+      "count": 22,
+      "articles": {
+        "Sale Deed": 17,
+        "Sale Agreement": 3,
+        "Relinquishment Deed": 2
+      },
+      "avg_plot_area_sqm": 32.0,
+      "avg_plinth_area_sqm": 10.92,
+      "avg_floors": 1.0,
+      "construction": {
+        "Pucca": 15
+      },
+      "parking": {
+        "No": 2
+      },
+      "earliest": "2026-06-19",
+      "latest": "2026-10-09"
+    },
     "Unknown": {
       "count": 51,
       "articles": {
@@ -243,14 +334,22 @@
     }
   },
   "articles": {
-    "Sale Deed": 323,
-    "Gift Deed": 6,
-    "Relinquishment Deed": 13,
-    "Sale Agreement": 9,
+    "Sale Deed": 454,
+    "Gift Deed": 10,
+    "Relinquishment Deed": 23,
+    "Conveyance - 23": 1,
+    "Sale Agreement": 19,
+    "Partition - 45": 4,
     "Cancellation of Instrument - 17": 2,
     "Certificate of sale - 18": 2
   },
   "blocks": {
+    "S38": {
+      "count": 22,
+      "pockets": [
+        "S38"
+      ]
+    },
     "GH": {
       "count": 63,
       "pockets": [
@@ -279,69 +378,101 @@
         "C-5"
       ]
     },
+    "S18": {
+      "count": 66,
+      "pockets": [
+        "S18"
+      ]
+    },
+    "S27": {
+      "count": 28,
+      "pockets": [
+        "S27"
+      ]
+    },
+    "S19": {
+      "count": 6,
+      "pockets": [
+        "S19"
+      ]
+    },
     "Unknown": {
       "count": 51,
       "pockets": [
         "Unknown"
       ]
+    },
+    "S26": {
+      "count": 38,
+      "pockets": [
+        "S26"
+      ]
     }
   },
   "date_series": [
     {
+      "date": "2026-06-19",
+      "count": 1
+    },
+    {
       "date": "2026-06-20",
-      "count": 4
-    },
-    {
-      "date": "2026-06-23",
-      "count": 4
-    },
-    {
-      "date": "2026-06-24",
-      "count": 1
-    },
-    {
-      "date": "2026-06-25",
-      "count": 6
-    },
-    {
-      "date": "2026-06-27",
-      "count": 7
-    },
-    {
-      "date": "2026-06-30",
-      "count": 2
-    },
-    {
-      "date": "2026-07-02",
-      "count": 11
-    },
-    {
-      "date": "2026-07-04",
-      "count": 1
-    },
-    {
-      "date": "2026-07-06",
-      "count": 10
-    },
-    {
-      "date": "2026-07-08",
       "count": 5
     },
     {
-      "date": "2026-07-09",
+      "date": "2026-06-22",
       "count": 1
     },
     {
+      "date": "2026-06-23",
+      "count": 10
+    },
+    {
+      "date": "2026-06-24",
+      "count": 2
+    },
+    {
+      "date": "2026-06-25",
+      "count": 8
+    },
+    {
+      "date": "2026-06-27",
+      "count": 10
+    },
+    {
+      "date": "2026-06-30",
+      "count": 3
+    },
+    {
+      "date": "2026-07-02",
+      "count": 17
+    },
+    {
+      "date": "2026-07-04",
+      "count": 5
+    },
+    {
+      "date": "2026-07-06",
+      "count": 13
+    },
+    {
+      "date": "2026-07-08",
+      "count": 13
+    },
+    {
+      "date": "2026-07-09",
+      "count": 2
+    },
+    {
       "date": "2026-07-10",
-      "count": 14
+      "count": 21
     },
     {
       "date": "2026-07-13",
-      "count": 6
+      "count": 10
     },
     {
       "date": "2026-07-14",
-      "count": 4
+      "count": 8
     },
     {
       "date": "2026-07-15",
@@ -349,31 +480,35 @@
     },
     {
       "date": "2026-07-16",
-      "count": 6
+      "count": 7
     },
     {
       "date": "2026-07-17",
-      "count": 3
+      "count": 4
     },
     {
       "date": "2026-07-20",
-      "count": 10
-    },
-    {
-      "date": "2026-07-21",
-      "count": 11
-    },
-    {
-      "date": "2026-07-24",
       "count": 16
     },
     {
+      "date": "2026-07-21",
+      "count": 13
+    },
+    {
+      "date": "2026-07-22",
+      "count": 4
+    },
+    {
+      "date": "2026-07-24",
+      "count": 22
+    },
+    {
       "date": "2026-07-25",
-      "count": 8
+      "count": 16
     },
     {
       "date": "2026-07-28",
-      "count": 10
+      "count": 13
     },
     {
       "date": "2026-07-29",
@@ -381,39 +516,43 @@
     },
     {
       "date": "2026-07-30",
-      "count": 5
+      "count": 8
     },
     {
       "date": "2026-07-31",
-      "count": 4
+      "count": 5
     },
     {
       "date": "2026-08-01",
-      "count": 11
+      "count": 13
     },
     {
       "date": "2026-08-05",
-      "count": 12
-    },
-    {
-      "date": "2026-08-06",
-      "count": 2
-    },
-    {
-      "date": "2026-08-07",
-      "count": 5
-    },
-    {
-      "date": "2026-08-10",
-      "count": 5
-    },
-    {
-      "date": "2026-08-12",
       "count": 15
     },
     {
+      "date": "2026-08-06",
+      "count": 7
+    },
+    {
+      "date": "2026-08-07",
+      "count": 6
+    },
+    {
+      "date": "2026-08-10",
+      "count": 18
+    },
+    {
+      "date": "2026-08-11",
+      "count": 1
+    },
+    {
+      "date": "2026-08-12",
+      "count": 18
+    },
+    {
       "date": "2026-08-13",
-      "count": 4
+      "count": 5
     },
     {
       "date": "2026-08-14",
@@ -421,51 +560,55 @@
     },
     {
       "date": "2026-08-17",
-      "count": 17
+      "count": 25
     },
     {
       "date": "2026-08-18",
-      "count": 3
+      "count": 4
     },
     {
       "date": "2026-08-19",
-      "count": 9
-    },
-    {
-      "date": "2026-08-20",
-      "count": 9
-    },
-    {
-      "date": "2026-08-21",
-      "count": 9
-    },
-    {
-      "date": "2026-08-22",
-      "count": 10
-    },
-    {
-      "date": "2026-08-25",
       "count": 11
     },
     {
+      "date": "2026-08-20",
+      "count": 13
+    },
+    {
+      "date": "2026-08-21",
+      "count": 14
+    },
+    {
+      "date": "2026-08-22",
+      "count": 11
+    },
+    {
+      "date": "2026-08-24",
+      "count": 1
+    },
+    {
+      "date": "2026-08-25",
+      "count": 13
+    },
+    {
       "date": "2026-08-27",
-      "count": 7
+      "count": 10
     },
     {
       "date": "2026-08-29",
-      "count": 19
+      "count": 23
     },
     {
       "date": "2026-09-01",
-      "count": 5
+      "count": 7
     },
     {
       "date": "2026-09-02",
-      "count": 12
+      "count": 17
     },
     {
       "date": "2026-09-03",
-      "count": 9
+      "count": 10
     },
     {
       "date": "2026-09-14",
@@ -492,12 +635,16 @@
       "count": 1
     },
     {
+      "date": "2026-10-09",
+      "count": 3
+    },
+    {
       "date": "2026-10-30",
       "count": 1
     },
     {
       "date": "2026-10-31",
-      "count": 2
+      "count": 3
     }
   ]
 }

@@ -30,10 +30,14 @@
   const POCKET_LABEL_COLOR = (n) => (n >= 3 ? "#ffffff" : "#1e293b");
 
   // -------- Public: render Rohini overview --------
-  async function renderRohiniMap(containerId, onSectorClick) {
+  async function renderRohiniMap(containerId, onSectorClick, activeSector = 28) {
     const el = document.getElementById(containerId);
     if (!el) return null;
     el.innerHTML = "";
+
+    const counts = (window.RPP_STATE && window.RPP_STATE.sectorCounts) || {};
+    const countOf = (s) => counts[String(s)] || 0;
+    const isActive = (s) => Number(s) === Number(activeSector);
 
     const map = L.map(el, {
       center: [28.74, 77.085],
@@ -49,37 +53,36 @@
     const layer = L.geoJSON(sectors, {
       style: (feat) => {
         const s = feat.properties.sector;
-        const is28 = s === 28;
+        const active = isActive(s);
         return {
-          color: is28 ? "#fbbf24" : COLOR_OTHER_STROKE,
-          weight: is28 ? 5 : 2.5,
-          opacity: is28 ? 1 : 0.9,
-          fillColor: is28 ? COLOR_S28 : COLOR_OTHER_FILL,
-          fillOpacity: is28 ? 0.65 : 0.45,
-          dashArray: is28 ? null : null,
+          color: active ? "#fbbf24" : COLOR_OTHER_STROKE,
+          weight: active ? 5 : 2.5,
+          opacity: active ? 1 : 0.9,
+          fillColor: active ? COLOR_S28 : COLOR_OTHER_FILL,
+          fillOpacity: active ? 0.65 : 0.45,
         };
       },
       onEachFeature: (feat, lyr) => {
         const s = feat.properties.sector;
-        const is28 = s === 28;
-        const has = feat.properties.has_data;
+        const active = isActive(s);
+        const has = countOf(s) > 0;
         const baseStyle = {
-          color: is28 ? "#fbbf24" : COLOR_OTHER_STROKE,
-          weight: is28 ? 5 : 2.5,
-          fillOpacity: is28 ? 0.65 : 0.45,
+          color: active ? "#fbbf24" : COLOR_OTHER_STROKE,
+          weight: active ? 5 : 2.5,
+          fillOpacity: active ? 0.65 : 0.45,
         };
         lyr.bindTooltip(
           `<div class="rpp-tip">
-             <div class="rpp-tip-title">Sector ${s}${is28 ? " · Selected" : ""}</div>
-             <div class="rpp-tip-sub">${has ? "90 registrations in selected period" : "No scraped data"}</div>
-             ${is28 ? `<div class="rpp-tip-cta">Tap to drill in →</div>` : ""}
+             <div class="rpp-tip-title">Sector ${s}${active ? " · Selected" : ""}</div>
+             <div class="rpp-tip-sub">${has ? `${countOf(s)} registration${countOf(s) === 1 ? "" : "s"} in selected period` : "No scraped data"}</div>
+             ${has ? `<div class="rpp-tip-cta">Tap to drill in →</div>` : ""}
            </div>`,
           { sticky: true, direction: "top", className: "rpp-tooltip", opacity: 1 }
         );
         lyr.on("mouseover", () => {
           lyr.setStyle({
-            weight: is28 ? 6 : 4,
-            fillOpacity: is28 ? 0.8 : 0.65,
+            weight: active ? 6 : 4,
+            fillOpacity: active ? 0.8 : 0.65,
           });
           lyr.openTooltip();
           lyr.bringToFront();
@@ -95,10 +98,10 @@
     // Sector number labels at polygon centroids
     layer.eachLayer((lyr) => {
       const s = lyr.feature.properties.sector;
-      const is28 = s === 28;
+      const active = isActive(s);
       const c = lyr.getBounds().getCenter();
-      const html = is28
-        ? `<div class="sec-label sec-label-28"><b>${s}</b><span>90 regs</span></div>`
+      const html = active
+        ? `<div class="sec-label sec-label-28"><b>${s}</b><span>${countOf(s)} regs</span></div>`
         : `<div class="sec-label">${s}</div>`;
       L.marker(c, {
         icon: L.divIcon({

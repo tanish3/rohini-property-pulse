@@ -15,6 +15,8 @@ routes = [
     ("/#/sector/28/pocket/C-2", "pocket_c2"),
     ("/#/sector/28/pocket/GH-1", "pocket_gh1"),
     ("/#/sector/28/all", "list"),
+    ("/#/sector/26", "sector26"),
+    ("/#/sector/18/all", "list18"),
 ]
 
 errors = []
@@ -62,7 +64,7 @@ with sync_playwright() as p:
                 page.wait_for_selector(".leaflet-container", timeout=10000)
                 print(f"  ✓ Leaflet container present")
             except Exception as e:
-                if name in ("overview", "sector"):
+                if name in ("overview", "sector", "sector26"):
                     errors.append(f"{name}: leaflet container missing ({e})")
                     print(f"  ✗ {e}")
             # Wait for Leaflet tiles to load (networkidle fires before the
@@ -81,7 +83,7 @@ with sync_playwright() as p:
                     "document.querySelectorAll('.leaflet-tile-loaded').length"
                 )
             print(f"  tiles loaded: {tile_count}")
-            if tile_count == 0 and name in ("overview", "sector"):
+            if tile_count == 0 and name in ("overview", "sector", "sector26"):
                 errors.append(f"{name}: no OSM tiles loaded")
             page.screenshot(path=str(OUT / f"{viewport_name}_{name}.png"), full_page=True)
 
