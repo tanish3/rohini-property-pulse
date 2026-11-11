@@ -435,7 +435,7 @@
         root.insertAdjacentHTML(
           "beforeend",
           `<div class="bar-row">
-             <span class="bar-name">${esc(pid)}</span>
+             <span class="bar-name">${esc(pocketLabel(pid))}</span>
              <span class="bar-track"><span class="bar-fill" style="width:${pct}%"></span></span>
              <span class="bar-value">${p.count}</span>
            </div>`

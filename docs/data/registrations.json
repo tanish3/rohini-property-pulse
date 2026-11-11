@@ -1,7 +1,7 @@
 {
   "meta": {
     "source_csv": "rohini_sector28_2026-10-12_to_2026-11-11.csv",
-    "generated_at": "2026-11-11T15:33:09",
+    "generated_at": "2026-11-11T15:40:35",
     "date_from": "2026-10-30",
     "date_to": "2026-10-31",
     "total_registrations": 3,
@@ -66,8 +66,8 @@
       "article_code": null,
       "registration_office": "SR Badli",
       "seller": {
-        "name": null,
-        "address": null
+        "name": "MOHD NAUSHAD",
+        "address": "A-34, 2ND AND 3RD FLOOR, LAJPAT NAGAR-II, NEW DELHI-110024KHASRA NO.147, BURARI GARHI, BURARI, DELHI-110084"
       },
       "purchaser": {
         "name": "SADHNA SHARMA",
@@ -107,8 +107,8 @@
       "article_code": null,
       "registration_office": "SR Badli",
       "seller": {
-        "name": null,
-        "address": null
+        "name": "MOHD NAUSHAD",
+        "address": "A-34, 2ND AND 3RD FLOOR, LAJPAT NAGAR-II, NEW DELHI-110024KHASRA NO.147, BURARI GARHI, BURARI, DELHI-110084"
       },
       "purchaser": {
         "name": "SADHNA SHARMA",
