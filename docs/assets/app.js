@@ -617,14 +617,11 @@
       <div class="card">
         <h2>Pocket Map <span class="pill">Tap a pocket</span></h2>
         <div class="map-toolbar">
-          <div>OpenStreetMap base · real Sector 28 boundary · approximate pocket areas</div>
+          <div>OpenStreetMap base · real Sector 28 boundary · scroll or pinch to zoom into a pocket</div>
           <div class="legend">
-            <span class="swatch" style="background:#b91c1c"></span> 12+
-            <span class="swatch" style="background:#dc2626;margin-left:6px"></span> 10-11
-            <span class="swatch" style="background:#ea580c;margin-left:6px"></span> 7-9
-            <span class="swatch" style="background:#f97316;margin-left:6px"></span> 5-6
-            <span class="swatch" style="background:#fb923c;margin-left:6px"></span> 3-4
-            <span class="swatch" style="background:#fed7aa;margin-left:6px"></span> 1-2
+            <span class="swatch" style="background:#3b82f6"></span> With registrations
+            <span class="swatch" style="background:#e2e8f0;margin-left:8px"></span> No data
+            <span class="swatch" style="background:#fbbf24;margin-left:8px"></span> Selected
           </div>
         </div>
         <div class="map-wrap leaflet-wrap" id="pocket-map" style="height:520px"></div>

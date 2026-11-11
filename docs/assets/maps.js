@@ -166,11 +166,11 @@
         const isActive = id === activePocket;
         const isUnmapped = n === 0;
         return {
-          color: isActive ? "#0f172a" : (isUnmapped ? "#94a3b8" : "#ffffff"),
-          weight: isActive ? 5 : (isUnmapped ? 1.5 : 2.5),
-          opacity: isUnmapped ? 0.5 : 1,
-          fillColor: isUnmapped ? "#e2e8f0" : POCKET_COLOR(n),
-          fillOpacity: isUnmapped ? 0.35 : 0.78,
+          color: isActive ? "#fbbf24" : COLOR_OTHER_STROKE,
+          weight: isActive ? 5 : 2.5,
+          opacity: isUnmapped ? 0.6 : 0.9,
+          fillColor: isUnmapped ? "#e2e8f0" : (isActive ? COLOR_S28 : COLOR_OTHER_FILL),
+          fillOpacity: isUnmapped ? 0.35 : (isActive ? 0.65 : 0.45),
           dashArray: isUnmapped ? "5 3" : null,
         };
       },
@@ -197,9 +197,9 @@
         );
         const isUnmapped = n === 0;
         const baseStyle = {
-          color: id === activePocket ? "#0f172a" : (isUnmapped ? "#94a3b8" : "#ffffff"),
-          weight: id === activePocket ? 5 : (isUnmapped ? 1.5 : 2.5),
-          fillOpacity: isUnmapped ? 0.35 : 0.78,
+          color: id === activePocket ? "#fbbf24" : COLOR_OTHER_STROKE,
+          weight: id === activePocket ? 5 : 2.5,
+          fillOpacity: isUnmapped ? 0.35 : (id === activePocket ? 0.65 : 0.45),
         };
         lyr.on("mouseover", () => {
           lyr.setStyle({ weight: 4, fillOpacity: 0.9, color: "#0f172a" });
@@ -213,30 +213,39 @@
       },
     }).addTo(map);
 
-    // Pocket number + count badges
+    // Pocket labels: only pockets with data, alternating vertical offset so
+    // adjacent (small) polygons do not overlap. Counts live in the tooltip.
+    let labelIdx = 0;
     pocketLayer.eachLayer((lyr) => {
       const id = lyr.feature.properties.pocket;
       const n = counts[id] || 0;
+      if (n === 0) return;
       const c = lyr.getBounds().getCenter();
-      const labelColor = n === 0 ? "#64748b" : POCKET_LABEL_COLOR(n);
-      const html = n > 0
-        ? `<div class="pkt-label" style="color:${labelColor}"><b>${id}</b><span class="pkt-count">${n}</span></div>`
-        : `<div class="pkt-label dim"><b>${id}</b></div>`;
+      const up = labelIdx++ % 2 === 0;
+      const html = `<div class="pkt-label"><b>${id}</b></div>`;
       L.marker(c, {
         icon: L.divIcon({
           className: "pkt-label-wrap",
           html,
           iconSize: null,
-          iconAnchor: [0, 0],
+          iconAnchor: [0, up ? 20 : -4],
         }),
         interactive: false,
       }).addTo(map);
     });
 
-    // Fit all pockets in view
-    const bounds = pocketLayer.getBounds();
-    map.fitBounds(bounds, { padding: [28, 28] });
-    map.setMinZoom(Math.max(14, map.getZoom() - 1));
+    // Frame the pockets that actually have registrations; empty / unmapped
+    // polygons would otherwise zoom the view out and make the map unreadable.
+    const withData = [];
+    pocketLayer.eachLayer((lyr) => {
+      if ((counts[lyr.feature.properties.pocket] || 0) > 0) withData.push(lyr);
+    });
+    const bounds = withData.length
+      ? L.featureGroup(withData).getBounds()
+      : pocketLayer.getBounds();
+    map.fitBounds(bounds, { padding: [24, 24] });
+    if (map.getZoom() < 16) map.setZoom(16);
+    map.setMinZoom(Math.max(14, map.getZoom() - 2));
 
     return { map, layer: pocketLayer };
   }
@@ -266,6 +275,7 @@
         box-shadow: 0 1px 3px rgba(0,0,0,0.4);
         text-shadow: 0 1px 2px rgba(0,0,0,0.3);
       }
+      .sec-label.dim { opacity: .55; }
       .sec-label-28 {
         background: #1d4ed8;
         color: #fff;
@@ -285,26 +295,28 @@
 
       /* === Pocket labels (sector 28 map) === */
       .pkt-label {
-        font: 700 13px system-ui, -apple-system, "Segoe UI", sans-serif;
-        text-align: center;
-        pointer-events: none;
-        line-height: 1.05;
-        white-space: nowrap;
-        text-shadow: 0 1px 2px rgba(0,0,0,0.4);
-      }
-      .pkt-label b { display: block; font-size: 14px; }
-      .pkt-label .pkt-count {
-        display: inline-block;
-        margin-top: 2px;
-        background: rgba(0,0,0,0.45);
-        color: #fff;
-        font: 700 11px system-ui, sans-serif;
-        padding: 1px 6px;
+        display: inline-flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.95);
+        color: #0f172a;
         border-radius: 999px;
-        text-shadow: none;
+        padding: 1px 6px;
+        font: 700 9px system-ui, -apple-system, "Segoe UI", sans-serif;
+        line-height: 1.4;
+        white-space: nowrap;
+        pointer-events: none;
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.35);
       }
-      .pkt-label.dim { color: #475569; opacity: 0.75; text-shadow: 0 1px 2px rgba(255,255,255,0.6); }
-      .pkt-label.dim .pkt-count { background: rgba(71, 85, 105, 0.5); }
+      .pkt-label b { font-size: 9px; }
+      .pkt-label .pkt-count {
+        background: #1e3a8a;
+        color: #fff;
+        border-radius: 999px;
+        padding: 0 5px;
+        font: 700 9px system-ui, sans-serif;
+      }
+      .pkt-label.dim { opacity: 0.6; }
+      .pkt-label.dim .pkt-count { background: #64748b; }
 
       /* === Custom tooltips === */
       .rpp-tooltip {

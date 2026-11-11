@@ -210,7 +210,7 @@ def load_rows() -> list[dict[str, Any]]:
     return rows
 
 
-SECTOR_RE = re.compile(r"rohini\s+sector[-\s]?(\d+)", re.IGNORECASE)
+SECTOR_RE = re.compile(r"rohini\s+(?:sector|sec)[-\s]?(\d+)", re.IGNORECASE)
 
 
 def _sector_of(r: dict[str, Any]) -> str:
@@ -221,12 +221,21 @@ def _sector_of(r: dict[str, Any]) -> str:
     return ""
 
 
-def _source_office(src_name: str) -> tuple[str, str]:
-    """(district, taluka) of the CSV that produced a row.
+def _source_office(village: str, src_name: str = "") -> tuple[str, str]:
+    """(district, taluka) for a row.
 
-    The same village name (e.g. Rohini Sector-28) exists under more than one
-    taluka, so the file name is the only reliable provenance marker.
+    NGDRS puts it in the village label itself, e.g.
+    "Rohini Sector-28, Bawana, Outer North" or
+    "Rohini Sector-28, Alipur, North". The CSV name is only a fallback.
     """
+    v = (village or "").lower()
+    if "bawana" in v:
+        return "Outer North", "Bawana"
+    if "alipur" in v:
+        return "North", "Alipur"
+    if "sdm rohini" in v or "rohini, north west" in v:
+        return "North West", "Sdm Rohini"
+
     n = src_name.lower()
     if "_bawana" in n:
         return "Outer North", "Bawana"
@@ -236,7 +245,7 @@ def _source_office(src_name: str) -> tuple[str, str]:
 
 
 def _row_from_csv(r: dict[str, Any], src_name: str = "") -> dict[str, Any]:
-    district, taluka = _source_office(src_name)
+    district, taluka = _source_office(r.get("village_name") or "", src_name)
     article_raw = (r.get("article") or "").strip()
     article_name, article_code = ARTICLE_MAP.get(
         article_raw, (article_raw or "Unknown", None)

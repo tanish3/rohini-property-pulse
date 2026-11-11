@@ -43,6 +43,12 @@ SECTOR_MAP: dict[int, tuple[str, str, str]] = {
     28: ("North", "Alipur", "Rohini Sector-28"),
     38: ("North West", "Sdm Rohini", "Rohini Sector 38"),
 }
+# Bawana names sectors 29-37 with the short form "Rohini Sec-XX".
+BAWANA_SECTORS: dict[int, str] = {
+    28: "Rohini Sector-28",
+    38: "Rohini Sector 38",
+    **{n: f"Rohini Sec-{n}" for n in range(29, 38)},
+}
 
 
 def parse_sectors(spec: str) -> list[int]:
@@ -98,6 +104,7 @@ def main() -> int:
     ap.add_argument("--start", default="2026-06-19")
     ap.add_argument("--end", default=date.today().isoformat())
     ap.add_argument("--sectors", default="28-41")
+    ap.add_argument("--taluka", default="Bawana", help="Bawana (default) or Alipur")
     ap.add_argument("--config", default=str(DEFAULT_CONFIG))
     args = ap.parse_args()
 
