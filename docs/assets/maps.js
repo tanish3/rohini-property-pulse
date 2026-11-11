@@ -57,6 +57,32 @@
     });
   }
 
+  // Draws centred number pills at polygon centroids, skipping any that would
+  // overlap one already drawn (the selected feature always wins). Re-running
+  // after a zoom lets more labels appear as the map opens up.
+  function createLabels(map) {
+    const group = L.layerGroup().addTo(map);
+    return function draw(items) {
+      group.clearLayers();
+      const placed = [];
+      const ordered = items.slice().sort((a, b) => (b.active ? 1 : 0) - (a.active ? 1 : 0) || b.n - a.n);
+      for (const it of ordered) {
+        const pt = map.latLngToContainerPoint(it.center);
+        const w = it.active ? 96 : 7.2 * String(it.id).length + 14;
+        const h = it.active ? 40 : 20;
+        if (!it.active && placed.some((q) => Math.abs(q.x - pt.x) < (q.w + w) / 2 + 2 && Math.abs(q.y - pt.y) < (q.h + h) / 2 + 2)) continue;
+        placed.push({ x: pt.x, y: pt.y, w, h });
+        const html = it.active
+          ? `<div class="sec-label sec-label-active"><b>${esc(it.id)}</b><span>${fmt(it.n)} records</span></div>`
+          : `<div class="sec-label${it.dim ? " dim" : ""}${it.pocket ? " pocket-pill" : ""}">${esc(it.id)}</div>`;
+        L.marker(it.center, {
+          icon: L.divIcon({ className: "sec-label-wrap", html, iconSize: null }),
+          interactive: false,
+        }).addTo(group);
+      }
+    };
+  }
+
   // -------- Public: Rohini sectors overview --------
   async function renderRohiniMap(containerId, onSectorClick, activeSector = null) {
     const el = document.getElementById(containerId);
@@ -118,20 +144,17 @@
       },
     }).addTo(map);
 
+    const labelItems = [];
     layer.eachLayer((lyr) => {
       const s = lyr.feature.properties.sector;
       const n = countOf(s);
-      const html = isActive(s)
-        ? `<div class="sec-label sec-label-active"><b>${s}</b><span>${fmt(n)} records</span></div>`
-        : `<div class="sec-label${n > 0 ? "" : " dim"}">${s}</div>`;
-      L.marker(lyr.getBounds().getCenter(), {
-        icon: L.divIcon({ className: "sec-label-wrap", html, iconSize: null, iconAnchor: [0, 0] }),
-        interactive: false,
-      }).addTo(map);
+      labelItems.push({ id: s, center: lyr.getBounds().getCenter(), n, active: isActive(s), dim: n === 0 });
     });
-
-    map.fitBounds(layer.getBounds(), { padding: [16, 16] });
+    const drawLabels = createLabels(map);
+    map.fitBounds(layer.getBounds(), { padding: [16, 16], animate: false });
     map.setMinZoom(map.getZoom() - 1);
+    drawLabels(labelItems);
+    map.on("zoomend", () => drawLabels(labelItems));
 
     return { map, layer };
   }
@@ -212,27 +235,17 @@
     map.fitBounds((outline || pocketLayer).getBounds(), { padding: [16, 16], animate: false });
     map.setMinZoom(map.getZoom() - 1);
 
-    // Number pills at pocket centres. Pills that would collide with one already placed are skipped
-    // (the tooltip and the leaderboard still name them).
-    const placed = [];
+    // Number pills at pocket centres, same look as the sector labels.
+    const labelItems = [];
     pocketLayer.eachLayer((lyr) => {
       const id = lyr.feature.properties.pocket;
       const n = countOf(id);
       if (n === 0 || id === "Unknown") return;
-      const center = lyr.getBounds().getCenter();
-      const pt = map.latLngToContainerPoint(center);
-      const active = isActive(id);
-      const w = 6.2 * id.length + 12;
-      if (!active && placed.some((q) => Math.abs(q.x - pt.x) < (q.w + w) / 2 + 2 && Math.abs(q.y - pt.y) < 16)) return;
-      placed.push({ x: pt.x, y: pt.y, w });
-      const html = active
-        ? `<div class="sec-label sec-label-active"><b>${esc(id)}</b><span>${fmt(n)} records</span></div>`
-        : `<div class="sec-label pocket-pill">${esc(id)}</div>`;
-      L.marker(center, {
-        icon: L.divIcon({ className: "sec-label-wrap", html, iconSize: null, iconAnchor: [0, 0] }),
-        interactive: false,
-      }).addTo(map);
+      labelItems.push({ id, center: lyr.getBounds().getCenter(), n, active: isActive(id), pocket: true });
     });
+    const drawLabels = createLabels(map);
+    drawLabels(labelItems);
+    map.on("zoomend", () => drawLabels(labelItems));
 
     return { map, layer: pocketLayer };
   }
@@ -272,10 +285,12 @@
       }
       .sec-label-active b { font-size: 16px; display: block; }
       .sec-label.pocket-pill { font-size: 10px; padding: 2px 5px; }
-      .sec-label-active span { display: block; font: 600 10px system-ui, sans-serif; color: #fde68a; }
       @media (max-width: 599px) {
-        .sec-label-wrap .sec-label:not(.sec-label-active) { display: none; }
+        .sec-label { font-size: 11px; padding: 2px 5px; min-width: 20px; }
+        .sec-label-active { font-size: 12px; padding: 3px 7px; }
+        .sec-label-active b { font-size: 13px; }
       }
+      .sec-label-active span { display: block; font: 600 10px system-ui, sans-serif; color: #fde68a; }
 
       /* === Pocket labels (sector 28 map) === */
       .pkt-label {

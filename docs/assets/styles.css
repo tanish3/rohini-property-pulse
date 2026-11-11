@@ -297,7 +297,9 @@ button { font: inherit; cursor: pointer; }
   flex-wrap: wrap;
   gap: 4px 12px;
   margin-bottom: 10px;
+  min-width: 0;
 }
+.card-head .hint, .card-head > * { min-width: 0; }
 .card-head h2 { margin: 0; }
 .card-head a { font-size: 13px; font-weight: 600; }
 .card h2 .pill {
@@ -333,10 +335,13 @@ button { font: inherit; cursor: pointer; }
   color: var(--text-2);
   flex-wrap: wrap;
   gap: 6px 12px;
+  min-width: 0;
 }
+.map-toolbar > div { min-width: 0; }
 .legend {
   display: inline-flex; align-items: center; gap: 6px 12px;
   flex-wrap: wrap; font-size: 12px; color: var(--text-2);
+  min-width: 0; max-width: 100%;
 }
 .legend > span { display: inline-flex; align-items: center; }
 .swatch {
