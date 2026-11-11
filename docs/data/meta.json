@@ -1,90 +1,26 @@
 {
-  "source_csv": "6 CSV files",
+  "source_csv": "rohini_sector28_2026-11.csv",
   "source_csvs": [
-    "rohini_sector28_2026-06-19_to_2026-07-19.csv",
-    "rohini_sector28_2026-07-19_to_2026-08-17.csv",
-    "rohini_sector28_2026-08-18_to_2026-09-16.csv",
-    "rohini_sector28_2026-09-17_to_2026-10-16.csv",
-    "rohini_sector28_2026-10-12_to_2026-11-11.csv",
-    "rohini_sector28_2026-10-17_to_2026-11-11.csv"
+    "rohini_sector28_2026-11.csv"
   ],
-  "generated_at": "2026-11-11T15:50:48",
-  "date_from": "2026-06-20",
+  "generated_at": "2026-11-11T16:03:47",
+  "date_from": "2026-10-30",
   "date_to": "2026-10-31",
-  "total_registrations": 355,
-  "unique_pockets": 14,
+  "total_registrations": 3,
+  "unique_pockets": 2,
   "articles": {
-    "Sale Deed": 323,
-    "Gift Deed": 6,
-    "Relinquishment Deed": 13,
-    "Sale Agreement": 9,
-    "Cancellation of Instrument - 17": 2,
+    "Sale Deed": 1,
     "Certificate of sale - 18": 2
   },
   "months": [
     {
-      "id": "2026-06",
-      "label": "Jun 2026",
-      "count": 24,
-      "date_from": "2026-06-20",
-      "date_to": "2026-06-30",
-      "articles": {
-        "Sale Deed": 23,
-        "Gift Deed": 1
-      },
-      "unique_pockets": 9
-    },
-    {
-      "id": "2026-07",
-      "label": "Jul 2026",
-      "count": 138,
-      "date_from": "2026-07-02",
-      "date_to": "2026-07-31",
-      "articles": {
-        "Sale Deed": 123,
-        "Relinquishment Deed": 9,
-        "Sale Agreement": 4,
-        "Gift Deed": 2
-      },
-      "unique_pockets": 14
-    },
-    {
-      "id": "2026-08",
-      "label": "Aug 2026",
-      "count": 149,
-      "date_from": "2026-08-01",
-      "date_to": "2026-08-29",
-      "articles": {
-        "Relinquishment Deed": 3,
-        "Sale Deed": 140,
-        "Sale Agreement": 4,
-        "Gift Deed": 2
-      },
-      "unique_pockets": 14
-    },
-    {
-      "id": "2026-09",
-      "label": "Sep 2026",
-      "count": 40,
-      "date_from": "2026-09-01",
-      "date_to": "2026-09-28",
-      "articles": {
-        "Sale Deed": 35,
-        "Sale Agreement": 1,
-        "Gift Deed": 1,
-        "Cancellation of Instrument - 17": 2,
-        "Relinquishment Deed": 1
-      },
-      "unique_pockets": 11
-    },
-    {
       "id": "2026-10",
       "label": "Oct 2026",
-      "count": 4,
-      "date_from": "2026-10-05",
+      "count": 3,
+      "date_from": "2026-10-30",
       "date_to": "2026-10-31",
       "articles": {
-        "Sale Deed": 2,
+        "Sale Deed": 1,
         "Certificate of sale - 18": 2
       },
       "unique_pockets": 2
